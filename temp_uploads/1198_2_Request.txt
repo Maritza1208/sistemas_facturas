@@ -1,0 +1,132 @@
+<Factura>
+	<Cabecera Numero="SETT1198" FechaEmision="2025-04-16" Vencimiento="2025-05-16" HoraEmision="07:50:53" MonedaFactura="COP" Observaciones="NOTA: - - AUTORIZACION: 456654654 PACIENTE: TI-1089077573-YESICA YULIE CERON GOMEZ- INGRESO: 8 - ABONO PACIENTE: 0.00 EN PESOS" TipoFactura="FACTURA-UBL" FormaDePago="2" LineasDeFactura="1" TipoOperacion="SS-CUFE" SubTipoOperacion="SS-CUFE" FormatoContingencia="" OrdenCompraVendedor ="" Ambiente="2">
+	</Cabecera>
+	<NumeracionDIAN NumeroResolucion="18760000001" FechaInicio="2019-01-19" FechaFin="2030-01-19" PrefijoNumeracion="SETT" ConsecutivoInicial="1" ConsecutivoFinal="5000000">
+	</NumeracionDIAN>
+	<PeriodoFacturado FechaInicio="2025-04-16" FechaFin="2025-04-16" HoraInicio="07:50:53" HoraFin="07:50:53">
+	</PeriodoFacturado>
+	<Notificacion Tipo="Mail" De="felectronicahila@gmail.com">
+		<Para>facturacionelectronicasalud@emssanareps.co</Para>
+	</Notificacion>
+	<Emisor TipoPersona="1" TipoRegimen="49" TipoIdentificacion="31" NumeroIdentificacion="891200240" DV="2" RazonSocial="HOSPITAL INFANTIL LOS ANGELES" NumeroMatriculaMercantil="891200240" NombreComercial="HOSPITAL INFANTIL LOS ANGELES">
+		<CodigosCIIU>
+			<CIIU>7020</CIIU>
+			<CIIU>5140</CIIU>
+		</CodigosCIIU>
+		<Direccion CodigoMunicipio="52001" NombreCiudad="SAN JUAN DE PASTO" CodigoPostal="52001" NombreDepartamento="NARIÑO" CodigoDepartamento="52" CodigoDane="52001" Direccion="CR 37 11 34 LA CASTELLANA">
+		</Direccion>
+		<ObligacionesEmisor>
+			<CodigoObligacion>R-99-PN</CodigoObligacion>
+		</ObligacionesEmisor>
+		<DireccionFiscal CodigoMunicipio="52001" NombreCiudad="SAN JUAN DE PASTO" CodigoPostal="52001" NombreDepartamento="NARIÑO" CodigoDepartamento="52" CodigoDane="52001" Direccion="CR 37 11 34 LA CASTELLANA">
+		</DireccionFiscal>
+		<TributoEmisor CodigoTributo="" NombreTributo="NIT">
+		</TributoEmisor>
+		<Contacto Nombre="DORIS SARASTY RODRIGUEZ" Telefono="3185579501" Telfax="7311533" Email="felectronicahila@gmail.com" Notas="">
+		</Contacto>
+	</Emisor>
+	<Cliente TipoPersona="1" TipoRegimen="48" TipoIdentificacion="31" NumeroIdentificacion="901021565" DV="8" NombreComercial="EMSSANAR EPS SAS" RazonSocial="EMSSANAR EPS SAS" NumeroMatriculaMercantil="901021565">
+		<!--NO incluidos por la DIAN, Si por UBL-->
+		<Direccion CodigoMunicipio="52001" NombreCiudad="SAN JUAN DE PASTO" CodigoPostal="52001" NombreDepartamento="NARIÑO" CodigoDepartamento="52" CodigoDane="52001" Direccion="CALLE 11 # 29-27" CodigoPais="CO" NombrePais="Colombia" IdiomaPais="es">
+		</Direccion>
+		<ObligacionesCliente>
+			<CodigoObligacion>R-99-PN</CodigoObligacion>
+		</ObligacionesCliente>
+		<DireccionFiscal CodigoMunicipio="52001" NombreCiudad="SAN JUAN DE PASTO" CodigoPostal="52001" NombreDepartamento="NARIÑO" CodigoDepartamento="52" Direccion="CALLE 11 # 29-27" CodigoPais="CO" NombrePais="Colombia" IdiomaPais="es">
+		</DireccionFiscal>
+		<Contacto Nombre="" Telefono="7336030" Telfax="" Email="facturacionelectronicasalud@emssanareps.co" Notas="">
+		</Contacto>
+		<TributoCliente CodigoTributo="" NombreTributo="NIT">
+		</TributoCliente>
+	</Cliente>
+	<MediosDePago CodigoMedioPago="1" FormaDePago="2" Vencimiento="2025-05-16">
+	</MediosDePago>
+	<Anticipos>
+		<Anticipo IDPago="05" ConceptoPago="05" ValorPagoAnticipo="0.00" MonedaAnticipo="COP" FechaRecepcion="2025-04-16" FechaPago="2025-04-16" HoraPago="07:50:53" InstruccionesAnticipos="VALOR PAGADO POR EL USUARIO">
+		</Anticipo>
+	</Anticipos>
+	<Impuestos>
+		<!--IMPUESTOS GENERALES DE LA FACTURA-->
+		<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+			<Subtotal ValorBase="161700.00" Valor="0.00" Porcentaje="0.00">
+			</Subtotal>
+		</Impuesto>
+	</Impuestos>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="161700.00" Descripcion="Consulta ambulatoria de medicina especializada en gastroenterologia" PrecioUnitario="161700.00" CodigoTipoPrecio="01" ValorTotalItem="161700.00" Ocultar="True" Agrupador="CONSULTAS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="161700.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="890347" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Totales Bruto="161700.00" BaseImponible="161700.00" BrutoMasImpuestos="161700.00" Descuentos="0.00" Impuestos="0.00" General="161700.00" Anticipo="0.00" TotalDescuentosLineas="0" TotalOtros1="0">
+	</Totales>
+	<Extensiones>
+		<DatosAdicionales>
+			<campoAdicional Nombre="OBSERVACION_CAMPO_ADICIONAL" Valor="NOTA: - - AUTORIZACION: 456654654 PACIENTE: TI-1089077573-YESICA YULIE CERON GOMEZ- INGRESO: 8 - ABONO PACIENTE: 0.00 EN PESOS"/>
+			<CampoAdicional Nombre="VALORAPAGARASEGURADORA" Valor="161700.00"/>
+			<CampoAdicional Nombre="CODIGOIPS" Valor="520010028301"/>
+			<CampoAdicional Nombre="REGIMEN" Valor="aki va resolucion"/>
+			<CampoAdicional Nombre="CIUDAD" Valor="SAN JUAN DE PASTO"/>
+			<CampoAdicional Nombre="DEPARTAMENTO" Valor="NARIÑO"/>
+			<CampoAdicional Nombre="TELEFONO" Valor="7336400"/>
+			<CampoAdicional Nombre="DIRECCION" Valor="CARRERA 32 N° 21A - 30"/>
+			<CampoAdicional Nombre="NOMBREPACIENTE" Valor="YESICA YULIE CERON GOMEZ"/>
+			<CampoAdicional Nombre="TIPODOCPACIENTE" Valor="TI"/>
+			<CampoAdicional Nombre="IDPACIENTE" Valor="1089077573"/>
+			<CampoAdicional Nombre="Tipo de Usuario" Valor=""/>
+			<CampoAdicional Nombre="DIRECCIONPACIENTE" Valor="VEREDA LA COMUNIDAD  SAN PEDRO DE CARTO"/>
+			<CampoAdicional Nombre="TELEFONOPACIENTE" Valor="3135453573"/>
+			<CampoAdicional Nombre="MUNICIPIOPACIENTE" Valor="SAN PEDRO DE CARTAGO"/>
+			<CampoAdicional Nombre="CARNET" Valor=""/>
+			<CampoAdicional Nombre="EDAD" Valor="14"/>
+			<CampoAdicional Nombre="AMD" Valor="AÑOS"/>
+			<CampoAdicional Nombre="FECHADECORTE" Valor="16-04-2025"/>
+			<CampoAdicional Nombre="NUMHISTORIA" Valor="1089077573"/>
+			<CampoAdicional Nombre="P.P" Valor="135"/>
+			<CampoAdicional Nombre="P.S" Valor="53"/>
+			<CampoAdicional Nombre="SERVICIO" Valor="AMBULATORIO"/>
+			<CampoAdicional Nombre="DIASESTANCIA" Valor=""/>
+			<CampoAdicional Nombre="CONTRATO" Valor="222-1ES250001 - EMSSANAR EPS SAS   SUBSIDIO TOTAL *C*"/>
+			<CampoAdicional Nombre="FACTURADOR" Valor="CRISTHIAN CAMILO MONTENEGRO"/>
+			<CampoAdicional Nombre="Fecha_Ingreso" Valor="16-04-2025"/>
+			<CampoAdicional Nombre="Fecha_Egreso" Valor="16-04-2025"/>
+			<CampoAdicional Nombre="FECHAINGRESO" Valor="16-04-2025"/>
+			<CampoAdicional Nombre="FECHEGRESO" Valor="16-04-2025"/>
+			<CampoAdicional Nombre="PLAZO" Valor="30 DIAS"/>
+			<CampoAdicional Nombre="SEDE" Valor="EMPRESA 1 SEDE 001 HOSPITAL INFANTIL LOS ANGELES"/>
+			<campoAdicional Nombre="DIRECCIONSEDE" Valor="CARRERA 32 No. 21A-30"/>
+			<CampoAdicional Nombre="COPAGO" Valor="0" NombreEsquema="0" IDEsquema="0"/>
+			<campoAdicional Nombre="AUTORIZACION" Valor="456654654"/>
+			<CampoAdicional Nombre="PLAZO" Valor="30 DIAS"/>
+			<CampoAdicional Nombre="VALORLETRASUSUARIO" Valor="CERO PESOS CON CERO CENTAVOS"/>
+			<CampoAdicional Nombre="SALDOPAGARUSUARIO" Valor="CERO PESOS CON CERO CENTAVOS"/>
+			<CampoAdicional Nombre="VALORAPAGARASEGURADORA_LETRAS" Valor="CIENTO SESENTA Y UN MIL SETECIENTOS PESOS CON CERO CENTAVOS"/>
+			<CampoAdicional Nombre="VALORSUSUARIO_NUMERO" Valor="0.00"/>
+			<CampoAdicional Nombre="SALDOPAGARUSUARIO_NUMERO" Valor="0.00"/>
+			<CampoAdicional Nombre="SALDONOPAGADOXUSUARIO_NUMERO" Valor="0.00"/>
+			<CampoAdicional Nombre="RazonSocialRepGrafica" Valor="EMSSANAR ENTIDAD PROMOTORA DE SALUD S.A.S"/>
+			<CampoAdicional Nombre="CUOTAMODERADORA" Valor="0"/>
+		</DatosAdicionales>
+		<!--datos Interoperabilidad-->
+		<Interoperabilidad URLAdjunto="">
+			<Grupo Nombre="Sector Salud">
+				<Categoria Nombre="YESICA YULIE CERON GOMEZ">
+					<CampoAdicional Nombre="CODIGO_PRESTADOR" Valor="5200100283" NombreEsquema="" IDEsquema=""/>
+					<CampoAdicional Nombre="MODALIDAD_PAGO" Valor="Pago por evento" NombreEsquema="salud_modalidad_pago.gc" IDEsquema="04"/>
+					<CampoAdicional Nombre="COBERTURA_PLAN_BENEFICIOS" Valor="Plan de beneficios en salud financiado por UPC" NombreEsquema="salud_cobertura.gc" IDEsquema="01"/>
+					<CampoAdicional Nombre="NUMERO_CONTRATO" Valor="222-1ES250001" NombreEsquema="" IDEsquema=""/>
+					<CampoAdicional Nombre="NUMERO_POLIZA" Valor="0" NombreEsquema="0" IDEsquema="0"/>
+				</Categoria>
+			</Grupo>
+		</Interoperabilidad>
+	</Extensiones>
+</Factura>

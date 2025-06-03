@@ -1,0 +1,142 @@
+{
+  "rips": {
+    "numDocumentoIdObligado": "891200240",
+    "numFactura": "2106145",
+    "tipoNota": null,
+    "numNota": null,
+    "usuarios": [
+      {
+        "tipoDocumentoIdentificacion": "TI",
+        "numDocumentoIdentificacion": "1138526110",
+        "tipoUsuario": "01",
+        "fechaNacimiento": "2008-04-25",
+        "codSexo": "M",
+        "codPaisResidencia": "170",
+        "codMunicipioResidencia": "52001",
+        "codZonaTerritorialResidencia": "01",
+        "incapacidad": "NO",
+        "consecutivo": 1,
+        "codPaisOrigen": "170",
+        "servicios": {
+          "consultas": [
+            {
+              "codPrestador": "520010028301",
+              "fechaInicioAtencion": "2025-02-24 17:47",
+              "numAutorizacion": "253703394816",
+              "codConsulta": "890602",
+              "modalidadGrupoServicioTecSal": "01",
+              "grupoServicios": "01",
+              "codServicio": 130,
+              "finalidadTecnologiaSalud": "16",
+              "causaMotivoAtencion": "26",
+              "codDiagnosticoPrincipal": "S059",
+              "codDiagnosticoRelacionado1": null,
+              "codDiagnosticoRelacionado2": null,
+              "codDiagnosticoRelacionado3": null,
+              "tipoDiagnosticoPrincipal": "02",
+              "tipoDocumentoIdentificacion": "CC",
+              "numDocumentoIdentificacion": "36951593",
+              "vrServicio": 166400,
+              "conceptoRecaudo": "05",
+              "valorPagoModerador": 0,
+              "numFEVPagoModerador": "2105976",
+              "consecutivo": 1
+            }
+          ],
+          "hospitalizacion": [
+            {
+              "codPrestador": "520010028301",
+              "viaIngresoServicioSalud": "03",
+              "fechaInicioAtencion": "2025-02-21 00:00",
+              "numAutorizacion": "253703394816",
+              "causaMotivoAtencion": "26",
+              "codDiagnosticoPrincipal": "S059",
+              "codDiagnosticoPrincipalE": "S059",
+              "codDiagnosticoRelacionadoE1": null,
+              "codDiagnosticoRelacionadoE2": null,
+              "codDiagnosticoRelacionadoE3": null,
+              "codComplicacion": null,
+              "condicionDestinoUsuarioEgreso": "01",
+              "codDiagnosticoCausaMuerte": null,
+              "fechaEgreso": "2025-02-24 17:47",
+              "consecutivo": 1
+            }
+          ],
+          "medicamentos": [
+            {
+              "codPrestador": "520010028301",
+              "numAutorizacion": "253703394816",
+              "idMIPRES": null,
+              "fechaDispensAdmon": "2025-02-22 08:03",
+              "codDiagnosticoPrincipal": "S059",
+              "codDiagnosticoRelacionado": null,
+              "tipoMedicamento": "01",
+              "codTecnologiaSalud": "17145-01",
+              "nomTecnologiaSalud": null,
+              "concentracionMedicamento": 0,
+              "unidadMedida": 168,
+              "formaFarmaceutica": null,
+              "unidadMinDispensa": 14,
+              "cantidadMedicamento": 3,
+              "diasTratamiento": 1,
+              "tipoDocumentoIdentificacion": "CC",
+              "numDocumentoIdentificacion": "36951593",
+              "vrUnitMedicamento": 400,
+              "vrServicio": 1200,
+              "conceptoRecaudo": "05",
+              "valorPagoModerador": 0,
+              "numFEVPagoModerador": "2105976",
+              "consecutivo": 1
+            },
+            {
+              "codPrestador": "520010028301",
+              "numAutorizacion": "253703394816",
+              "idMIPRES": null,
+              "fechaDispensAdmon": "2025-02-23 09:45",
+              "codDiagnosticoPrincipal": "S059",
+              "codDiagnosticoRelacionado": null,
+              "tipoMedicamento": "01",
+              "codTecnologiaSalud": "17145-01",
+              "nomTecnologiaSalud": null,
+              "concentracionMedicamento": 0,
+              "unidadMedida": 168,
+              "formaFarmaceutica": null,
+              "unidadMinDispensa": 14,
+              "cantidadMedicamento": 3,
+              "diasTratamiento": 1,
+              "tipoDocumentoIdentificacion": "CC",
+              "numDocumentoIdentificacion": "1085283177",
+              "vrUnitMedicamento": 400,
+              "vrServicio": 1200,
+              "conceptoRecaudo": "05",
+              "valorPagoModerador": 0,
+              "numFEVPagoModerador": "2105976",
+              "consecutivo": 2
+            }
+          ],
+          "otrosServicios": [
+            {
+              "codPrestador": "520010028301",
+              "numAutorizacion": "253703394816",
+              "idMIPRES": null,
+              "fechaSuministroTecnologia": "2025-02-24 17:47",
+              "tipoOS": "03",
+              "codTecnologiaSalud": "130M02",
+              "nomTecnologiaSalud": "INTERNACION PEDIATRICA COMPLEJIDAD MEDIANA HABITACION MULTI",
+              "cantidadOS": 3,
+              "tipoDocumentoIdentificacion": "CC",
+              "numDocumentoIdentificacion": "36951593",
+              "vrUnitOS": 342600,
+              "vrServicio": 1027800,
+              "conceptoRecaudo": "01",
+              "valorPagoModerador": 0,
+              "numFEVPagoModerador": "2105976",
+              "consecutivo": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "xmlFevFile": "eyJtYXhpbXVtU2V2ZXJpdHlDb2RlIjoiRXJyb3IiLCJldmVudEl0ZW1zIjpbeyJlcnJvckNvZGUiOjIwMDAsInNldmVyaXR5Q29kZSI6IkVycm9yIiwic2hvcnREZXNjcmlwdGlvbiI6IkRvY3VtZW50ICdGQUNUVVJBLVVCTCg4OTEyMDAyNDA7MjEwNjE0NTsyMDI1LTAyLTI1O1BSSU5DSVBBTDtQUklOQ0lQQUwpJyBkb2VzIG5vdCBleGlzdCBvbiB0ZW5hbnQgJzg5MTIwMDI0MCcuIn1dfXsibWF4aW11bVNldmVyaXR5Q29kZSI6IkVycm9yIiwiZXZlbnRJdGVtcyI6W3siZXJyb3JDb2RlIjoyMDAwLCJzZXZlcml0eUNvZGUiOiJFcnJvciIsInNob3J0RGVzY3JpcHRpb24iOiJEb2N1bWVudCAnRkFDVFVSQS1VQkwoODkxMjAwMjQwOzIxMDYxNDU7MjAyNS0wMi0yNTtQUklOQ0lQQUw7UFJJTkNJUEFMKScgZG9lcyBub3QgZXhpc3Qgb24gdGVuYW50ICc4OTEyMDAyNDAnLiJ9XX0="
+}

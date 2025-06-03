@@ -1,0 +1,151 @@
+<Factura>
+	<Cabecera Numero="SETT1185" FechaEmision="2025-04-08" Vencimiento="2025-05-08" HoraEmision="16:31:00" MonedaFactura="COP" Observaciones="NOTA: - - AUTORIZACION: 34243 PACIENTE: TI-1085278781-SALOME  BRAVO MESIAS- INGRESO: 13 - ABONO PACIENTE: 10000.00 EN PESOS" TipoFactura="FACTURA-UBL" FormaDePago="2" LineasDeFactura="2" TipoOperacion="SS-CUFE" SubTipoOperacion="SS-CUFE" FormatoContingencia="" OrdenCompraVendedor ="" Ambiente="2">
+	</Cabecera>
+	<NumeracionDIAN NumeroResolucion="18760000001" FechaInicio="2019-01-19" FechaFin="2030-01-19" PrefijoNumeracion="SETT" ConsecutivoInicial="1" ConsecutivoFinal="5000000">
+	</NumeracionDIAN>
+	<PeriodoFacturado FechaInicio="2025-04-08" FechaFin="2025-04-08" HoraInicio="16:31:00" HoraFin="16:31:00">
+	</PeriodoFacturado>
+	<Notificacion Tipo="Mail" De="felectronicahila@gmail.com">
+		<Para>recepcion.cuentasmedicas@nuevaeps.com</Para>
+	</Notificacion>
+	<Emisor TipoPersona="1" TipoRegimen="49" TipoIdentificacion="31" NumeroIdentificacion="891200240" DV="2" RazonSocial="HOSPITAL INFANTIL LOS ANGELES" NumeroMatriculaMercantil="891200240" NombreComercial="HOSPITAL INFANTIL LOS ANGELES">
+		<CodigosCIIU>
+			<CIIU>7020</CIIU>
+			<CIIU>5140</CIIU>
+		</CodigosCIIU>
+		<Direccion CodigoMunicipio="52001" NombreCiudad="SAN JUAN DE PASTO" CodigoPostal="52001" NombreDepartamento="NARIÑO" CodigoDepartamento="52" CodigoDane="52001" Direccion="CR 37 11 34 LA CASTELLANA">
+		</Direccion>
+		<ObligacionesEmisor>
+			<CodigoObligacion>R-99-PN</CodigoObligacion>
+		</ObligacionesEmisor>
+		<DireccionFiscal CodigoMunicipio="52001" NombreCiudad="SAN JUAN DE PASTO" CodigoPostal="52001" NombreDepartamento="NARIÑO" CodigoDepartamento="52" CodigoDane="52001" Direccion="CR 37 11 34 LA CASTELLANA">
+		</DireccionFiscal>
+		<TributoEmisor CodigoTributo="" NombreTributo="NIT">
+		</TributoEmisor>
+		<Contacto Nombre="DORIS SARASTY RODRIGUEZ" Telefono="3185579501" Telfax="7311533" Email="felectronicahila@gmail.com" Notas="">
+		</Contacto>
+	</Emisor>
+	<Cliente TipoPersona="1" TipoRegimen="48" TipoIdentificacion="31" NumeroIdentificacion="900156264" DV="2" NombreComercial="NUEVA EPS" RazonSocial="NUEVA EPS" NumeroMatriculaMercantil="900156264">
+		<!--NO incluidos por la DIAN, Si por UBL-->
+		<Direccion CodigoMunicipio="11001" NombreCiudad="BOGOTA, DC" CodigoPostal="11001" NombreDepartamento="BOGOTA D.C." CodigoDepartamento="11" CodigoDane="11001" Direccion="AVENIDA 5 NORTE 21N - 86 CALI" CodigoPais="CO" NombrePais="Colombia" IdiomaPais="es">
+		</Direccion>
+		<ObligacionesCliente>
+			<CodigoObligacion>O-13</CodigoObligacion>
+		</ObligacionesCliente>
+		<DireccionFiscal CodigoMunicipio="11001" NombreCiudad="BOGOTA, DC" CodigoPostal="11001" NombreDepartamento="BOGOTA D.C." CodigoDepartamento="11" Direccion="AVENIDA 5 NORTE 21N - 86 CALI" CodigoPais="CO" NombrePais="Colombia" IdiomaPais="es">
+		</DireccionFiscal>
+		<Contacto Nombre="" Telefono="4193000" Telfax="" Email="recepcion.cuentasmedicas@nuevaeps.com" Notas="">
+		</Contacto>
+		<TributoCliente CodigoTributo="" NombreTributo="NIT">
+		</TributoCliente>
+	</Cliente>
+	<MediosDePago CodigoMedioPago="1" FormaDePago="2" Vencimiento="2025-05-08">
+	</MediosDePago>
+	<Anticipos>
+		<Anticipo IDPago="04" ConceptoPago="04" ValorPagoAnticipo="10000.00" MonedaAnticipo="COP" FechaRecepcion="2025-04-08" FechaPago="2025-04-08" HoraPago="16:31:00" InstruccionesAnticipos="VALOR PAGADO POR EL USUARIO">
+		</Anticipo>
+	</Anticipos>
+	<Impuestos>
+		<!--IMPUESTOS GENERALES DE LA FACTURA-->
+		<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+			<Subtotal ValorBase="319400.00" Valor="0.00" Porcentaje="0.00">
+			</Subtotal>
+		</Impuesto>
+	</Impuestos>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="3.00" UnidadMedida="94" SubTotalLinea="109200.00" Descripcion="CUADRO HEMATICO O HEMOGRAMA HEMATOCRITO Y LEUCOGRAMA" PrecioUnitario="36400.00" CodigoTipoPrecio="01" ValorTotalItem="109200.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="109200.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19304" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="2.00" UnidadMedida="94" SubTotalLinea="210200.00" Descripcion="RADIOGRAFIA DE TORAX (PA O P A Y LATERAL)" PrecioUnitario="105100.00" CodigoTipoPrecio="01" ValorTotalItem="210200.00" Ocultar="True" Agrupador="IMAGENES DIAGNOSTICAS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="210200.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="21201" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<DescuentosOCargos>
+		<DescuentosOCargo ID="" Indicador="false" CodigoDescuento="01" Justificacion="DESCUENTO" Porcentaje="3.13" Valor="10000.00" ValorBase="319400.00">
+		</DescuentosOCargo>
+	</DescuentosOCargos>
+	<Totales Bruto="319400.00" BaseImponible="319400.00" BrutoMasImpuestos="319400.00" Descuentos="10000.00" Impuestos="0.00" General="299400.00" Anticipo="10000.00" TotalDescuentosLineas="0" TotalOtros1="0">
+	</Totales>
+	<Extensiones>
+		<DatosAdicionales>
+			<campoAdicional Nombre="OBSERVACION_CAMPO_ADICIONAL" Valor="NOTA: - - AUTORIZACION: 34243 PACIENTE: TI-1085278781-SALOME  BRAVO MESIAS- INGRESO: 13 - ABONO PACIENTE: 10000.00 EN PESOS"/>
+			<CampoAdicional Nombre="VALORAPAGARASEGURADORA" Valor="299400.00"/>
+			<CampoAdicional Nombre="CODIGOIPS" Valor="520010028301"/>
+			<CampoAdicional Nombre="REGIMEN" Valor="aki va resolucion"/>
+			<CampoAdicional Nombre="CIUDAD" Valor="BOGOTA, DC"/>
+			<CampoAdicional Nombre="DEPARTAMENTO" Valor="BOGOTA D.C."/>
+			<CampoAdicional Nombre="TELEFONO" Valor="7336400"/>
+			<CampoAdicional Nombre="DIRECCION" Valor="CARRERA 32 N° 21A - 30"/>
+			<CampoAdicional Nombre="NOMBREPACIENTE" Valor="SALOME  BRAVO MESIAS"/>
+			<CampoAdicional Nombre="TIPODOCPACIENTE" Valor="TI"/>
+			<CampoAdicional Nombre="IDPACIENTE" Valor="1085278781"/>
+			<CampoAdicional Nombre="Tipo de Usuario" Valor=""/>
+			<CampoAdicional Nombre="DIRECCIONPACIENTE" Valor="CRA 23 25-23 BALCONES DE BELALCAZAR  I"/>
+			<CampoAdicional Nombre="TELEFONOPACIENTE" Valor="3174400712"/>
+			<CampoAdicional Nombre="MUNICIPIOPACIENTE" Valor="SAN JUAN DE PASTO"/>
+			<CampoAdicional Nombre="CARNET" Valor=""/>
+			<CampoAdicional Nombre="EDAD" Valor="17"/>
+			<CampoAdicional Nombre="AMD" Valor="AÑOS"/>
+			<CampoAdicional Nombre="FECHADECORTE" Valor="08-04-2025"/>
+			<CampoAdicional Nombre="NUMHISTORIA" Valor="1085278781"/>
+			<CampoAdicional Nombre="P.P" Valor="129"/>
+			<CampoAdicional Nombre="P.S" Valor="53"/>
+			<CampoAdicional Nombre="SERVICIO" Valor="AMBULATORIO"/>
+			<CampoAdicional Nombre="DIASESTANCIA" Valor=""/>
+			<CampoAdicional Nombre="CONTRATO" Valor="EPS006 - NUEVA EPS *C*"/>
+			<CampoAdicional Nombre="FACTURADOR" Valor="CRISTHIAN CAMILO MONTENEGRO"/>
+			<CampoAdicional Nombre="Fecha_Ingreso" Valor="08-04-2025"/>
+			<CampoAdicional Nombre="Fecha_Egreso" Valor="08-04-2025"/>
+			<CampoAdicional Nombre="FECHAINGRESO" Valor="08-04-2025"/>
+			<CampoAdicional Nombre="FECHEGRESO" Valor="08-04-2025"/>
+			<CampoAdicional Nombre="PLAZO" Valor="30 DIAS"/>
+			<CampoAdicional Nombre="SEDE" Valor="EMPRESA 1 SEDE 001 HOSPITAL INFANTIL LOS ANGELES"/>
+			<campoAdicional Nombre="DIRECCIONSEDE" Valor="CARRERA 32 No. 21A-30"/>
+			<CampoAdicional Nombre="COPAGO" Valor="0" NombreEsquema="0" IDEsquema="0"/>
+			<campoAdicional Nombre="AUTORIZACION" Valor="34243"/>
+			<CampoAdicional Nombre="PLAZO" Valor="30 DIAS"/>
+			<CampoAdicional Nombre="VALORLETRASUSUARIO" Valor="DIEZ MIL PESOS CON CERO CENTAVOS"/>
+			<CampoAdicional Nombre="SALDOPAGARUSUARIO" Valor="CERO PESOS CON CERO CENTAVOS"/>
+			<CampoAdicional Nombre="VALORAPAGARASEGURADORA_LETRAS" Valor="DOSCIENTOS NOVENTA Y NUEVE MIL CUATROCIENTOS PESOS CON CERO CENTAVOS"/>
+			<CampoAdicional Nombre="VALORSUSUARIO_NUMERO" Valor="10000.00"/>
+			<CampoAdicional Nombre="SALDOPAGARUSUARIO_NUMERO" Valor="0.00"/>
+			<CampoAdicional Nombre="SALDONOPAGADOXUSUARIO_NUMERO" Valor="0.00"/>
+			<CampoAdicional Nombre="RazonSocialRepGrafica" Valor="NUEVA EMPRESA PROMOTORA DE SALUD S.A"/>
+			<CampoAdicional Nombre="CUOTAMODERADORA" Valor="0"/>
+		</DatosAdicionales>
+		<!--datos Interoperabilidad-->
+		<Interoperabilidad URLAdjunto="">
+			<Grupo Nombre="Sector Salud">
+				<Categoria Nombre="SALOME  BRAVO MESIAS">
+					<CampoAdicional Nombre="CODIGO_PRESTADOR" Valor="5200100283" NombreEsquema="" IDEsquema=""/>
+					<CampoAdicional Nombre="MODALIDAD_PAGO" Valor="Pago por evento" NombreEsquema="salud_modalidad_pago.gc" IDEsquema="04"/>
+					<CampoAdicional Nombre="COBERTURA_PLAN_BENEFICIOS" Valor="Plan de beneficios en salud financiado por UPC" NombreEsquema="salud_cobertura.gc" IDEsquema="01"/>
+					<CampoAdicional Nombre="NUMERO_CONTRATO" Valor="EPS006" NombreEsquema="" IDEsquema=""/>
+					<CampoAdicional Nombre="NUMERO_POLIZA" Valor="0" NombreEsquema="0" IDEsquema="0"/>
+				</Categoria>
+			</Grupo>
+		</Interoperabilidad>
+	</Extensiones>
+</Factura>

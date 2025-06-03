@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema de Corrección Automática XML</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url("{{ url_for('static', filename='img/hospital 3.jpg') }}") no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 600px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #003366;
+      margin-bottom: 30px;
+      font-size: 24px;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin: 20px 0 8px;
+      color: #444;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
+
+    input[type="submit"] {
+      margin-top: 30px;
+      padding: 14px;
+      background: #007bff;
+      color: white;
+      border: none;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 10px;
+      width: 100%;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    .mensaje {
+      color: #c62828;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      color: #ffffff;
+      font-size: 13px;
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>🛠️ Sistema de Corrección Automática de XML</h2>
+
+    <form method="post" enctype="multipart/form-data">
+      <label for="excel">📄 Selecciona el archivo Excel con los números de las facturas:</label>
+      <input type="file" name="excel" id="excel" required>
+
+      <label for="carpeta">📁 Selecciona la carpeta donde están los archivos JSON, CUV, AttDoc:</label>
+      <input type="file" name="carpeta" id="carpeta" webkitdirectory directory multiple required>
+
+      <input type="submit" value="🚀 Iniciar corrección automática">
+    </form>
+
+    {% if mensaje %}
+      <div class="mensaje">{{ mensaje }}</div>
+    {% endif %}
+  </div>
+
+  <footer>
+    &copy; 2025 Sistema de Corrección XML — Todos los derechos reservados.
+  </footer>
+
+</body>
+</html>

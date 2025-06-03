@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>📁 Reportes de Modificaciones</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #8e90cf;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .filter-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .filter-bar input {
+            padding: 10px;
+            width: 60%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .btn {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-pdf { background-color: #dc3545; }
+        .btn-word { background-color: #17a2b8; }
+        .btn-back {
+            display: inline-block;
+            margin-top: 30px;
+            background-color: #6c757d;
+            padding: 10px 20px;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btn-pdf:hover { background-color: #c82333; }
+        .btn-word:hover { background-color: #138496; }
+        .btn-back:hover { background-color: #5a6268; }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📁 Reporte de Modificaciones del Proceso</h1>
+
+    <div class="filter-bar">
+        <input type="text" placeholder="🔍 Filtrar por factura..." onkeyup="filtrarTabla(this.value)">
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>📅 Fecha y Hora</th>
+                <th>📌 Título del Reporte</th>
+                <th>🗂️ Formatos Disponibles</th>
+                <th>🔧 Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ fecha }}</td>
+                <td>Reporte General de {{ total }} Facturas Corregidas</td>
+                <td>PDF, Word</td>
+                <td>
+                    <a href="{{ url_for('descargar_pdf') }}" class="btn btn-pdf">📄 PDF</a>
+                    <a href="{{ url_for('descargar_word') }}" class="btn btn-word">📝 Word</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    {% if facturas %}
+        <h3 style="margin-top: 40px;">✅ Detalle de Facturas Corregidas</h3>
+        <table id="tablaReportes">
+            <thead>
+                <tr>
+                    <th>Factura</th>
+                    <th>Estado</th>
+                    <th>Observación</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for f in facturas %}
+                <tr>
+                    <td>{{ f.factura }}</td>
+                    <td>Corregida</td>
+                    <td>Error XML corregido</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p style="text-align:center; margin-top: 20px;">❌ No se encontraron facturas corregidas automáticamente.</p>
+    {% endif %}
+
+    <div style="text-align: center;">
+        <a href="{{ url_for('resultados') }}" class="btn-back">⬅️ Volver a resultados</a>
+    </div>
+</div>
+
+<script>
+function filtrarTabla(filtro) {
+    filtro = filtro.toLowerCase();
+    const filas = document.querySelectorAll("#tablaReportes tbody tr");
+    filas.forEach(fila => {
+        const texto = fila.innerText.toLowerCase();
+        fila.style.display = texto.includes(filtro) ? "" : "none";
+    });
+}
+</script>
+</body>
+</html>

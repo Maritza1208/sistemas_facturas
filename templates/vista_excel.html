@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Vista previa Excel actualizado</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #78879b;
+            padding: 40px 20px;
+            color: #444;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-weight: 700;
+            font-size: 2.4rem;
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+            font-size: 1rem;
+        }
+        th, td {
+            padding: 14px 18px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+            color: #34495e;
+            font-weight: 600;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        tr {
+            background: #fafafa;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+        tr:hover {
+            background-color: #d6eaf8;
+        }
+        td {
+            color: #555;
+            border-bottom: 1px solid #ddd;
+        }
+        .btn {
+            display: block;
+            margin: 30px auto 0;
+            padding: 14px 30px;
+            background: linear-gradient(45deg, #28a745, #218838);
+            color: #fff;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(40, 167, 69, 0.5);
+            transition: background 0.3s ease;
+            user-select: none;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        .btn:hover {
+            background: linear-gradient(45deg, #218838, #19692c);
+            box-shadow: 0 8px 18px rgba(25, 105, 44, 0.7);
+        }
+        .back {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .back a {
+            color: #4b7bec;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        .back a:hover {
+            color: #3752b4;
+            text-decoration: underline;
+        }
+        .mensaje {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 1.25rem;
+            color: #6c757d;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📋 Vista Previa del Excel Actualizado</h1>
+
+    {% if facturas %}
+        <table>
+            <tr>
+                <th>Factura</th>
+                <th>Estado</th>
+                <th>Descripción</th>
+            </tr>
+            {% for f in facturas %}
+            <tr>
+                <td>{{ f.factura }}</td>
+                <td>{{ f.estado }}</td>
+                <td>{{ f.descripcion }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <form method="POST" action="{{ url_for('descargar_excel_actualizado') }}">
+            <button class="btn" type="submit">📥 Descargar Excel Actualizado</button>
+        </form>
+    {% else %}
+        <div class="mensaje">
+            ⚠️ Aún no se han corregido facturas automáticamente.<br />
+            Por favor realiza la corrección desde la página de resultados.
+        </div>
+    {% endif %}
+
+    <div class="back">
+        <a href="{{ url_for('resultados') }}">⬅️ Volver a resultados</a>
+    </div>
+</div>
+</body>
+</html>

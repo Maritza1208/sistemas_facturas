@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>📊 Resultados de Clasificación de Facturas</title>
+    <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #76889c;
+        padding: 40px 20px;
+        color: #444;
+    }
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        background: #ffffff;
+        padding: 35px 50px;
+        border-radius: 12px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        font-weight: 700;
+        margin-bottom: 12px;
+        font-size: 2.6rem;
+    }
+    h3 {
+        margin-top: 40px;
+        margin-bottom: 15px;
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+    p {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 25px;
+    }
+    table {
+        width: 100%;
+        margin-top: 15px;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+        font-size: 1rem;
+    }
+    th, td {
+        padding: 14px 18px;
+        text-align: left;
+    }
+    th {
+        background-color: #ecf0f1;
+        color: #34495e;
+        font-weight: 600;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+    tr {
+        background-color: #fafafa;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        border-radius: 6px;
+    }
+    tr:hover {
+        background-color: #d6eaf8;
+    }
+    td {
+        border-bottom: 1px solid #ddd;
+        color: #555;
+    }
+    .error {
+        color: #e74c3c;
+    }
+    .success {
+        color: #27ae60;
+    }
+    .warning {
+        color: #f39c12;
+    }
+    .info {
+        color: #2980b9;
+    }
+    .btn {
+        display: inline-block;
+        margin: 10px 8px;
+        padding: 12px 28px;
+        background: linear-gradient(45deg, #6c63ff, #4b47d1);
+        color: #fff;
+        font-weight: 600;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.3s ease;
+        box-shadow: 0 4px 12px rgba(108, 99, 255, 0.4);
+        user-select: none;
+    }
+    .btn:hover {
+        background: linear-gradient(45deg, #5749d8, #2a269c);
+        box-shadow: 0 6px 16px rgba(87, 73, 216, 0.6);
+    }
+    .back-link {
+        text-align: center;
+        margin-top: 38px;
+    }
+    .back-link a {
+        color: #6c63ff;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+    }
+    .back-link a:hover {
+        color: #4b47d1;
+        text-decoration: underline;
+    }
+    #progressBar {
+        width: 100%;
+        background-color: #dfe6ee;
+        margin-top: 30px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: inset 0 1px 3px rgba(255,255,255,0.5);
+        height: 28px;
+    }
+    #progressBarFill {
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(90deg, #6c63ff, #4b47d1);
+        text-align: center;
+        line-height: 28px;
+        color: #fff;
+        font-weight: 700;
+        transition: width 0.4s ease;
+        border-radius: 10px 0 0 10px;
+        user-select: none;
+    }
+    #alerta, #tablaCorregidas {
+        text-align: center;
+        margin-top: 25px;
+        font-size: 1.15rem;
+        color: #34495e;
+        font-weight: 600;
+    }
+    ul {
+        text-align: left;
+        padding-left: 20px;
+        margin-top: 12px;
+        color: #555;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>📊 Resultados de Clasificación de Facturas</h1>
+    <p><strong>Columna detectada:</strong> {{ columna_detectada }}</p>
+
+    {% if facturas_con_error %}
+        <h3 class="error">❌ Facturas con Error XML</h3>
+        <table>
+            <tr><th>Factura</th><th>Descripción</th><th>Observación</th></tr>
+            {% for f in facturas_con_error %}
+            <tr><td>{{ f.factura }}</td><td>{{ f.descripcion }}</td><td>{{ f.observacion }}</td></tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    {% if facturas_con_cuv_corregido %}
+        <h3 class="success">✅ Facturas con CUV válido (ya corregidas)</h3>
+        <table>
+            <thead>
+                <tr><th>Factura</th><th>Descripción</th><th>Observación</th></tr>
+            </thead>
+            <tbody id="tbodyCuv">
+                {% for f in facturas_con_cuv_corregido %}
+                <tr>
+                    <td>{{ f.factura }}</td>
+                    <td>{{ f.descripcion }}</td>
+                    <td>{{ f.observacion }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    {% if facturas_con_otros_errores %}
+        <h3 class="warning">❗ Facturas con otros errores o sin archivos</h3>
+        <table>
+            <tr><th>Factura</th><th>Descripción</th><th>Observación</th></tr>
+            {% for f in facturas_con_otros_errores %}
+            <tr><td>{{ f.factura }}</td><td>{{ f.descripcion }}</td><td>{{ f.observacion }}</td></tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    <div style="text-align: center; margin-top: 30px;">
+        <button id="btnCorregir" class="btn">⚙️ Corrección Automática</button>
+        <a href="{{ url_for('vista_excel') }}" class="btn">👁️ Vista Previa Excel</a>
+        <form action="{{ url_for('descargar_excel_actualizado') }}" method="POST" style="display: inline;">
+            <button class="btn">📥 Descargar Excel</button>
+        </form>
+        <a href="{{ url_for('ver_reportes') }}" class="btn">📁 Ver Reportes</a>
+    </div>
+
+    <div id="progressBar"><div id="progressBarFill">0%</div></div>
+    <div id="alerta"></div>
+    <div id="tablaCorregidas"></div>
+
+    <div class="back-link">
+        <a href="{{ url_for('index') }}">⬅️ Volver a subir nuevo archivo</a>
+    </div>
+</div>
+
+<script>
+document.getElementById('btnCorregir').addEventListener('click', function(){
+    if (!confirm("¿Deseas aplicar la corrección automática a las facturas con error XML?")) return;
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "{{ url_for('corregir_y_enviar') }}", true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+
+                // — tu código de alerta y mini-tablaCorregidas —
+
+                // 1) Añadir filas a la tabla de CUV
+                const tbody = document.getElementById('tbodyCuv');
+                if (tbody && response.corregidas.length) {
+                    response.corregidas.forEach(f => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${f.factura}</td>
+                            <td>CUV generado correctamente</td>
+                            <td>${f.observacion}</td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                }
+
+                // 2) Eliminar filas de la tabla de ERRORES
+                const errorTable = document.querySelector('h3.error + table');
+                if (errorTable) {
+                    // recorre desde la segunda fila (índice 1) porque la 0 es header
+                    Array.from(errorTable.rows).slice(1).forEach(row => {
+                        const facturaCelda = row.cells[0].textContent.trim();
+                        if (response.corregidas.some(f => f.factura === facturaCelda)) {
+                            row.remove();
+                        }
+                    });
+                }
+
+                //3 Mostrar totales justo debajo de la barra de progreso
+                document.getElementById('alerta').innerHTML = `
+                    <strong>Facturas corregidas:</strong> ${response.total_corregidas}
+                    &nbsp;|&nbsp;
+                `;
+
+
+            } else {
+                document.getElementById('alerta').innerHTML =
+                  "<strong style='color: red;'>Error en la corrección automática.</strong>";
+            }
+        }
+    };
+
+    // Progress bar (opcional)
+    let progress = 0;
+    const progressBarFill = document.getElementById('progressBarFill');
+    const interval = setInterval(() => {
+        if (progress < 100) {
+            progress += 5;
+            progressBarFill.style.width = progress + "%";
+            progressBarFill.textContent = progress + "%";
+        } else {
+            clearInterval(interval);
+        }
+    }, 250);
+
+    xhr.send(null);
+});
+</script>
+
+</body>
+</html>

@@ -813,4 +813,4 @@ def corregir_y_enviar():
         return jsonify({"mensaje": "Error inesperado"}), 500
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(debug=True)

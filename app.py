@@ -341,31 +341,31 @@ def index():
                     })
                     continue
 
-                if rs and not any(r.get("Clase") == "RECHAZADO" for r in rv):
-                    facturas_con_cuv_valido.append({
+                    # 1) Detectar error CFR006
+                cfr = next((r for r in rv if r.get("Codigo") == "CFR006"), None)
+                if cfr:
+                    facturas_con_error_xml.append({
                         "factura":     num,
-                        "descripcion": "CUV generado correctamente",
-                        "observacion": "Validación exitosa"
+                        "descripcion": cfr.get("Descripcion", ""),
+                        "observacion": cfr.get("Observaciones", "")
                     })
+                # 2) Detectar errores de XML con [AttachedDocument]
+                elif any(r.get("Clase") == "RECHAZADO" and "[AttachedDocument]" in r.get("Descripcion", "") for r in rv):
+                    detail = next(r for r in rv if "[AttachedDocument]" in r.get("Descripcion", ""))
+                    facturas_con_error_xml.append({
+                        "factura":     num,
+                        "descripcion": detail.get("Descripcion", ""),
+                        "observacion": detail.get("Observaciones", "")
+                    })
+                # 3) Otros rechazos
                 else:
-                    desc = obs = ""
-                    for r in rv:
-                        if r.get("Clase") == "RECHAZADO":
-                            desc = r.get("Descripcion", "")
-                            obs = r.get("Observaciones", "")
-                            break
-                    if "[AttachedDocument]" in desc:
-                        facturas_con_error_xml.append({
-                            "factura":     num,
-                            "descripcion": desc,
-                            "observacion": obs
-                        })
-                    else:
-                        facturas_con_otros_errores.append({
-                            "factura":     num,
-                            "descripcion": desc,
-                            "observacion": obs
-                        })
+                    first = rv[0]
+                    facturas_con_otros_errores.append({
+                        "factura":     num,
+                        "descripcion": first.get("Descripcion", ""),
+                        "observacion": first.get("Observaciones", "")
+                    })
+
             else:
                 # Si no existe JSON de error, revisamos el JSON normal
                 ruta_normal = archivo_dict.get(f"{num}_2.json")

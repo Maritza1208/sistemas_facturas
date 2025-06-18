@@ -495,7 +495,7 @@ def descargar_excel_actualizado():
                 if fac in errores_dict:
                     estado, desc = "Error XML", errores_dict[fac]
                 elif fac in valido_dict:
-                    estado, desc = "Válida", valido_dict[fac]
+                    estado, desc = "Válida", "Factura válida por el Ministerio"
                 elif fac in otros_dict:
                     estado, desc = "Otro error", otros_dict[fac]
                 else:

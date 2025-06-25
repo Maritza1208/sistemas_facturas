@@ -252,7 +252,7 @@ document.getElementById('btnCorregir').addEventListener('click', function(){
                 }
 
                 //3 Mostrar totales justo debajo de la barra de progreso
-                //3 Mostrar mensaje de facturas validadas por el Ministerio
+                //Mostrar mensaje de facturas validadas por el Ministerio
                 const numeros = response.corregidas.map(f => f.factura).join(', ');
                 document.getElementById('alerta').innerHTML = `
                     Factura(s) ${numeros} validada(s) por el Ministerio

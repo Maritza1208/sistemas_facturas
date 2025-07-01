@@ -11,7 +11,14 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 from lxml import etree
 from docx import Document
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
+from reportlab.lib import colors
+from reportlab.lib.styles import getSampleStyleSheet
+from docx.shared import Pt
+from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from flask_session import Session
+from docx.shared import Inches
+from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 import requests
 import urllib3
 import re
@@ -416,55 +423,98 @@ def resultados():
     facturas_con_error = [f for f in errores if f["factura"] not in historial]
 
     # 4) AÑADIMOS a los CUVs previos todas las facturas del historial que aún no estén
-    facturas_con_cuv_corregido = cuv_previos.copy()
+    facturas_con_cuv_corregido = []
+    ya_agregadas = set()
+
+    for f in cuv_previos:
+        facturas_con_cuv_corregido.append({
+            "factura": f["factura"],
+            "descripcion": f.get("descripcion", "CUV generado correctamente"),
+            "observacion": "CUV validado"
+        })
+        ya_agregadas.add(f["factura"])
+
     for num, info in historial.items():
-        if not any(f["factura"] == num for f in facturas_con_cuv_corregido):
+        if num not in ya_agregadas:
             facturas_con_cuv_corregido.append({
-                "factura":     num,
+                "factura": num,
                 "descripcion": "CUV generado correctamente (registro previo)",
-                "observacion": info["observacion"]
+                "observacion": "CUV validado"
             })
 
+    # 5) Renderizar plantilla HTML con los datos
     return render_template("resultados.html",
-                           columna_detectada= session.get("columna_detectada", ""),
-                           facturas_con_error=          facturas_con_error,
-                           facturas_con_cuv_corregido=  facturas_con_cuv_corregido,
-                           facturas_con_otros_errores=  otros)
+                           columna_detectada=session.get("columna_detectada", ""),
+                           facturas_con_error=facturas_con_error,
+                           facturas_con_cuv_corregido=facturas_con_cuv_corregido,
+                           facturas_con_otros_errores=otros)
 
 
-
-@app.route("/vista_excel")
+@app.route("/vista_excel") 
 def vista_excel():
     historial = cargar_historial()
     corregidas = set(historial.keys())
+    facturas_set = set()  # Para evitar duplicados
     facturas = []
 
-    #corregidas = set(historial_corregidas.keys()) | set(session.get("facturas_recien_corregidas", []))
+    def clasificar_descripcion(desc):
+        desc = desc.lower()
+        if "cuota moderadora" in desc or "pagos moderadores" in desc:
+            return "Cuota moderada"
+        elif "valor reportado en los servicios" in desc:
+            return "Cirugías"
+        elif "xml" in desc:
+            return "XML"
+        else:
+            return desc  # Dejar la descripción original si no encaja
 
+    # Facturas con error
     for f in session.get("facturas_con_error", []):
         factura = f["factura"]
+        if factura in facturas_set:
+            continue
+        facturas_set.add(factura)
         estado = "Corregida" if factura in corregidas else "No corregida"
-        descripcion = "Error XML corregido" if estado == "Corregida" else f["descripcion"]
+        if estado == "Corregida":
+            descripcion = "Factura válida por el Ministerio"
+        else:
+            descripcion = clasificar_descripcion(f["descripcion"])
         facturas.append({"factura": factura, "estado": estado, "descripcion": descripcion})
 
+    # Facturas válidas
     for f in session.get("facturas_con_cuv_corregido", []):
+        factura = f["factura"]
+        if factura in facturas_set:
+            continue
+        facturas_set.add(factura)
         facturas.append({
-            "factura": f["factura"],
+            "factura": factura,
             "estado": "Válida",
-            "descripcion": "CUV generado correctamente"
+            "descripcion": "Factura válida por el Ministerio"
         })
 
+    # Otros errores
     for f in session.get("facturas_con_otros_errores", []):
+        factura = f["factura"]
+        if factura in facturas_set:
+            continue
+        facturas_set.add(factura)
+        descripcion = clasificar_descripcion(f["descripcion"])
         facturas.append({
-            "factura": f["factura"],
+            "factura": factura,
             "estado": "Inválida",
-            "descripcion": "Otro tipo de error"
+            "descripcion": descripcion
         })
 
     return render_template("vista_excel.html", facturas=facturas)
 
 @app.route("/descargar_excel_actualizado", methods=["POST"])
 def descargar_excel_actualizado():
+    import pandas as pd
+    import io
+    import os
+    from flask import session, send_file
+
     # 1) Recuperar ruta del Excel original de la sesión
     excel_path = session.get("excel_path")
     if not excel_path or not os.path.exists(excel_path):
@@ -476,37 +526,68 @@ def descargar_excel_actualizado():
     except Exception as e:
         return f"❌ Error al reabrir el Excel: {e}", 500
 
-    # 3) Preparar diccionarios de estado desde la sesión
-    errores_dict  = {f["factura"]: f["descripcion"] for f in session.get("facturas_con_error", [])}
-    valido_dict   = {f["factura"]: f["observacion"] for f in session.get("facturas_con_cuv_corregido", [])}
-    otros_dict    = {f["factura"]: f["descripcion"] for f in session.get("facturas_con_otros_errores", [])}
+    # 3) Diccionarios desde sesión
+    errores_dict = {f["factura"]: f["descripcion"] for f in session.get("facturas_con_error", [])}
+    valido_dict = {f["factura"]: f["observacion"] for f in session.get("facturas_con_cuv_corregido", [])}
+    otros_dict = {f["factura"]: f["descripcion"] for f in session.get("facturas_con_otros_errores", [])}
 
-    # 4) Generar nuevo Excel en memoria
+    # 4) Clasificador de descripción
+    def clasificar_descripcion(msg):
+        msg_lower = msg.lower()
+        if "cuotas moderadoras" in msg_lower or "pagos moderadores" in msg_lower:
+            return "Cuota moderada"
+        elif "valor reportado en los servicios" in msg_lower:
+            return "Cirugías"
+        elif "xml" in msg_lower or "attacheddocument" in msg_lower:
+            return "XML"
+        else:
+            return msg
+
+    # 5) Generar nuevo Excel con colores
     output = io.BytesIO()
     with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
         for hoja, df_hoja in libro.items():
-            # Tomar únicamente la primera columna como lista de facturas
             if df_hoja.shape[1] < 1:
                 continue
-            facs = df_hoja.iloc[:,0].dropna().astype(str).str.strip()
 
+            facs = df_hoja.iloc[:, 0].dropna().astype(str).str.strip()
             filas = []
+
             for fac in facs:
                 if fac in errores_dict:
-                    estado, desc = "Error XML", errores_dict[fac]
+                    estado = "Error"
+                    descripcion = clasificar_descripcion(errores_dict[fac])
                 elif fac in valido_dict:
-                    estado, desc = "Válida", "Factura válida por el Ministerio"
+                    estado = "Válida"
+                    descripcion = "Factura válida por el Ministerio"
                 elif fac in otros_dict:
-                    estado, desc = "Otro error", otros_dict[fac]
+                    estado = "Otro error"
+                    descripcion = clasificar_descripcion(otros_dict[fac])
                 else:
-                    estado, desc = "No procesada", ""
+                    estado = "No procesada"
+                    descripcion = ""
+
                 filas.append({
                     "Factura": fac,
                     "Estado": estado,
-                    "Descripción": desc
+                    "Descripción": descripcion
                 })
 
-            pd.DataFrame(filas).to_excel(writer, sheet_name=hoja, index=False)
+            # Crear DataFrame para esta hoja
+            df_resultado = pd.DataFrame(filas)
+            df_resultado.to_excel(writer, sheet_name=hoja, index=False)
+
+            # Obtener acceso al worksheet para aplicar formato
+            workbook  = writer.book
+            worksheet = writer.sheets[hoja]
+
+            # Formato verde claro para filas válidas
+            formato_verde = workbook.add_format({'bg_color': "#30D651"})
+
+            # Aplicar formato condicional fila por fila si estado == "Válida"
+            for fila_idx, estado in enumerate(df_resultado["Estado"], start=1):  # +1 por el header
+                if estado == "Válida":
+                    worksheet.set_row(fila_idx, None, formato_verde)
 
     output.seek(0)
     return send_file(
@@ -515,7 +596,6 @@ def descargar_excel_actualizado():
         as_attachment=True,
         mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     )
-
 
 @app.route("/ver_reportes")
 def ver_reportes():
@@ -552,109 +632,110 @@ def ver_reportes():
 
 
 # ✅ REPORTE EN PDF
+from reportlab.platypus import Image
+
 @app.route("/descargar_pdf")
 def descargar_pdf():
-    # 1) Lee el historial completo desde disco
     if os.path.exists(HISTORIAL_PATH):
         with open(HISTORIAL_PATH, "r", encoding="utf-8") as f:
             historial = json.load(f)
     else:
         historial = {}
 
-    # 2) Prepara el PDF
     buffer = io.BytesIO()
-    p = canvas.Canvas(buffer, pagesize=letter)
-    width, height = letter
-    y = height - 50
+    doc = SimpleDocTemplate(buffer, pagesize=letter)
+    elements = []
+    styles = getSampleStyleSheet()
+
+    # 🏥 Insertar logo del hospital
+    logo_path = os.path.join("static", "img", "logo.jpg")
+    if os.path.exists(logo_path):
+        logo = Image(logo_path, width=120, height=50)
+        logo.hAlign = 'CENTER'
+        elements.append(logo)
+        elements.append(Spacer(1, 10))
 
     # Título
-    p.setFont("Helvetica-Bold", 16)
-    p.drawCentredString(width/2, y, "📄 Reporte Histórico de Facturas Corregidas")
-    y -= 30
+    elements.append(Paragraph("📄 Reporte Histórico de Facturas Corregidas", styles['Title']))
+    elements.append(Spacer(1, 12))
 
     # Fecha
-    p.setFont("Helvetica", 12)
-    p.drawString(50, y, f"Fecha de generación: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
-    y -= 30
-
-    # Línea separadora
-    p.line(50, y, width-50, y)
-    y -= 20
+    elements.append(Paragraph(f"<b>Fecha de generación:</b> {datetime.now().strftime('%Y-%m-%d %H:%M')}", styles['Normal']))
+    elements.append(Spacer(1, 12))
 
     if not historial:
-        p.setFont("Helvetica", 12)
-        p.drawString(50, y, "❌ No hay facturas corregidas en el historial.")
+        elements.append(Paragraph("❌ No hay facturas corregidas en el historial.", styles['Normal']))
     else:
-        # Encabezados
-        p.setFont("Helvetica-Bold", 12)
-        p.drawString(50, y, "Factura")
-        p.drawString(150, y, "Fecha")
-        p.drawString(300, y, "Observación")
-        y -= 20
-
-        # Filas
-        p.setFont("Helvetica", 10)
+        data = [["Factura", "Fecha", "Observación"]]
         for num, info in historial.items():
-            if y < 50:
-                p.showPage()
-                y = height - 50
-            p.drawString(50, y, str(num))
-            p.drawString(150, y, info.get("fecha", ""))
-            # Observación fija
-            p.drawString(300, y, "Error XML corregido")
-            y -= 15
+            data.append([str(num), info.get("fecha", ""), "Error XML corregido"])
 
-    p.save()
+        table = Table(data, colWidths=[100, 150, 250])
+        table.setStyle(TableStyle([
+            ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#007bff")),
+            ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+            ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+            ("ALIGN", (0, 0), (-1, -1), "LEFT"),
+            ("GRID", (0, 0), (-1, -1), 0.5, colors.grey),
+            ("BACKGROUND", (0, 1), (-1, -1), colors.whitesmoke),
+            ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.whitesmoke, colors.lightgrey]),
+        ]))
+
+        elements.append(table)
+
+    doc.build(elements)
     buffer.seek(0)
-    return send_file(
-        buffer,
-        download_name="reporte_historico_facturas_corregidas.pdf",
-        as_attachment=True,
-        mimetype="application/pdf"
-    )
-
+    return send_file(buffer, download_name="reporte_historico_facturas_corregidas.pdf", as_attachment=True, mimetype="application/pdf")
 
 # ✅ REPORTE EN WORD
 @app.route("/descargar_word")
 def descargar_word():
-    # 1) Lee el historial completo desde disco
     if os.path.exists(HISTORIAL_PATH):
         with open(HISTORIAL_PATH, "r", encoding="utf-8") as f:
             historial = json.load(f)
     else:
         historial = {}
 
-    # 2) Crea el documento Word
     doc = Document()
-    doc.add_heading("📄 Reporte Histórico de Facturas Corregidas", level=0)
+
+    # 🏥 Insertar logo arriba del título
+    logo_path = os.path.join("static", "img", "logo.jpg")
+    if os.path.exists(logo_path):
+        doc.add_picture(logo_path, width=Inches(2.5))  # Ajusta el tamaño
+        last_paragraph = doc.paragraphs[-1]
+        last_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+
+    # Título
+    titulo = doc.add_heading("📄 Reporte Histórico de Facturas Corregidas", level=1)
+    titulo.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+
+    # Fecha
     doc.add_paragraph(f"Fecha de generación: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
 
     if not historial:
         doc.add_paragraph("❌ No hay facturas corregidas en el historial.")
     else:
         table = doc.add_table(rows=1, cols=3)
-        table.style = 'Light Grid Accent 1'
-        hdr = table.rows[0].cells
-        hdr[0].text = "Factura"
-        hdr[1].text = "Fecha"
-        hdr[2].text = "Observación"
+        table.style = 'Colorful List'  # Puedes probar otras
+        hdr_cells = table.rows[0].cells
+        hdr_cells[0].text = "Factura"
+        hdr_cells[1].text = "Fecha"
+        hdr_cells[2].text = "Observación"
+
+        for cell in hdr_cells:
+            for p in cell.paragraphs:
+                p.runs[0].bold = True
 
         for num, info in historial.items():
-            row = table.add_row().cells
-            row[0].text = str(num)
-            row[1].text = info.get("fecha", "")
-            # Observación fija
-            row[2].text = "Error XML corregido"
+            row_cells = table.add_row().cells
+            row_cells[0].text = str(num)
+            row_cells[1].text = info.get("fecha", "")
+            row_cells[2].text = "Error XML corregido"
 
     output = io.BytesIO()
     doc.save(output)
     output.seek(0)
-    return send_file(
-        output,
-        download_name="reporte_historico_facturas_corregidas.docx",
-        as_attachment=True,
-        mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-    )
+    return send_file(output, download_name="reporte_historico_facturas_corregidas.docx", as_attachment=True, mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document")
 
 
 # Ruta para procesar las facturas con error en XML

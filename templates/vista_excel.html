@@ -25,6 +25,14 @@
             font-size: 2.4rem;
             margin-bottom: 30px;
         }
+        #buscador {
+            width: 100%;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
         table {
             width: 100%;
             border-collapse: separate;
@@ -54,6 +62,12 @@
             color: #555;
             border-bottom: 1px solid #ddd;
         }
+
+        /* ✅ Color verde para facturas válidas */
+        tr.estado-valida {
+            background-color: #82d695 !important;
+        }
+
         .btn {
             display: block;
             margin: 30px auto 0;
@@ -98,25 +112,43 @@
             line-height: 1.4;
         }
     </style>
+    <script>
+        function filtrarTabla() {
+            const input = document.getElementById("buscador").value.toLowerCase();
+            const filas = document.querySelectorAll("tbody tr");
+
+            filas.forEach(fila => {
+                const texto = fila.textContent.toLowerCase();
+                fila.style.display = texto.includes(input) ? "" : "none";
+            });
+        }
+    </script>
 </head>
 <body>
 <div class="container">
     <h1>📋 Vista Previa del Excel Actualizado</h1>
 
     {% if facturas %}
+        <input type="text" id="buscador" placeholder="🔍 Buscar factura, estado o descripción..." onkeyup="filtrarTabla()">
+
         <table>
-            <tr>
-                <th>Factura</th>
-                <th>Estado</th>
-                <th>Descripción</th>
-            </tr>
-            {% for f in facturas %}
-            <tr>
-                <td>{{ f.factura }}</td>
-                <td>{{ f.estado }}</td>
-                <td>{{ f.descripcion }}</td>
-            </tr>
-            {% endfor %}
+            <thead>
+                <tr>
+                    <th>Factura</th>
+                    <th>Estado</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for f in facturas %}
+                    {% set clase = "estado-valida" if f.estado == "Válida" else "" %}
+                    <tr class="{{ clase }}">
+                        <td>{{ f.factura }}</td>
+                        <td>{{ f.estado }}</td>
+                        <td>{{ f.descripcion }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
         </table>
 
         <form method="POST" action="{{ url_for('descargar_excel_actualizado') }}">

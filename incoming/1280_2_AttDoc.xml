@@ -3,34 +3,34 @@
     <ext:UBLExtensions>
         <ext:UBLExtension>          
         <ext:ExtensionContent>          
-        <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Id="xmldsig-8a2e8846-c08a-4038-95da-dfbcc2e7897c">
+        <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Id="xmldsig-469e0d39-2bd7-4ed4-83a3-74ed72a56f22">
 <ds:SignedInfo>
 <ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
 <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
-<ds:Reference Id="xmldsig-8a2e8846-c08a-4038-95da-dfbcc2e7897c-ref0" URI="">
+<ds:Reference Id="xmldsig-469e0d39-2bd7-4ed4-83a3-74ed72a56f22-ref0" URI="">
 <ds:Transforms>
 <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
 </ds:Transforms>
 <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-<ds:DigestValue>xgt6AgvOc++yqf37ZyM5O5klV6OLhywRpoPEKpdXyI0=</ds:DigestValue>
+<ds:DigestValue>WzNtjfvliliDHW2A0PF+3fAX6nR7US/mHtyuAQhNYDY=</ds:DigestValue>
 </ds:Reference>
-<ds:Reference URI="#xmldsig-8a2e8846-c08a-4038-95da-dfbcc2e7897c-keyinfo">
+<ds:Reference URI="#xmldsig-469e0d39-2bd7-4ed4-83a3-74ed72a56f22-keyinfo">
 <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-<ds:DigestValue>x7omruUKGydLePRtN1NBbiQFECKNqRpMqwt1yq1v3iw=</ds:DigestValue>
+<ds:DigestValue>vZu2Xs+fNXZjI8/FqtofUgMRevwkrh/jElad4cWGReM=</ds:DigestValue>
 </ds:Reference>
-<ds:Reference Type="http://uri.etsi.org/01903#SignedProperties" URI="#xmldsig-8a2e8846-c08a-4038-95da-dfbcc2e7897c-signedprops">
+<ds:Reference Type="http://uri.etsi.org/01903#SignedProperties" URI="#xmldsig-469e0d39-2bd7-4ed4-83a3-74ed72a56f22-signedprops">
 <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-<ds:DigestValue>gtp1UF/42793j7p4grbp63QNwtLh4Rd5yH/xcMZ+ccY=</ds:DigestValue>
+<ds:DigestValue>84xgcwo1vbs+O+7a7N8HXvS3ePsaNJdcYD/EAHVGJq8=</ds:DigestValue>
 </ds:Reference>
 </ds:SignedInfo>
-<ds:SignatureValue Id="xmldsig-8a2e8846-c08a-4038-95da-dfbcc2e7897c-sigvalue">
-Jj8FpnUPYoqfJvYkkV/3dbFtzD1bPDrE39mOUpkp8cDFaGKErUSW3OpYBrTpcJHMiMhf/rSbLNC6
-AlFXIIqaIhjQTjgAL6o9y2GbdvZZ9mcuwKx0URISMDDlRKOGBeVbp0lCckjW5H80hwY9XfouIxoz
-FEgfHvvhmLGDnOe1tW/K86gWJKF9taUTRfz5O5bJ9A63/Nh0Ufzr+3K3Imy5fxY4HGJzfGIKRWcj
-Sst3R4Kgd5LZGnWuH8znQ24xIvwt/uELracVPzqxEUBeFetVygQ/ZLjtQ2xfyIsN1Jo8beT1jCY3
-lronaWTDC1mwhxl0yUx8rzkXI+ZiUpcr6C7mBA==
+<ds:SignatureValue Id="xmldsig-469e0d39-2bd7-4ed4-83a3-74ed72a56f22-sigvalue">
+C52EXcBWZFSOr6jXU1gV+vZjme2bOq+1FDmcc765rMH4Geswe+B+Xk8Bj3RrMPCPIWhk5GOzdXs2
+FE7OrHLngzm1zgPTOjJ4M1YmzGZTpmjBPTsx+LJMpq7WkRroNUn1YG9hB+V7QN475l/tqUYLjFR+
+KGfYXGOF+ZHqRbPUAws/9WwTmJw2msJY3hD5QZYzIepSfftIv0uILAepmbN7425lSzJ1EmePS8nY
+OB9qCEEeLng0Si4tZ6G+0XscoV9ImZwxMagq9CkZwx4MKWVUPn94SJJtInZ94DgRUqI9WemVclJI
+vJbvoS/II8DhWF0D8yJXEYawBoDRcrs/xQ5XOQ==
 </ds:SignatureValue>
-<ds:KeyInfo Id="xmldsig-8a2e8846-c08a-4038-95da-dfbcc2e7897c-keyinfo">
+<ds:KeyInfo Id="xmldsig-469e0d39-2bd7-4ed4-83a3-74ed72a56f22-keyinfo">
 <ds:X509Data>
 <ds:X509Certificate>
 MIIH+zCCBeOgAwIBAgISQ0MxMDQ3NDMwNzAyLTAwMDE1MA0GCSqGSIb3DQEBCwUAMIIBJDEUMBIG
@@ -72,7 +72,7 @@ gN2qBxsSqHwgLZaABPPIoL5c+ckxfS8pu2GiOK8qCf7R2euoS1I+ZygIt5f/CEEGkhKDgA==
 </ds:X509Certificate>
 </ds:X509Data>
 </ds:KeyInfo>
-<ds:Object><xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" xmlns:xades141="http://uri.etsi.org/01903/v1.4.1#" Target="#xmldsig-8a2e8846-c08a-4038-95da-dfbcc2e7897c"><xades:SignedProperties Id="xmldsig-8a2e8846-c08a-4038-95da-dfbcc2e7897c-signedprops"><xades:SignedSignatureProperties><xades:SigningTime>2025-05-21T08:41:25.9974012-05:00</xades:SigningTime><xades:SigningCertificate><xades:Cert><xades:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><ds:DigestValue>XcaWKOSLdSRGkaGAtKTTM1O3Pr8mvFUPhaHck/iqcRs=</ds:DigestValue></xades:CertDigest><xades:IssuerSerial><ds:X509IssuerName>CN=OlimpiaIT ECD Sub,O=OlimpiaIT,OU=OlimpiaIT ECD,1.2.840.113549.1.9.1=#0c1f736572766963696f616c636c69656e7465406f6c696d70696169742e636f6d,C=CO,ST=BogotÃ¡ D.C.,L=BogotÃ¡ D.C.,STREET=See current address at https://micertificado.olimpiait.com,2.5.4.45=#0c0b3930303033323737342d34,2.5.4.5=#0c0b3930303033323737342d34</ds:X509IssuerName><ds:X509SerialNumber>5859387458472741076356936367269702597095733</ds:X509SerialNumber></xades:IssuerSerial></xades:Cert></xades:SigningCertificate><xades:SignaturePolicyIdentifier><xades:SignaturePolicyId><xades:SigPolicyId><xades:Identifier>https://facturaelectronica.dian.gov.co/politicadefirma/v2/politicadefirmav2.pdf</xades:Identifier><xades:Description>PolÃ­tica de firma para facturas electrÃ³nicas de la RepÃºblica de Colombia.</xades:Description></xades:SigPolicyId><xades:SigPolicyHash><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><ds:DigestValue>dMoMvtcG5aIzgYo0tIsSQeVJBDnUnfSOfBpxXrmor0Y=</ds:DigestValue></xades:SigPolicyHash></xades:SignaturePolicyId></xades:SignaturePolicyIdentifier><xades:SignerRole><xades:ClaimedRoles><xades:ClaimedRole>supplier</xades:ClaimedRole></xades:ClaimedRoles></xades:SignerRole></xades:SignedSignatureProperties></xades:SignedProperties></xades:QualifyingProperties></ds:Object>
+<ds:Object><xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" xmlns:xades141="http://uri.etsi.org/01903/v1.4.1#" Target="#xmldsig-469e0d39-2bd7-4ed4-83a3-74ed72a56f22"><xades:SignedProperties Id="xmldsig-469e0d39-2bd7-4ed4-83a3-74ed72a56f22-signedprops"><xades:SignedSignatureProperties><xades:SigningTime>2025-05-21T17:45:32.4258005-05:00</xades:SigningTime><xades:SigningCertificate><xades:Cert><xades:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><ds:DigestValue>XcaWKOSLdSRGkaGAtKTTM1O3Pr8mvFUPhaHck/iqcRs=</ds:DigestValue></xades:CertDigest><xades:IssuerSerial><ds:X509IssuerName>CN=OlimpiaIT ECD Sub,O=OlimpiaIT,OU=OlimpiaIT ECD,1.2.840.113549.1.9.1=#0c1f736572766963696f616c636c69656e7465406f6c696d70696169742e636f6d,C=CO,ST=BogotÃ¡ D.C.,L=BogotÃ¡ D.C.,STREET=See current address at https://micertificado.olimpiait.com,2.5.4.45=#0c0b3930303033323737342d34,2.5.4.5=#0c0b3930303033323737342d34</ds:X509IssuerName><ds:X509SerialNumber>5859387458472741076356936367269702597095733</ds:X509SerialNumber></xades:IssuerSerial></xades:Cert></xades:SigningCertificate><xades:SignaturePolicyIdentifier><xades:SignaturePolicyId><xades:SigPolicyId><xades:Identifier>https://facturaelectronica.dian.gov.co/politicadefirma/v2/politicadefirmav2.pdf</xades:Identifier><xades:Description>PolÃ­tica de firma para facturas electrÃ³nicas de la RepÃºblica de Colombia.</xades:Description></xades:SigPolicyId><xades:SigPolicyHash><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><ds:DigestValue>dMoMvtcG5aIzgYo0tIsSQeVJBDnUnfSOfBpxXrmor0Y=</ds:DigestValue></xades:SigPolicyHash></xades:SignaturePolicyId></xades:SignaturePolicyIdentifier><xades:SignerRole><xades:ClaimedRoles><xades:ClaimedRole>supplier</xades:ClaimedRole></xades:ClaimedRoles></xades:SignerRole></xades:SignedSignatureProperties></xades:SignedProperties></xades:QualifyingProperties></ds:Object>
 </ds:Signature></ext:ExtensionContent>          
         </ext:UBLExtension>
     </ext:UBLExtensions>
@@ -82,7 +82,7 @@ gN2qBxsSqHwgLZaABPPIoL5c+ckxfS8pu2GiOK8qCf7R2euoS1I+ZygIt5f/CEEGkhKDgA==
     <cbc:ProfileExecutionID>1</cbc:ProfileExecutionID>
     <cbc:ID>SETT1280</cbc:ID>
     <cbc:IssueDate>2025-05-21</cbc:IssueDate>
-    <cbc:IssueTime>08:41:25-05:00</cbc:IssueTime>
+    <cbc:IssueTime>17:45:32-05:00</cbc:IssueTime>
     <cbc:DocumentType>Contenedor de Factura ElectrÃ³nica</cbc:DocumentType>
     <cbc:ParentDocumentID>SETT1280</cbc:ParentDocumentID>
     <cac:SenderParty>

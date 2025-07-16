@@ -1,0 +1,132 @@
+<Factura>
+	<Cabecera Numero="SETT1313" FechaEmision="2025-05-26" Vencimiento="2025-06-25" HoraEmision="09:32:31" MonedaFactura="COP" Observaciones="NOTA: - - AUTORIZACION: 4234234234 PACIENTE: TI-1089005100-MAICOL EFREN LLELA OROBIO- INGRESO: 2 - ABONO PACIENTE: 19200.00 EN PESOS" TipoFactura="FACTURA-UBL" FormaDePago="2" LineasDeFactura="1" TipoOperacion="SS-CUFE" SubTipoOperacion="SS-CUFE" FormatoContingencia="" OrdenCompraVendedor ="" Ambiente="2">
+	</Cabecera>
+	<NumeracionDIAN NumeroResolucion="18760000001" FechaInicio="2019-01-19" FechaFin="2030-01-19" PrefijoNumeracion="SETT" ConsecutivoInicial="1" ConsecutivoFinal="5000000">
+	</NumeracionDIAN>
+	<PeriodoFacturado FechaInicio="2025-05-26" FechaFin="2025-05-26" HoraInicio="09:32:31" HoraFin="09:32:31">
+	</PeriodoFacturado>
+	<Notificacion Tipo="Mail" De="felectronicahila@gmail.com">
+		<Para>recepcion.cuentasmedicas@nuevaeps.com</Para>
+	</Notificacion>
+	<Emisor TipoPersona="1" TipoRegimen="49" TipoIdentificacion="31" NumeroIdentificacion="891200240" DV="2" RazonSocial="HOSPITAL INFANTIL LOS ANGELES" NumeroMatriculaMercantil="891200240" NombreComercial="HOSPITAL INFANTIL LOS ANGELES">
+		<CodigosCIIU>
+			<CIIU>7020</CIIU>
+			<CIIU>5140</CIIU>
+		</CodigosCIIU>
+		<Direccion CodigoMunicipio="52001" NombreCiudad="SAN JUAN DE PASTO" CodigoPostal="52001" NombreDepartamento="NARIÑO" CodigoDepartamento="52" CodigoDane="52001" Direccion="CR 37 11 34 LA CASTELLANA">
+		</Direccion>
+		<ObligacionesEmisor>
+			<CodigoObligacion>R-99-PN</CodigoObligacion>
+		</ObligacionesEmisor>
+		<DireccionFiscal CodigoMunicipio="52001" NombreCiudad="SAN JUAN DE PASTO" CodigoPostal="52001" NombreDepartamento="NARIÑO" CodigoDepartamento="52" CodigoDane="52001" Direccion="CR 37 11 34 LA CASTELLANA">
+		</DireccionFiscal>
+		<TributoEmisor CodigoTributo="" NombreTributo="NIT">
+		</TributoEmisor>
+		<Contacto Nombre="DORIS SARASTY RODRIGUEZ" Telefono="3185579501" Telfax="7311533" Email="felectronicahila@gmail.com" Notas="">
+		</Contacto>
+	</Emisor>
+	<Cliente TipoPersona="1" TipoRegimen="48" TipoIdentificacion="31" NumeroIdentificacion="900156264" DV="2" NombreComercial="NUEVA EPS" RazonSocial="NUEVA EPS" NumeroMatriculaMercantil="900156264">
+		<!--NO incluidos por la DIAN, Si por UBL-->
+		<Direccion CodigoMunicipio="11001" NombreCiudad="BOGOTA, DC" CodigoPostal="11001" NombreDepartamento="BOGOTA D.C." CodigoDepartamento="11" CodigoDane="11001" Direccion="AVENIDA 5 NORTE 21N - 86 CALI" CodigoPais="CO" NombrePais="Colombia" IdiomaPais="es">
+		</Direccion>
+		<ObligacionesCliente>
+			<CodigoObligacion>O-13</CodigoObligacion>
+		</ObligacionesCliente>
+		<DireccionFiscal CodigoMunicipio="11001" NombreCiudad="BOGOTA, DC" CodigoPostal="11001" NombreDepartamento="BOGOTA D.C." CodigoDepartamento="11" Direccion="AVENIDA 5 NORTE 21N - 86 CALI" CodigoPais="CO" NombrePais="Colombia" IdiomaPais="es">
+		</DireccionFiscal>
+		<Contacto Nombre="" Telefono="4193000" Telfax="" Email="recepcion.cuentasmedicas@nuevaeps.com" Notas="">
+		</Contacto>
+		<TributoCliente CodigoTributo="" NombreTributo="NIT">
+		</TributoCliente>
+	</Cliente>
+	<MediosDePago CodigoMedioPago="1" FormaDePago="2" Vencimiento="2025-06-25">
+	</MediosDePago>
+	<Anticipos>
+		<Anticipo IDPago="02" ConceptoPago="02" ValorPagoAnticipo="19200.00" MonedaAnticipo="COP" FechaRecepcion="2025-05-26" FechaPago="2025-05-26" HoraPago="09:32:31" InstruccionesAnticipos="VALOR PAGADO POR EL USUARIO">
+		</Anticipo>
+	</Anticipos>
+	<Impuestos>
+		<!--IMPUESTOS GENERALES DE LA FACTURA-->
+		<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+			<Subtotal ValorBase="186700.00" Valor="0.00" Porcentaje="0.00">
+			</Subtotal>
+		</Impuesto>
+	</Impuestos>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="186700.00" Descripcion="CONSULTA DE CONTROL O DE SEGUIMIENTO POR ESPECIALISTA EN ENDOCRINOLOGIA PEDIATRICA" PrecioUnitario="186700.00" CodigoTipoPrecio="01" ValorTotalItem="186700.00" Ocultar="True" Agrupador="CONSULTAS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="186700.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="890345" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Totales Bruto="186700.00" BaseImponible="186700.00" BrutoMasImpuestos="186700.00" Descuentos="0.00" Impuestos="0.00" General="167500.00" Anticipo="19200.00" TotalDescuentosLineas="0" TotalOtros1="0">
+	</Totales>
+	<Extensiones>
+		<DatosAdicionales>
+			<campoAdicional Nombre="OBSERVACION_CAMPO_ADICIONAL" Valor="NOTA: - - AUTORIZACION: 4234234234 PACIENTE: TI-1089005100-MAICOL EFREN LLELA OROBIO- INGRESO: 2 - ABONO PACIENTE: 19200.00 EN PESOS"/>
+			<CampoAdicional Nombre="VALORAPAGARASEGURADORA" Valor="167500.00"/>
+			<CampoAdicional Nombre="CODIGOIPS" Valor="520010028301"/>
+			<CampoAdicional Nombre="REGIMEN" Valor="aki va resolucion"/>
+			<CampoAdicional Nombre="CIUDAD" Valor="BOGOTA, DC"/>
+			<CampoAdicional Nombre="DEPARTAMENTO" Valor="BOGOTA D.C."/>
+			<CampoAdicional Nombre="TELEFONO" Valor="7336400"/>
+			<CampoAdicional Nombre="DIRECCION" Valor="CARRERA 32 N° 21A - 30"/>
+			<CampoAdicional Nombre="NOMBREPACIENTE" Valor="MAICOL EFREN LLELA OROBIO"/>
+			<CampoAdicional Nombre="TIPODOCPACIENTE" Valor="TI"/>
+			<CampoAdicional Nombre="IDPACIENTE" Valor="1089005100"/>
+			<CampoAdicional Nombre="Tipo de Usuario" Valor=""/>
+			<CampoAdicional Nombre="DIRECCIONPACIENTE" Valor="EL CHARCO NARIÑO"/>
+			<CampoAdicional Nombre="TELEFONOPACIENTE" Valor="3148860052"/>
+			<CampoAdicional Nombre="MUNICIPIOPACIENTE" Valor="MOSQUERA"/>
+			<CampoAdicional Nombre="CARNET" Valor=""/>
+			<CampoAdicional Nombre="EDAD" Valor="8"/>
+			<CampoAdicional Nombre="AMD" Valor="AÑOS"/>
+			<CampoAdicional Nombre="FECHADECORTE" Valor="26-05-2025"/>
+			<CampoAdicional Nombre="NUMHISTORIA" Valor="1089005100"/>
+			<CampoAdicional Nombre="P.P" Valor="129"/>
+			<CampoAdicional Nombre="P.S" Valor="53"/>
+			<CampoAdicional Nombre="SERVICIO" Valor="AMBULATORIO"/>
+			<CampoAdicional Nombre="DIASESTANCIA" Valor=""/>
+			<CampoAdicional Nombre="CONTRATO" Valor="01-01-03-00083-2018 - NUEVA EPS ALTO COSTO"/>
+			<CampoAdicional Nombre="FACTURADOR" Valor="CRISTHIAN CAMILO MONTENEGRO"/>
+			<CampoAdicional Nombre="Fecha_Ingreso" Valor="26-05-2025"/>
+			<CampoAdicional Nombre="Fecha_Egreso" Valor="26-05-2025"/>
+			<CampoAdicional Nombre="FECHAINGRESO" Valor="26-05-2025"/>
+			<CampoAdicional Nombre="FECHEGRESO" Valor="26-05-2025"/>
+			<CampoAdicional Nombre="PLAZO" Valor="30 DIAS"/>
+			<CampoAdicional Nombre="SEDE" Valor="EMPRESA 1 SEDE 001 HOSPITAL INFANTIL LOS ANGELES"/>
+			<campoAdicional Nombre="DIRECCIONSEDE" Valor="CARRERA 32 No. 21A-30"/>
+			<CampoAdicional Nombre="COPAGO" Valor="0" NombreEsquema="0" IDEsquema="0"/>
+			<campoAdicional Nombre="AUTORIZACION" Valor="4234234234"/>
+			<CampoAdicional Nombre="PLAZO" Valor="30 DIAS"/>
+			<CampoAdicional Nombre="VALORLETRASUSUARIO" Valor="DIECINUEVE MIL DOSCIENTOS PESOS CON CERO CENTAVOS"/>
+			<CampoAdicional Nombre="SALDOPAGARUSUARIO" Valor="CERO PESOS CON CERO CENTAVOS"/>
+			<CampoAdicional Nombre="VALORAPAGARASEGURADORA_LETRAS" Valor="CIENTO SESENTA Y SIETE MIL QUINIENTOS PESOS CON CERO CENTAVOS"/>
+			<CampoAdicional Nombre="VALORSUSUARIO_NUMERO" Valor="19200.00"/>
+			<CampoAdicional Nombre="SALDOPAGARUSUARIO_NUMERO" Valor="0.00"/>
+			<CampoAdicional Nombre="SALDONOPAGADOXUSUARIO_NUMERO" Valor="0.00"/>
+			<CampoAdicional Nombre="RazonSocialRepGrafica" Valor="NUEVA EMPRESA PROMOTORA DE SALUD S.A"/>
+			<CampoAdicional Nombre="CUOTAMODERADORA" Valor="19200.00"/>
+		</DatosAdicionales>
+		<!--datos Interoperabilidad-->
+		<Interoperabilidad URLAdjunto="">
+			<Grupo Nombre="Sector Salud">
+				<Categoria Nombre="">
+					<CampoAdicional Nombre="CODIGO_PRESTADOR" Valor="5200100283" NombreEsquema="" IDEsquema=""/>
+					<CampoAdicional Nombre="MODALIDAD_PAGO" Valor="Pago por evento" NombreEsquema="salud_modalidad_pago.gc" IDEsquema="04"/>
+					<CampoAdicional Nombre="COBERTURA_PLAN_BENEFICIOS" Valor="Plan de beneficios en salud financiado por UPC" NombreEsquema="salud_cobertura.gc" IDEsquema="01"/>
+					<CampoAdicional Nombre="NUMERO_CONTRATO" Valor="01-01-03-00083-2018" NombreEsquema="" IDEsquema=""/>
+					<CampoAdicional Nombre="NUMERO_POLIZA" Valor="0" NombreEsquema="0" IDEsquema="0"/>
+				</Categoria>
+			</Grupo>
+		</Interoperabilidad>
+	</Extensiones>
+</Factura>

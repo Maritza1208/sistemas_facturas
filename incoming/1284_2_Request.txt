@@ -1,0 +1,327 @@
+<Factura>
+	<Cabecera Numero="SETT1284" FechaEmision="2025-05-22" Vencimiento="2025-06-21" HoraEmision="07:41:08" MonedaFactura="COP" Observaciones="NOTA: - - AUTORIZACION: 253764912192 PACIENTE: TI-1080050686-JUAN FELIPE SOTO VALLEJO- INGRESO: 6 - ABONO PACIENTE: 121602.00 EN PESOS" TipoFactura="FACTURA-UBL" FormaDePago="2" LineasDeFactura="21" TipoOperacion="SS-CUFE" SubTipoOperacion="SS-CUFE" FormatoContingencia="" OrdenCompraVendedor ="" Ambiente="2">
+	</Cabecera>
+	<NumeracionDIAN NumeroResolucion="18760000001" FechaInicio="2019-01-19" FechaFin="2030-01-19" PrefijoNumeracion="SETT" ConsecutivoInicial="1" ConsecutivoFinal="5000000">
+	</NumeracionDIAN>
+	<PeriodoFacturado FechaInicio="2025-02-20" FechaFin="2025-05-22" HoraInicio="07:41:08" HoraFin="07:41:08">
+	</PeriodoFacturado>
+	<Notificacion Tipo="Mail" De="felectronicahila@gmail.com">
+		<Para>recepcionfecm@fe.epssanitas.com</Para>
+	</Notificacion>
+	<Emisor TipoPersona="1" TipoRegimen="49" TipoIdentificacion="31" NumeroIdentificacion="891200240" DV="2" RazonSocial="HOSPITAL INFANTIL LOS ANGELES" NumeroMatriculaMercantil="891200240" NombreComercial="HOSPITAL INFANTIL LOS ANGELES">
+		<CodigosCIIU>
+			<CIIU>7020</CIIU>
+			<CIIU>5140</CIIU>
+		</CodigosCIIU>
+		<Direccion CodigoMunicipio="52001" NombreCiudad="SAN JUAN DE PASTO" CodigoPostal="52001" NombreDepartamento="NARIÑO" CodigoDepartamento="52" CodigoDane="52001" Direccion="CR 37 11 34 LA CASTELLANA">
+		</Direccion>
+		<ObligacionesEmisor>
+			<CodigoObligacion>R-99-PN</CodigoObligacion>
+		</ObligacionesEmisor>
+		<DireccionFiscal CodigoMunicipio="52001" NombreCiudad="SAN JUAN DE PASTO" CodigoPostal="52001" NombreDepartamento="NARIÑO" CodigoDepartamento="52" CodigoDane="52001" Direccion="CR 37 11 34 LA CASTELLANA">
+		</DireccionFiscal>
+		<TributoEmisor CodigoTributo="" NombreTributo="NIT">
+		</TributoEmisor>
+		<Contacto Nombre="DORIS SARASTY RODRIGUEZ" Telefono="3185579501" Telfax="7311533" Email="felectronicahila@gmail.com" Notas="">
+		</Contacto>
+	</Emisor>
+	<Cliente TipoPersona="1" TipoRegimen="48" TipoIdentificacion="31" NumeroIdentificacion="800251440" DV="6" NombreComercial="ENTIDAD PROMOTORA DE SALUD SANITAS S.A." RazonSocial="ENTIDAD PROMOTORA DE SALUD SANITAS S.A." NumeroMatriculaMercantil="800251440">
+		<!--NO incluidos por la DIAN, Si por UBL-->
+		<Direccion CodigoMunicipio="11001" NombreCiudad="BOGOTA, DC" CodigoPostal="11001" NombreDepartamento="BOGOTA D.C." CodigoDepartamento="11" CodigoDane="11001" Direccion="CLL 100 11B-95" CodigoPais="CO" NombrePais="Colombia" IdiomaPais="es">
+		</Direccion>
+		<ObligacionesCliente>
+			<CodigoObligacion>O-13</CodigoObligacion>
+		</ObligacionesCliente>
+		<DireccionFiscal CodigoMunicipio="11001" NombreCiudad="BOGOTA, DC" CodigoPostal="11001" NombreDepartamento="BOGOTA D.C." CodigoDepartamento="11" Direccion="CLL 100 11B-95" CodigoPais="CO" NombrePais="Colombia" IdiomaPais="es">
+		</DireccionFiscal>
+		<Contacto Nombre="" Telefono="6466060" Telfax="" Email="recepcionfecm@fe.epssanitas.com" Notas="">
+		</Contacto>
+		<TributoCliente CodigoTributo="" NombreTributo="NIT">
+		</TributoCliente>
+	</Cliente>
+	<MediosDePago CodigoMedioPago="1" FormaDePago="2" Vencimiento="2025-06-21">
+	</MediosDePago>
+	<Anticipos>
+		<Anticipo IDPago="01" ConceptoPago="01" ValorPagoAnticipo="121602.00" MonedaAnticipo="COP" FechaRecepcion="2025-05-22" FechaPago="2025-05-22" HoraPago="07:41:08" InstruccionesAnticipos="VALOR PAGADO POR EL USUARIO">
+		</Anticipo>
+	</Anticipos>
+	<Impuestos>
+		<!--IMPUESTOS GENERALES DE LA FACTURA-->
+		<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+			<Subtotal ValorBase="702900.00" Valor="0.00" Porcentaje="0.00">
+			</Subtotal>
+		</Impuesto>
+	</Impuestos>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="79500.00" Descripcion="Interconsulta médica especializada ambulatoria o intrahospitalaria cirugia plastica, estetica y reconstructiva" PrecioUnitario="79500.00" CodigoTipoPrecio="01" ValorTotalItem="79500.00" Ocultar="True" Agrupador="CONSULTAS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="79500.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="39140" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="342600.00" Descripcion="HABITACION DE CUATRO O MAS CAMAS" PrecioUnitario="342600.00" CodigoTipoPrecio="01" ValorTotalItem="342600.00" Ocultar="True" Agrupador="ESTANCIAS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="342600.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="38134" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="5800.00" Descripcion="CATETER IV PERIFERICO NO 18 - CLASE IIA" PrecioUnitario="5800.00" CodigoTipoPrecio="01" ValorTotalItem="5800.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="5800.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001000332" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="23000.00" Descripcion="CONECTOR NEUTRAL SIN AGUJA + EXTENSION REF  7N8378 - CLASE IIA" PrecioUnitario="23000.00" CodigoTipoPrecio="01" ValorTotalItem="23000.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="23000.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001001860" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="11300.00" Descripcion="APOSITO TEGADERM IV 6.5X7CM REF.1683 3M - CLASE IIA" PrecioUnitario="11300.00" CodigoTipoPrecio="01" ValorTotalItem="11300.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="11300.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001001454" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="3.00" UnidadMedida="94" SubTotalLinea="10200.00" Descripcion="JERINGA PRELLENADA SOLUCION SALINA 0.9% X 5ML - CLASE IIA" PrecioUnitario="3400.00" CodigoTipoPrecio="01" ValorTotalItem="10200.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="10200.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001001984" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="2.00" UnidadMedida="94" SubTotalLinea="150600.00" Descripcion="EQUIPO BOMBA BAXTER CLEARLINK 2C8401 - CLASE IIA" PrecioUnitario="75300.00" CodigoTipoPrecio="01" ValorTotalItem="150600.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="150600.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001002022" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="3.00" UnidadMedida="94" SubTotalLinea="17700.00" Descripcion="CLORURO DE SODIO 0.9% X 50 ML SOLUCION INYECTABLE §" PrecioUnitario="5900.00" CodigoTipoPrecio="01" ValorTotalItem="17700.00" Ocultar="True" Agrupador="MEDICAMENTOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="17700.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="29523-02" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="3.00" UnidadMedida="94" SubTotalLinea="5400.00" Descripcion="JERINGA DESECHABLE 10 CC 3 PARTES - CLASE IIA" PrecioUnitario="1800.00" CodigoTipoPrecio="01" ValorTotalItem="5400.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="5400.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001000055" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="3.00" UnidadMedida="94" SubTotalLinea="7500.00" Descripcion="AGUA ESTERIL 10 ML SOLUCION INYECTABLE §" PrecioUnitario="2500.00" CodigoTipoPrecio="01" ValorTotalItem="7500.00" Ocultar="True" Agrupador="MEDICAMENTOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="7500.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="22501-05" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="2.00" UnidadMedida="94" SubTotalLinea="6200.00" Descripcion="TAPON COMBI - CLASE IIA" PrecioUnitario="3100.00" CodigoTipoPrecio="01" ValorTotalItem="6200.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="6200.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001000630" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="3.00" UnidadMedida="94" SubTotalLinea="35100.00" Descripcion="CEFALOTINA 1 G POLVO PARA SOLUCION INYECTABLE §" PrecioUnitario="11700.00" CodigoTipoPrecio="01" ValorTotalItem="35100.00" Ocultar="True" Agrupador="MEDICAMENTOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="35100.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19993042-02" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="400.00" Descripcion="NAPROXENO 250 MG TABLETA/CAPSULA" PrecioUnitario="400.00" CodigoTipoPrecio="01" ValorTotalItem="400.00" Ocultar="True" Agrupador="MEDICAMENTOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="400.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="17145-01" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="7600.00" Descripcion="RINGER LACTATO X 500 ML SOLUCION INYECTABLE §" PrecioUnitario="7600.00" CodigoTipoPrecio="01" ValorTotalItem="7600.00" Ocultar="True" Agrupador="MEDICAMENTOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="7600.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19942561-03" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Totales Bruto="702900.00" BaseImponible="702900.00" BrutoMasImpuestos="702900.00" Descuentos="0.00" Impuestos="0.00" General="581298.00" Anticipo="121602.00" TotalDescuentosLineas="0" TotalOtros1="0">
+	</Totales>
+	<Extensiones>
+		<DatosAdicionales>
+			<campoAdicional Nombre="OBSERVACION_CAMPO_ADICIONAL" Valor="NOTA: - - AUTORIZACION: 253764912192 PACIENTE: TI-1080050686-JUAN FELIPE SOTO VALLEJO- INGRESO: 6 - ABONO PACIENTE: 121602.00 EN PESOS"/>
+			<CampoAdicional Nombre="VALORAPAGARASEGURADORA" Valor="581298.00"/>
+			<CampoAdicional Nombre="CODIGOIPS" Valor="520010028301"/>
+			<CampoAdicional Nombre="REGIMEN" Valor="aki va resolucion"/>
+			<CampoAdicional Nombre="CIUDAD" Valor="BOGOTA, DC"/>
+			<CampoAdicional Nombre="DEPARTAMENTO" Valor="BOGOTA D.C."/>
+			<CampoAdicional Nombre="TELEFONO" Valor="7336400"/>
+			<CampoAdicional Nombre="DIRECCION" Valor="CARRERA 32 N° 21A - 30"/>
+			<CampoAdicional Nombre="NOMBREPACIENTE" Valor="JUAN FELIPE SOTO VALLEJO"/>
+			<CampoAdicional Nombre="TIPODOCPACIENTE" Valor="TI"/>
+			<CampoAdicional Nombre="IDPACIENTE" Valor="1080050686"/>
+			<CampoAdicional Nombre="Tipo de Usuario" Valor=""/>
+			<CampoAdicional Nombre="DIRECCIONPACIENTE" Valor="MZ 11 CAS 11 QUINTAS DE SAN PEDRO"/>
+			<CampoAdicional Nombre="TELEFONOPACIENTE" Valor="3155458704"/>
+			<CampoAdicional Nombre="MUNICIPIOPACIENTE" Valor="SAN JUAN DE PASTO"/>
+			<CampoAdicional Nombre="CARNET" Valor=""/>
+			<CampoAdicional Nombre="EDAD" Valor="17"/>
+			<CampoAdicional Nombre="AMD" Valor="AÑOS"/>
+			<CampoAdicional Nombre="FECHADECORTE" Valor="21-02-2025"/>
+			<CampoAdicional Nombre="NUMHISTORIA" Valor="1080050686"/>
+			<CampoAdicional Nombre="P.P" Valor="131"/>
+			<CampoAdicional Nombre="P.S" Valor="53"/>
+			<CampoAdicional Nombre="SERVICIO" Valor="HOSPITALIZACION"/>
+			<CampoAdicional Nombre="DIASESTANCIA" Valor="1"/>
+			<CampoAdicional Nombre="CONTRATO" Valor="ICLOCU-0079 - EPS SANITAS SAS - EN INTERVENCION BAJO LA MEDIDA DE TOMA DE POSESION - REG CONTRIBUTIVO *C*"/>
+			<CampoAdicional Nombre="FACTURADOR" Valor="CRISTHIAN CAMILO MONTENEGRO"/>
+			<CampoAdicional Nombre="Fecha_Ingreso" Valor="20-02-2025"/>
+			<CampoAdicional Nombre="Fecha_Egreso" Valor="21-02-2025"/>
+			<CampoAdicional Nombre="FECHAINGRESO" Valor="20-02-2025"/>
+			<CampoAdicional Nombre="FECHEGRESO" Valor="21-02-2025"/>
+			<CampoAdicional Nombre="PLAZO" Valor="30 DIAS"/>
+			<CampoAdicional Nombre="SEDE" Valor="EMPRESA 1 SEDE 001 HOSPITAL INFANTIL LOS ANGELES"/>
+			<campoAdicional Nombre="DIRECCIONSEDE" Valor="CARRERA 32 No. 21A-30"/>
+			<CampoAdicional Nombre="COPAGO" Valor="121602.00" NombreEsquema="0" IDEsquema="0"/>
+			<campoAdicional Nombre="AUTORIZACION" Valor="253764912192"/>
+			<CampoAdicional Nombre="PLAZO" Valor="30 DIAS"/>
+			<CampoAdicional Nombre="VALORLETRASUSUARIO" Valor="CIENTOVEINTIUN MIL SEISCIENTOS DOS PESOS CON CERO CENTAVOS"/>
+			<CampoAdicional Nombre="SALDOPAGARUSUARIO" Valor="CERO PESOS CON CERO CENTAVOS"/>
+			<CampoAdicional Nombre="VALORAPAGARASEGURADORA_LETRAS" Valor="QUINIENTOS OCHENTA Y UN MIL DOSCIENTOS NOVENTA Y OCHO PESOS CON CERO CENTAVOS"/>
+			<CampoAdicional Nombre="VALORSUSUARIO_NUMERO" Valor="121602.00"/>
+			<CampoAdicional Nombre="SALDOPAGARUSUARIO_NUMERO" Valor="0.00"/>
+			<CampoAdicional Nombre="SALDONOPAGADOXUSUARIO_NUMERO" Valor="0.00"/>
+			<CampoAdicional Nombre="RazonSocialRepGrafica" Valor="ENTIDAD PROMOTORA DE SALUD SANITAS S.A.S - EN INTERVENCION B"/>
+			<CampoAdicional Nombre="CUOTAMODERADORA" Valor="0"/>
+		</DatosAdicionales>
+		<!--datos Interoperabilidad-->
+		<Interoperabilidad URLAdjunto="">
+			<Grupo Nombre="Sector Salud">
+				<Categoria Nombre="JUAN FELIPE SOTO VALLEJO">
+					<CampoAdicional Nombre="CODIGO_PRESTADOR" Valor="5200100283" NombreEsquema="" IDEsquema=""/>
+					<CampoAdicional Nombre="MODALIDAD_PAGO" Valor="Pago por evento" NombreEsquema="salud_modalidad_pago.gc" IDEsquema="04"/>
+					<CampoAdicional Nombre="COBERTURA_PLAN_BENEFICIOS" Valor="Plan de beneficios en salud financiado por UPC" NombreEsquema="salud_cobertura.gc" IDEsquema="01"/>
+					<CampoAdicional Nombre="NUMERO_CONTRATO" Valor="ICLOCU-0079" NombreEsquema="" IDEsquema=""/>
+					<CampoAdicional Nombre="NUMERO_POLIZA" Valor="0" NombreEsquema="0" IDEsquema="0"/>
+				</Categoria>
+			</Grupo>
+		</Interoperabilidad>
+	</Extensiones>
+</Factura>

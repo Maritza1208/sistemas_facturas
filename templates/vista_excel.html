@@ -1,169 +1,258 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <title>Vista previa Excel actualizado</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #78879b;
-            padding: 40px 20px;
-            color: #444;
-        }
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background: #fff;
-            padding: 40px 50px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-        }
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-            font-weight: 700;
-            font-size: 2.4rem;
-            margin-bottom: 30px;
-        }
-        #buscador {
-            width: 100%;
-            padding: 12px 16px;
-            margin-bottom: 20px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-        }
-        table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 10px;
-            font-size: 1rem;
-        }
-        th, td {
-            padding: 14px 18px;
-            text-align: left;
-        }
-        th {
-            background-color: #e9ecef;
-            color: #34495e;
-            font-weight: 600;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-        }
-        tr {
-            background: #fafafa;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            border-radius: 8px;
-        }
-        tr:hover {
-            background-color: #d6eaf8;
-        }
-        td {
-            color: #555;
-            border-bottom: 1px solid #ddd;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vista previa Excel actualizado</title>
 
-        /* ✅ Color verde para facturas válidas */
-        tr.estado-valida {
-            background-color: #82d695 !important;
-        }
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        .btn {
-            display: block;
-            margin: 30px auto 0;
-            padding: 14px 30px;
-            background: linear-gradient(45deg, #28a745, #218838);
-            color: #fff;
-            font-weight: 600;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            box-shadow: 0 6px 15px rgba(40, 167, 69, 0.5);
-            transition: background 0.3s ease;
-            user-select: none;
-            text-align: center;
-            font-size: 1.1rem;
-        }
-        .btn:hover {
-            background: linear-gradient(45deg, #218838, #19692c);
-            box-shadow: 0 8px 18px rgba(25, 105, 44, 0.7);
-        }
-        .back {
-            text-align: center;
-            margin-top: 40px;
-        }
-        .back a {
-            color: #4b7bec;
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
-        }
-        .back a:hover {
-            color: #3752b4;
-            text-decoration: underline;
-        }
-        .mensaje {
-            text-align: center;
-            margin-top: 50px;
-            font-size: 1.25rem;
-            color: #6c757d;
-            font-weight: 500;
-            line-height: 1.4;
-        }
-    </style>
-    <script>
-        function filtrarTabla() {
-            const input = document.getElementById("buscador").value.toLowerCase();
-            const filas = document.querySelectorAll("tbody tr");
+  <style>
+    body {
+      margin: 0;
+      background: #e4e6e9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-            filas.forEach(fila => {
-                const texto = fila.textContent.toLowerCase();
-                fila.style.display = texto.includes(input) ? "" : "none";
-            });
-        }
-    </script>
+    /* === MENÚ LATERAL === */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100vh;
+      background: linear-gradient(180deg, #001429, #004085);
+      padding: 30px 20px;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+      color: #fff;
+      z-index: 1000;
+    }
+
+    .sidebar h5 {
+      font-size: 22px;
+      margin-bottom: 25px;
+      color: #fff;
+    }
+
+    .sidebar-btn {
+      display: block;
+      width: 100%;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-btn:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateX(5px);
+    }
+
+    .sidebar-btn i {
+      margin-right: 8px;
+    }
+
+    .container {
+      width: calc(100% - 260px);
+      margin: 40px 0 40px 260px;
+      background: linear-gradient(135deg, #6FB1FC, #cdd4da);
+      padding: 40px 50px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    /* Filas válidas en verde */
+    #tabla-general tbody tr.estado-valida {
+      background-color: #4aaf62 !important;
+    }
+    #tabla-general tbody tr.estado-valida td {
+      background-color: #489e5c !important;
+      color: #fff !important;
+      font-weight: bold;
+    }
+    #tabla-general tbody tr.estado-valida:hover td {
+      background-color: #48c764 !important;
+    }
+  </style>
 </head>
+
 <body>
-<div class="container">
-    <h1>📋 Vista Previa del Excel Actualizado</h1>
+    <div class="sidebar">
+      <h5 class="text-center"> Menú</h5>
+      <a href="{{ url_for('index') }}" class="sidebar-btn">
+        <i class="bi bi-house-fill"></i> Inicio
+      </a>
+            <a href="{{ url_for('resultados') }}" class="sidebar-btn">
+        <i class="bi bi-journal-text"></i> Resultados
+      </a>
+
+      <!--<a href="{{ url_for('corregir_y_enviar') }}" class="sidebar-btn">
+        <i class="bi bi-gear-fill"></i> Corrección Automática
+      </a>-->
+
+      <a href="{{ url_for('vista_excel') }}" class="sidebar-btn">
+        <i class="bi bi-eye-fill"></i> Vista Previa Excel
+      </a>
+
+      <form action="{{ url_for('descargar_excel_actualizado') }}" method="POST" class="d-inline">
+        <button class="sidebar-btn" type="submit" style="border:none; background:none; padding:0; color:inherit;">
+          <i class="bi bi-download"></i> Descargar Excel
+        </button>
+      </form>
+
+      <a href="{{ url_for('ver_reportes') }}" class="sidebar-btn">
+        <i class="bi bi-folder-fill"></i> Ver Reportes
+      </a>
+
+      <a href="{{ url_for('ver_manual') }}" class="sidebar-btn">
+      <i class="bi bi-book-fill"></i> Manual de usuario
+      </a>
+
+    </div>
+
+  <div class="container">
+    <h1 class="text-center text-primary mb-4">📋 Vista Previa del Excel Actualizado</h1>
 
     {% if facturas %}
-        <input type="text" id="buscador" placeholder="🔍 Buscar factura, estado o descripción..." onkeyup="filtrarTabla()">
+      <input type="text" id="buscador" class="form-control form-control-lg mb-3"
+             placeholder="🔍 Buscar factura, ej: 1234,4567" onkeyup="filtrarTabla()">
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Factura</th>
-                    <th>Estado</th>
-                    <th>Descripción</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for f in facturas %}
-                    {% set clase = "estado-valida" if f.estado == "Válida" else "" %}
-                    <tr class="{{ clase }}">
-                        <td>{{ f.factura }}</td>
-                        <td>{{ f.estado }}</td>
-                        <td>{{ f.descripcion }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
+      <div id="resultados-busqueda"></div>
+
+      <div style="max-height:300px; overflow-y:auto;">
+        <table id="tabla-general" class="table table-striped table-hover align-middle mb-0">
+          <thead class="table-dark sticky-top">
+            <tr>
+              <th>Factura</th>
+              <th>Estado</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for f in facturas %}
+              {% set clase = "estado-valida" if f.estado == "Válida" else "" %}
+              <tr class="{{ clase }}">
+                <td>{{ f.factura }}</td>
+                <td>{{ f.estado }}</td>
+                <td>{{ f.descripcion }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
         </table>
+      </div>
 
-        <form method="POST" action="{{ url_for('descargar_excel_actualizado') }}">
-            <button class="btn" type="submit">📥 Descargar Excel Actualizado</button>
-        </form>
+      <!--<form method="POST" action="{{ url_for('descargar_excel_actualizado') }}">
+        <button class="btn btn-primary btn-lg d-block mx-auto mt-4" type="submit">
+          📥 Descargar Excel Actualizado
+        </button>
+      </form>-->
     {% else %}
-        <div class="mensaje">
-            ⚠️ Aún no se han corregido facturas automáticamente.<br />
-            Por favor realiza la corrección desde la página de resultados.
-        </div>
+      <div class="alert alert-warning text-center" role="alert">
+        ⚠️ Aún no se han corregido facturas automáticamente.<br />
+        Por favor realiza la corrección desde la página de resultados.
+      </div>
     {% endif %}
 
-    <div class="back">
-        <a href="{{ url_for('resultados') }}">⬅️ Volver a resultados</a>
+    <!--<div class="text-center mt-4">
+      <a href="{{ url_for('resultados') }}" class="btn btn-outline-secondary">⬅️ Volver a resultados</a>
     </div>
-</div>
+  </div>-->
+
+  <!-- 🔔 ALERTA SweetAlert2 -->
+  {% if request.args.get('error_factura') %}
+  <script>
+    Swal.fire({
+      icon: 'warning',
+      title: 'Factura no corregida',
+      text: 'La factura {{ request.args.get("error_factura") }} aún no ha sido corregida.',
+      confirmButtonText: 'OK'
+    });
+  </script>
+  {% endif %}
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+        function filtrarTabla() {
+      const raw = document.getElementById("buscador").value.trim().toLowerCase();
+      const terms = raw.split(",").map(t => t.trim()).filter(Boolean);
+
+      const filas = document.querySelectorAll("#tabla-general tbody tr");
+      let visibleCount = 0;
+
+      filas.forEach(fila => {
+        const factura = fila.cells[0].textContent.trim().toLowerCase();
+        if (terms.length === 0) {
+          fila.style.display = "";
+          visibleCount++;
+          return;
+        }
+        const match = terms.some(term => factura === term || factura.includes(term));
+        fila.style.display = match ? "" : "none";
+        if (match) visibleCount++;
+      });
+
+      if (terms.length > 0 && visibleCount === 0) {
+        document.getElementById('resultados-busqueda').innerHTML = '';
+
+        // ✅ Nueva alerta clara:
+        Swal.fire({
+          icon: 'error',
+          title: 'Factura no encontrada',
+          text: `La factura ${terms.join(', ')} no existe o no está disponible.`,
+          confirmButtonText: 'OK'
+        });
+
+        document.getElementById('tabla-general').style.display = 'table';
+        return;
+      }
+
+      if (terms.length > 0 && visibleCount > 0) {
+        mostrarResultadosEspecificos(raw);
+        document.getElementById('tabla-general').style.display = 'none';
+      } else {
+        document.getElementById('resultados-busqueda').innerHTML = '';
+        document.getElementById('tabla-general').style.display = 'table';
+      }
+    }
+    function mostrarResultadosEspecificos(input) {
+      const ids = input.split(",").map(s => s.trim()).filter(s => s);
+      const cont = document.getElementById('resultados-busqueda');
+      if (!ids.length) {
+        cont.innerHTML = '';
+        return;
+      }
+      cont.innerHTML = `
+        <h2>📦 Descargas individuales</h2>
+        <table class="table">
+          <thead>
+            <tr><th>Factura</th><th>Acción</th></tr>
+          </thead>
+          <tbody id="body-resultados"></tbody>
+        </table>`;
+      const body = document.getElementById('body-resultados');
+      ids.forEach(id => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${id}</td>
+          <td>
+            <form method="GET" action="/descargar_factura/${id}">
+              <button type="submit" class="btn btn-success btn-sm">📥 Descargar archivos</button>
+            </form>
+          </td>`;
+        body.appendChild(tr);
+      });
+    }
+  </script>
 </body>
 </html>

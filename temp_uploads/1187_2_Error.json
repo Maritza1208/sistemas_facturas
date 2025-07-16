@@ -1,1 +1,18 @@
-{"ResultState":true,"ProcesoId":4042,"NumFactura":"SETT1187","CodigoUnicoValidacion":"bbfd61b5ebe2b31a85c84caa5103c24169d3b328fb6216f191b06c4a39059b569f69492a717973bdb9c3330b4e9b517b","FechaRadicacion":"2025-04-09T14:37:30.7086179+00:00","RutaArchivos":null,"ResultadosValidacion":[{"Clase":"NOTIFICACION","Codigo":"RVC019","Descripcion":"El código de CUPS se puede validar con el diagnóstico principal.","Observaciones":"Verificar tabla de referencia Dato (890375)","PathFuente":"usuarios[0].servicios.consultas[0].codConsulta","Fuente":"Rips"},{"Clase":"NOTIFICACION","Codigo":"RVC059","Descripcion":"El código de CUPS puede ser validado con el grupo de servicio, servicio, finalidad o causa.","Observaciones":"Verificar tabla de referencia CodConsulta (890375) - Finalidad (16)","PathFuente":"usuarios[0].servicios.consultas[0].codConsulta","Fuente":"Rips"}]}
+{
+	"ResultState": false,
+	"ProcesoId": 0,
+	"NumFactura": "0",
+	"CodigoUnicoValidacion": "No aplica a paquetes procesados en estado [RECHAZADO] o validaciones realizadas antes del envío al Ministerio de Salud y Protección Social",
+	"FechaRadicacion": "2025-03-31T20:40:04.2303465+00:00",
+	"RutaArchivos": null,
+	"ResultadosValidacion": [
+		{
+			"Clase": "RECHAZADO",
+			"Codigo": "FEV001",
+			"Descripcion": "Hay un error en la estructura del Xml en el aparatado [AttachedDocument]",
+			"Observaciones": "Error: There is an error in XML document (1, 1). - Error Técnico: Data at the root level is invalid. Line 1, position 1.",
+			"PathFuente": "",
+			"Fuente": "FacturaElectronica"
+		}
+	]
+}

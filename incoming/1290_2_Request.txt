@@ -1,0 +1,957 @@
+<Factura>
+	<Cabecera Numero="SETT1290" FechaEmision="2025-05-22" Vencimiento="2025-06-21" HoraEmision="10:53:07" MonedaFactura="COP" Observaciones="NOTA: - - AUTORIZACION: 257411849664 PACIENTE: RC-1084229005-JOSEPH SANTIAGO DIAZ PATIÑO- INGRESO: 2 - ABONO PACIENTE: 0.00 EN PESOS" TipoFactura="FACTURA-UBL" FormaDePago="2" LineasDeFactura="202" TipoOperacion="SS-CUFE" SubTipoOperacion="SS-CUFE" FormatoContingencia="" OrdenCompraVendedor ="" Ambiente="2">
+	</Cabecera>
+	<NumeracionDIAN NumeroResolucion="18760000001" FechaInicio="2019-01-19" FechaFin="2030-01-19" PrefijoNumeracion="SETT" ConsecutivoInicial="1" ConsecutivoFinal="5000000">
+	</NumeracionDIAN>
+	<PeriodoFacturado FechaInicio="2025-04-15" FechaFin="2025-05-22" HoraInicio="10:53:07" HoraFin="10:53:07">
+	</PeriodoFacturado>
+	<Notificacion Tipo="Mail" De="felectronicahila@gmail.com">
+		<Para>recepcionfecm@fe.epssanitas.com</Para>
+	</Notificacion>
+	<Emisor TipoPersona="1" TipoRegimen="49" TipoIdentificacion="31" NumeroIdentificacion="891200240" DV="2" RazonSocial="HOSPITAL INFANTIL LOS ANGELES" NumeroMatriculaMercantil="891200240" NombreComercial="HOSPITAL INFANTIL LOS ANGELES">
+		<CodigosCIIU>
+			<CIIU>7020</CIIU>
+			<CIIU>5140</CIIU>
+		</CodigosCIIU>
+		<Direccion CodigoMunicipio="52001" NombreCiudad="SAN JUAN DE PASTO" CodigoPostal="52001" NombreDepartamento="NARIÑO" CodigoDepartamento="52" CodigoDane="52001" Direccion="CR 37 11 34 LA CASTELLANA">
+		</Direccion>
+		<ObligacionesEmisor>
+			<CodigoObligacion>R-99-PN</CodigoObligacion>
+		</ObligacionesEmisor>
+		<DireccionFiscal CodigoMunicipio="52001" NombreCiudad="SAN JUAN DE PASTO" CodigoPostal="52001" NombreDepartamento="NARIÑO" CodigoDepartamento="52" CodigoDane="52001" Direccion="CR 37 11 34 LA CASTELLANA">
+		</DireccionFiscal>
+		<TributoEmisor CodigoTributo="" NombreTributo="NIT">
+		</TributoEmisor>
+		<Contacto Nombre="DORIS SARASTY RODRIGUEZ" Telefono="3185579501" Telfax="7311533" Email="felectronicahila@gmail.com" Notas="">
+		</Contacto>
+	</Emisor>
+	<Cliente TipoPersona="1" TipoRegimen="48" TipoIdentificacion="31" NumeroIdentificacion="800251440" DV="6" NombreComercial="ENTIDAD PROMOTORA DE SALUD SANITAS S.A." RazonSocial="ENTIDAD PROMOTORA DE SALUD SANITAS S.A." NumeroMatriculaMercantil="800251440">
+		<!--NO incluidos por la DIAN, Si por UBL-->
+		<Direccion CodigoMunicipio="11001" NombreCiudad="BOGOTA, DC" CodigoPostal="11001" NombreDepartamento="BOGOTA D.C." CodigoDepartamento="11" CodigoDane="11001" Direccion="CLL 100 11B-95" CodigoPais="CO" NombrePais="Colombia" IdiomaPais="es">
+		</Direccion>
+		<ObligacionesCliente>
+			<CodigoObligacion>O-13</CodigoObligacion>
+		</ObligacionesCliente>
+		<DireccionFiscal CodigoMunicipio="11001" NombreCiudad="BOGOTA, DC" CodigoPostal="11001" NombreDepartamento="BOGOTA D.C." CodigoDepartamento="11" Direccion="CLL 100 11B-95" CodigoPais="CO" NombrePais="Colombia" IdiomaPais="es">
+		</DireccionFiscal>
+		<Contacto Nombre="" Telefono="6466060" Telfax="" Email="recepcionfecm@fe.epssanitas.com" Notas="">
+		</Contacto>
+		<TributoCliente CodigoTributo="" NombreTributo="NIT">
+		</TributoCliente>
+	</Cliente>
+	<MediosDePago CodigoMedioPago="1" FormaDePago="2" Vencimiento="2025-06-21">
+	</MediosDePago>
+	<Anticipos>
+		<Anticipo IDPago="05" ConceptoPago="05" ValorPagoAnticipo="0.00" MonedaAnticipo="COP" FechaRecepcion="2025-05-22" FechaPago="2025-05-22" HoraPago="10:53:07" InstruccionesAnticipos="VALOR PAGADO POR EL USUARIO">
+		</Anticipo>
+	</Anticipos>
+	<Impuestos>
+		<!--IMPUESTOS GENERALES DE LA FACTURA-->
+		<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+			<Subtotal ValorBase="16925201.00" Valor="0.00" Porcentaje="0.00">
+			</Subtotal>
+		</Impuesto>
+	</Impuestos>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="81200.00" Descripcion="CONSULTA DE URGENCIAS" PrecioUnitario="81200.00" CodigoTipoPrecio="01" ValorTotalItem="81200.00" Ocultar="True" Agrupador="CONSULTAS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="81200.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="39145" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="6.00" UnidadMedida="94" SubTotalLinea="196800.00" Descripcion="CUADRO HEMATICO O HEMOGRAMA HEMATOCRITO Y LEUCOGRAMA" PrecioUnitario="32800.00" CodigoTipoPrecio="01" ValorTotalItem="196800.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="196800.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19304" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="14900.00" Descripcion="CLORURO" PrecioUnitario="14900.00" CodigoTipoPrecio="01" ValorTotalItem="14900.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="14900.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19224" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="46800.00" Descripcion="POTASIO" PrecioUnitario="46800.00" CodigoTipoPrecio="01" ValorTotalItem="46800.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="46800.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19792" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="2.00" UnidadMedida="94" SubTotalLinea="77600.00" Descripcion="SODIO" PrecioUnitario="38800.00" CodigoTipoPrecio="01" ValorTotalItem="77600.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="77600.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19891" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="4.00" UnidadMedida="94" SubTotalLinea="266400.00" Descripcion="PROTEINA C REACTIVA PCR PRUEBA CUANTITATIVA DE ALTA PRECISION" PrecioUnitario="66600.00" CodigoTipoPrecio="01" ValorTotalItem="266400.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="266400.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19806" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="17400.00" Descripcion="GLUCOSA SEMIAUTOMATIZADA [GLUCOMETRIA]" PrecioUnitario="17400.00" CodigoTipoPrecio="01" ValorTotalItem="17400.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="17400.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="903883" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="11900.00" Descripcion="MORFOLOGIA GLOBULAR (SERIE ROJA)" PrecioUnitario="11900.00" CodigoTipoPrecio="01" ValorTotalItem="11900.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="11900.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19731" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="34400.00" Descripcion="TRANSAMINASA PIRUVICA / ALAT" PrecioUnitario="34400.00" CodigoTipoPrecio="01" ValorTotalItem="34400.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="34400.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19934" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="34400.00" Descripcion="TRANSAMINASA OXALACETICA / ASA" PrecioUnitario="34400.00" CodigoTipoPrecio="01" ValorTotalItem="34400.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="34400.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19933" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="120600.00" Descripcion="TOXOPLASMA ANTICUERPO G" PrecioUnitario="120600.00" CodigoTipoPrecio="01" ValorTotalItem="120600.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="120600.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19928" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="120600.00" Descripcion="TOXOPLASMA ANTICUERPO M" PrecioUnitario="120600.00" CodigoTipoPrecio="01" ValorTotalItem="120600.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="120600.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19929" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="87700.00" Descripcion="CITOMEGALOVIRUS ANTICUERPOS G" PrecioUnitario="87700.00" CodigoTipoPrecio="01" ValorTotalItem="87700.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="87700.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19207" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="87700.00" Descripcion="CITOMEGALOVIRUS ANTICUERPOS M" PrecioUnitario="87700.00" CodigoTipoPrecio="01" ValorTotalItem="87700.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="87700.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19211" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="2.00" UnidadMedida="94" SubTotalLinea="244800.00" Descripcion="ANTICUERPOS ANTI BAAR  EPSTEIN" PrecioUnitario="122400.00" CodigoTipoPrecio="01" ValorTotalItem="244800.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="244800.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19088" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="3.00" UnidadMedida="94" SubTotalLinea="1072200.00" Descripcion="CUANTITATIVA PROCALCITONINA" PrecioUnitario="357400.00" CodigoTipoPrecio="01" ValorTotalItem="1072200.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="1072200.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="906841" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="15800.00" Descripcion="NITROGENO UREICO" PrecioUnitario="15800.00" CodigoTipoPrecio="01" ValorTotalItem="15800.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="15800.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19749" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="19000.00" Descripcion="suero, orina y otros" PrecioUnitario="19000.00" CodigoTipoPrecio="01" ValorTotalItem="19000.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="19000.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19290" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="109400.00" Descripcion="RADIOGRAFIA DE ABDOMEN SIMPLE" PrecioUnitario="109400.00" CodigoTipoPrecio="01" ValorTotalItem="109400.00" Ocultar="True" Agrupador="IMAGENES DIAGNOSTICAS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="109400.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="21301" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="139900.00" Descripcion="Dengue ANTICUERPOS TOTALES" PrecioUnitario="139900.00" CodigoTipoPrecio="01" ValorTotalItem="139900.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="139900.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19144" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="93900.00" Descripcion="RADIOGRAFIA DE TORAX (PA O P A Y LATERAL)" PrecioUnitario="93900.00" CodigoTipoPrecio="01" ValorTotalItem="93900.00" Ocultar="True" Agrupador="IMAGENES DIAGNOSTICAS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="93900.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="21201" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="2.00" UnidadMedida="94" SubTotalLinea="187200.00" Descripcion="HEMOCULTIVO" PrecioUnitario="93600.00" CodigoTipoPrecio="01" ValorTotalItem="187200.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="187200.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19514" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="3.00" UnidadMedida="94" SubTotalLinea="51000.00" Descripcion="GRAM TINCION Y LECTURA (CUALQUIER MUESTRA)" PrecioUnitario="17000.00" CodigoTipoPrecio="01" ValorTotalItem="51000.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="51000.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19497" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="20900.00" Descripcion="PARCIAL DE ORINA, INCLUidO SEDIMENTO" PrecioUnitario="20900.00" CodigoTipoPrecio="01" ValorTotalItem="20900.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="20900.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19775" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="332700.00" Descripcion="ECOGRAFIA ABDOMEN TOTAL INCLUYE HIGADO PANCREAS VESICULA VIAS BILIARES RIÑONES BAZO GRANDES VASOS PELVIS Y FLANCOS" PrecioUnitario="332700.00" CodigoTipoPrecio="01" ValorTotalItem="332700.00" Ocultar="True" Agrupador="IMAGENES DIAGNOSTICAS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="332700.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="31109" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="2.00" UnidadMedida="94" SubTotalLinea="215800.00" Descripcion="ANTIBIOGRAMA CONCENTRACIÓN MÍNIMA INHIBITORIA METODO AUTOMATIZADO" PrecioUnitario="107900.00" CodigoTipoPrecio="01" ValorTotalItem="215800.00" Ocultar="True" Agrupador="LABORATORIOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="215800.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="901002" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="175300.00" Descripcion="INTERCONSULTA POR ESPECIALISTA EN INFECTOLOGÍA" PrecioUnitario="175300.00" CodigoTipoPrecio="01" ValorTotalItem="175300.00" Ocultar="True" Agrupador="CONSULTAS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="175300.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="890454" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="33700.00" Descripcion="VALORACION POR PSICOLOGO" PrecioUnitario="33700.00" CodigoTipoPrecio="01" ValorTotalItem="33700.00" Ocultar="True" Agrupador="CONSULTAS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="33700.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="35102" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="12.00" UnidadMedida="94" SubTotalLinea="6369600.00" Descripcion="HABITACION UNIPERSONAL" PrecioUnitario="530800.00" CodigoTipoPrecio="01" ValorTotalItem="6369600.00" Ocultar="True" Agrupador="ESTANCIAS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="6369600.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="38131" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="6.00" UnidadMedida="94" SubTotalLinea="2163000.00" Descripcion="HABITACION DE CUATRO O MAS CAMAS" PrecioUnitario="360500.00" CodigoTipoPrecio="01" ValorTotalItem="2163000.00" Ocultar="True" Agrupador="ESTANCIAS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="2163000.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="38134" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="17.00" UnidadMedida="94" SubTotalLinea="1404200.00" Descripcion="Atención diaria intrahospitalaria, por el especialista tratante, del paciente no quirúrgico u obstétrico" PrecioUnitario="82600.00" CodigoTipoPrecio="01" ValorTotalItem="1404200.00" Ocultar="True" Agrupador="CONSULTAS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="1404200.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="39130" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="78900.00" Descripcion="Interconsulta médica especializada ambulatoria o intrahospitalaria en pediatria" PrecioUnitario="78900.00" CodigoTipoPrecio="01" ValorTotalItem="78900.00" Ocultar="True" Agrupador="CONSULTAS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="78900.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="39140" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="6.00" UnidadMedida="94" SubTotalLinea="45600.00" Descripcion="RINGER LACTATO X 500 ML SOLUCION INYECTABLE §" PrecioUnitario="7600.00" CodigoTipoPrecio="01" ValorTotalItem="45600.00" Ocultar="True" Agrupador="MEDICAMENTOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="45600.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19942561-03" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="13.00" UnidadMedida="94" SubTotalLinea="136500.00" Descripcion="ONDANSETRON 4 MG/2 ML SOLUCION INYECTABLE" PrecioUnitario="10500.00" CodigoTipoPrecio="01" ValorTotalItem="136500.00" Ocultar="True" Agrupador="MEDICAMENTOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="136500.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="28203-02" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="6.00" UnidadMedida="94" SubTotalLinea="141000.00" Descripcion="OMEPRAZOL 40 MG POLVO PARA SOLUCION INYECTABLE §" PrecioUnitario="23500.00" CodigoTipoPrecio="01" ValorTotalItem="141000.00" Ocultar="True" Agrupador="MEDICAMENTOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="141000.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19922566-06" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="4.00" UnidadMedida="94" SubTotalLinea="23200.00" Descripcion="CATETER IV PERIFERICO NO 22 - CLASE IIA" PrecioUnitario="5800.00" CodigoTipoPrecio="01" ValorTotalItem="23200.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="23200.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001000026" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="4.00" UnidadMedida="94" SubTotalLinea="45200.00" Descripcion="APOSITO TEGADERM IV 6.5X7CM REF.1683 3M - CLASE IIA" PrecioUnitario="11300.00" CodigoTipoPrecio="01" ValorTotalItem="45200.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="45200.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001001454" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="21.00" UnidadMedida="94" SubTotalLinea="71400.00" Descripcion="JERINGA PRELLENADA SOLUCION SALINA 0.9% X 5ML - CLASE IIA" PrecioUnitario="3400.00" CodigoTipoPrecio="01" ValorTotalItem="71400.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="71400.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001001984" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="4.00" UnidadMedida="94" SubTotalLinea="78400.00" Descripcion="CONECTOR NEUTRAL + MICROEXTENSION REF  7N8300 - CLASE IIA" PrecioUnitario="19600.00" CodigoTipoPrecio="01" ValorTotalItem="78400.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="78400.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001002251" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="7.00" UnidadMedida="94" SubTotalLinea="527100.00" Descripcion="EQUIPO BOMBA BAXTER CLEARLINK 2C8401 - CLASE IIA" PrecioUnitario="75300.00" CodigoTipoPrecio="01" ValorTotalItem="527100.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="527100.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001002022" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="49.00" UnidadMedida="94" SubTotalLinea="88200.00" Descripcion="JERINGA DESECHABLE 10 CC 3 PARTES - CLASE IIA" PrecioUnitario="1800.00" CodigoTipoPrecio="01" ValorTotalItem="88200.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="88200.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001000055" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="2.00" UnidadMedida="94" SubTotalLinea="14200.00" Descripcion="CLORURO DE SODIO 0.9% X 500 ML SOLUCION INYECTABLE §" PrecioUnitario="7100.00" CodigoTipoPrecio="01" ValorTotalItem="14200.00" Ocultar="True" Agrupador="MEDICAMENTOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="14200.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19932754-02" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="3.00" UnidadMedida="94" SubTotalLinea="11700.00" Descripcion="ACETAMINOFEN 150 MG/5ML JARABE X 60 ML" PrecioUnitario="3900.00" CodigoTipoPrecio="01" ValorTotalItem="11700.00" Ocultar="True" Agrupador="MEDICAMENTOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="11700.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="207411-04" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="9.00" UnidadMedida="94" SubTotalLinea="27900.00" Descripcion="TAPON COMBI - CLASE IIA" PrecioUnitario="3100.00" CodigoTipoPrecio="01" ValorTotalItem="27900.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="27900.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001000630" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="14.00" UnidadMedida="94" SubTotalLinea="82600.00" Descripcion="CLORURO DE SODIO 0.9% X 50 ML SOLUCION INYECTABLE §" PrecioUnitario="5900.00" CodigoTipoPrecio="01" ValorTotalItem="82600.00" Ocultar="True" Agrupador="MEDICAMENTOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="82600.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="29523-02" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="2.00" UnidadMedida="94" SubTotalLinea="26400.00" Descripcion="NAPROXENO 125 MG/5 ML SUSPENSION ORAL X 80 ML" PrecioUnitario="13200.00" CodigoTipoPrecio="01" ValorTotalItem="26400.00" Ocultar="True" Agrupador="MEDICAMENTOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="26400.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19948281-04" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="11.00" UnidadMedida="94" SubTotalLinea="17600.00" Descripcion="JERINGA DESECHABLE 5 CC 3 PARTES - CLASE IIA" PrecioUnitario="1600.00" CodigoTipoPrecio="01" ValorTotalItem="17600.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="17600.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001000054" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="2000.00" Descripcion="SONDA NELATON NO. 12 - CLASE IIA" PrecioUnitario="2000.00" CodigoTipoPrecio="01" ValorTotalItem="2000.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="2000.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001000014" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="2500.00" Descripcion="JERINGA DESECHABLE 20 CC - CLASE IIA" PrecioUnitario="2500.00" CodigoTipoPrecio="01" ValorTotalItem="2500.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="2500.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001000241" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="7200.00" Descripcion="CLORURO DE SODIO 0.9% X 250 ML SOLUCION INYECTABLE §" PrecioUnitario="7200.00" CodigoTipoPrecio="01" ValorTotalItem="7200.00" Ocultar="True" Agrupador="MEDICAMENTOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="7200.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19932754-03" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="27701.00" Descripcion="POLIETILENGLICOL 3350 POLVO PARA SOLUCION ORAL X 160 G" PrecioUnitario="27701.00" CodigoTipoPrecio="01" ValorTotalItem="27701.00" Ocultar="True" Agrupador="MEDICAMENTOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="27701.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="20126621-01" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="14500.00" Descripcion="IBUPROFENO 100 MG/5 ML SUSPENSION ORAL X 120 ML" PrecioUnitario="14500.00" CodigoTipoPrecio="01" ValorTotalItem="14500.00" Ocultar="True" Agrupador="MEDICAMENTOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="14500.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="20011525-01" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="29.00" UnidadMedida="94" SubTotalLinea="1287600.00" Descripcion="CEFTRIAXONA 1 G POLVO PARA SOLUCION INYECTABLE §" PrecioUnitario="44400.00" CodigoTipoPrecio="01" ValorTotalItem="1287600.00" Ocultar="True" Agrupador="MEDICAMENTOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="1287600.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="21382-01" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="34.00" UnidadMedida="94" SubTotalLinea="115600.00" Descripcion="JERINGA PRELLENADA SOLUCION SALINA 0.9% X 3ML - CLASE IIA" PrecioUnitario="3400.00" CodigoTipoPrecio="01" ValorTotalItem="115600.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="115600.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001001983" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="40.00" UnidadMedida="94" SubTotalLinea="204000.00" Descripcion="CLORURO DE SODIO 0.9% X 25 ML SOLUCION INYECTABLE §" PrecioUnitario="5100.00" CodigoTipoPrecio="01" ValorTotalItem="204000.00" Ocultar="True" Agrupador="MEDICAMENTOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="204000.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="29523-01" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="1400.00" Descripcion="JERINGA DESECHABLE 3 CC 3 PARTES - CLASE IIA" PrecioUnitario="1400.00" CodigoTipoPrecio="01" ValorTotalItem="1400.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="1400.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001000053" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Totales Bruto="16925201.00" BaseImponible="16925201.00" BrutoMasImpuestos="16925201.00" Descuentos="0.00" Impuestos="0.00" General="16925201.00" Anticipo="0.00" TotalDescuentosLineas="0" TotalOtros1="0">
+	</Totales>
+	<Extensiones>
+		<DatosAdicionales>
+			<campoAdicional Nombre="OBSERVACION_CAMPO_ADICIONAL" Valor="NOTA: - - AUTORIZACION: 257411849664 PACIENTE: RC-1084229005-JOSEPH SANTIAGO DIAZ PATIÑO- INGRESO: 2 - ABONO PACIENTE: 0.00 EN PESOS"/>
+			<CampoAdicional Nombre="VALORAPAGARASEGURADORA" Valor="16925201.00"/>
+			<CampoAdicional Nombre="CODIGOIPS" Valor="520010028301"/>
+			<CampoAdicional Nombre="REGIMEN" Valor="aki va resolucion"/>
+			<CampoAdicional Nombre="CIUDAD" Valor="BOGOTA, DC"/>
+			<CampoAdicional Nombre="DEPARTAMENTO" Valor="BOGOTA D.C."/>
+			<CampoAdicional Nombre="TELEFONO" Valor="7336400"/>
+			<CampoAdicional Nombre="DIRECCION" Valor="CARRERA 32 N° 21A - 30"/>
+			<CampoAdicional Nombre="NOMBREPACIENTE" Valor="JOSEPH SANTIAGO DIAZ PATIÑO"/>
+			<CampoAdicional Nombre="TIPODOCPACIENTE" Valor="RC"/>
+			<CampoAdicional Nombre="IDPACIENTE" Valor="1084229005"/>
+			<CampoAdicional Nombre="Tipo de Usuario" Valor=""/>
+			<CampoAdicional Nombre="DIRECCIONPACIENTE" Valor="JAMONDINO CENTRO"/>
+			<CampoAdicional Nombre="TELEFONOPACIENTE" Valor="3205633589"/>
+			<CampoAdicional Nombre="MUNICIPIOPACIENTE" Valor="SAN JUAN DE PASTO"/>
+			<CampoAdicional Nombre="CARNET" Valor=""/>
+			<CampoAdicional Nombre="EDAD" Valor="5"/>
+			<CampoAdicional Nombre="AMD" Valor="AÑOS"/>
+			<CampoAdicional Nombre="FECHADECORTE" Valor="03-05-2025"/>
+			<CampoAdicional Nombre="NUMHISTORIA" Valor="1084229005"/>
+			<CampoAdicional Nombre="P.P" Valor="136"/>
+			<CampoAdicional Nombre="P.S" Valor="53"/>
+			<CampoAdicional Nombre="SERVICIO" Valor="HOSPITALIZACION"/>
+			<CampoAdicional Nombre="DIASESTANCIA" Valor="18"/>
+			<CampoAdicional Nombre="CONTRATO" Valor="ICLOCU-0079 - EPS SANITAS SAS - EN INTERVENCION BAJO LA MEDIDA DE TOMA DE POSESION - REG SUBSIDIADO *C*"/>
+			<CampoAdicional Nombre="FACTURADOR" Valor="CRISTHIAN CAMILO MONTENEGRO"/>
+			<CampoAdicional Nombre="Fecha_Ingreso" Valor="15-04-2025"/>
+			<CampoAdicional Nombre="Fecha_Egreso" Valor="03-05-2025"/>
+			<CampoAdicional Nombre="FECHAINGRESO" Valor="15-04-2025"/>
+			<CampoAdicional Nombre="FECHEGRESO" Valor="03-05-2025"/>
+			<CampoAdicional Nombre="PLAZO" Valor="30 DIAS"/>
+			<CampoAdicional Nombre="SEDE" Valor="EMPRESA 1 SEDE 001 HOSPITAL INFANTIL LOS ANGELES"/>
+			<campoAdicional Nombre="DIRECCIONSEDE" Valor="CARRERA 32 No. 21A-30"/>
+			<CampoAdicional Nombre="COPAGO" Valor="0" NombreEsquema="0" IDEsquema="0"/>
+			<campoAdicional Nombre="AUTORIZACION" Valor="257411849664"/>
+			<CampoAdicional Nombre="PLAZO" Valor="30 DIAS"/>
+			<CampoAdicional Nombre="VALORLETRASUSUARIO" Valor="CERO PESOS CON CERO CENTAVOS"/>
+			<CampoAdicional Nombre="SALDOPAGARUSUARIO" Valor="CERO PESOS CON CERO CENTAVOS"/>
+			<CampoAdicional Nombre="VALORAPAGARASEGURADORA_LETRAS" Valor="DIECISEIS MILLONES NOVECIENTOSVEINTICINCO MIL DOSCIENTOS UN PESOS CON CERO CENTAVOS"/>
+			<CampoAdicional Nombre="VALORSUSUARIO_NUMERO" Valor="0.00"/>
+			<CampoAdicional Nombre="SALDOPAGARUSUARIO_NUMERO" Valor="0.00"/>
+			<CampoAdicional Nombre="SALDONOPAGADOXUSUARIO_NUMERO" Valor="0.00"/>
+			<CampoAdicional Nombre="RazonSocialRepGrafica" Valor="ENTIDAD PROMOTORA DE SALUD SANITAS S.A.S - EN INTERVENCION B"/>
+			<CampoAdicional Nombre="CUOTAMODERADORA" Valor="0"/>
+		</DatosAdicionales>
+		<!--datos Interoperabilidad-->
+		<Interoperabilidad URLAdjunto="">
+			<Grupo Nombre="Sector Salud">
+				<Categoria Nombre="JOSEPH SANTIAGO DIAZ PATIÑO">
+					<CampoAdicional Nombre="CODIGO_PRESTADOR" Valor="5200100283" NombreEsquema="" IDEsquema=""/>
+					<CampoAdicional Nombre="MODALIDAD_PAGO" Valor="Pago por evento" NombreEsquema="salud_modalidad_pago.gc" IDEsquema="04"/>
+					<CampoAdicional Nombre="COBERTURA_PLAN_BENEFICIOS" Valor="Plan de beneficios en salud financiado por UPC" NombreEsquema="salud_cobertura.gc" IDEsquema="01"/>
+					<CampoAdicional Nombre="NUMERO_CONTRATO" Valor="ICLOCU-0079" NombreEsquema="" IDEsquema=""/>
+					<CampoAdicional Nombre="NUMERO_POLIZA" Valor="0" NombreEsquema="0" IDEsquema="0"/>
+				</Categoria>
+			</Grupo>
+		</Interoperabilidad>
+	</Extensiones>
+</Factura>

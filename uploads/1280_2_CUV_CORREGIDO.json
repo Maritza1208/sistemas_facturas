@@ -1,11 +1,43 @@
 {
   "ResultState": true,
-  "ProcesoId": 7,
+  "ProcesoId": 1,
   "NumFactura": "SETT1280",
   "CodigoUnicoValidacion": "cb181bf75ae4872d46dffe02291c7bc6c1ceeeca8b029962f916d45ee90155b31f6ed50f0223f39eb197fb041dc328aa",
-  "FechaRadicacion": "2025-06-27T16:10:24.843172+00:00",
+  "FechaRadicacion": "2025-07-16T12:56:46.1242641+00:00",
   "RutaArchivos": null,
   "ResultadosValidacion": [
+    {
+      "Clase": "NOTIFICACION",
+      "Codigo": "FED129",
+      "Descripcion": "[Interoperabilidad.Group.Collection.AdditionalInformation.NUMERO_CONTRATO.Value] El apartado no existe o no tiene valor en el Xml del documento electrónico",
+      "Observaciones": "El Número de Contrato [222-1ES250001] no debe incluirse, ya que se proporcionó el Número de Póliza",
+      "PathFuente": "",
+      "Fuente": "FacturaElectronica"
+    },
+    {
+      "Clase": "NOTIFICACION",
+      "Codigo": "FED129",
+      "Descripcion": "[Interoperabilidad.Group.Collection.AdditionalInformation.NUMERO_CONTRATO.Value] El apartado no existe o no tiene valor en el Xml del documento electrónico",
+      "Observaciones": "El Número de Contrato [222-1ES250001] no debe incluirse, ya que se proporcionó el Número de Póliza",
+      "PathFuente": "",
+      "Fuente": "FacturaElectronica"
+    },
+    {
+      "Clase": "NOTIFICACION",
+      "Codigo": "FED131",
+      "Descripcion": "[Interoperabilidad.Group.Collection.AdditionalInformation.NUMERO_POLIZA.Value] El apartado no existe o no tiene valor en el Xml del documento electrónico",
+      "Observaciones": "El Número de Póliza [0] no debe incluirse, ya que se proporcionó el Número de Contrato",
+      "PathFuente": "",
+      "Fuente": "FacturaElectronica"
+    },
+    {
+      "Clase": "NOTIFICACION",
+      "Codigo": "FED131",
+      "Descripcion": "[Interoperabilidad.Group.Collection.AdditionalInformation.NUMERO_POLIZA.Value] El apartado no existe o no tiene valor en el Xml del documento electrónico",
+      "Observaciones": "El Número de Póliza [0] no debe incluirse, ya que se proporcionó el Número de Contrato",
+      "PathFuente": "",
+      "Fuente": "FacturaElectronica"
+    },
     {
       "Clase": "NOTIFICACION",
       "Codigo": "RVC019",
@@ -18,7 +50,7 @@
       "Clase": "NOTIFICACION",
       "Codigo": "RVC051",
       "Descripcion": "La finalidad informada se puede validar con el sexo y la edad del usuario.",
-      "Observaciones": "Finalidad 15 - sexo del usuario M",
+      "Observaciones": "Finalidad 15 - Edad del usuario 9",
       "PathFuente": "usuarios[0].servicios.procedimientos[0].finalidadTecnologiaSalud",
       "Fuente": "Rips"
     },
@@ -26,25 +58,9 @@
       "Clase": "NOTIFICACION",
       "Codigo": "RVC051",
       "Descripcion": "La finalidad informada se puede validar con el sexo y la edad del usuario.",
-      "Observaciones": "Finalidad 15 - Edad del usuario 9",
+      "Observaciones": "Finalidad 15 - sexo del usuario M",
       "PathFuente": "usuarios[0].servicios.procedimientos[0].finalidadTecnologiaSalud",
       "Fuente": "Rips"
-    },
-    {
-      "Clase": "NOTIFICACION",
-      "Codigo": "FED129",
-      "Descripcion": "[Interoperabilidad.Group.Collection.AdditionalInformation.NUMERO_CONTRATO.Value] El apartado no existe o no tiene valor en el Xml del documento electrónico",
-      "Observaciones": "El Número de Contrato [222-1ES250001] no debe incluirse, ya que se proporcionó el Número de Póliza",
-      "PathFuente": "",
-      "Fuente": "FacturaElectronica"
-    },
-    {
-      "Clase": "NOTIFICACION",
-      "Codigo": "FED129",
-      "Descripcion": "[Interoperabilidad.Group.Collection.AdditionalInformation.NUMERO_CONTRATO.Value] El apartado no existe o no tiene valor en el Xml del documento electrónico",
-      "Observaciones": "El Número de Contrato [222-1ES250001] no debe incluirse, ya que se proporcionó el Número de Póliza",
-      "PathFuente": "",
-      "Fuente": "FacturaElectronica"
     },
     {
       "Clase": "NOTIFICACION",
@@ -53,22 +69,6 @@
       "Observaciones": "Verificar tabla de referencia codProcedimiento (906858) - Finalidad (15)",
       "PathFuente": "usuarios[0].servicios.procedimientos[0].codProcedimiento",
       "Fuente": "Rips"
-    },
-    {
-      "Clase": "NOTIFICACION",
-      "Codigo": "FED131",
-      "Descripcion": "[Interoperabilidad.Group.Collection.AdditionalInformation.NUMERO_POLIZA.Value] El apartado no existe o no tiene valor en el Xml del documento electrónico",
-      "Observaciones": "El Número de Póliza [0] no debe incluirse, ya que se proporcionó el Número de Contrato",
-      "PathFuente": "",
-      "Fuente": "FacturaElectronica"
-    },
-    {
-      "Clase": "NOTIFICACION",
-      "Codigo": "FED131",
-      "Descripcion": "[Interoperabilidad.Group.Collection.AdditionalInformation.NUMERO_POLIZA.Value] El apartado no existe o no tiene valor en el Xml del documento electrónico",
-      "Observaciones": "El Número de Póliza [0] no debe incluirse, ya que se proporcionó el Número de Contrato",
-      "PathFuente": "",
-      "Fuente": "FacturaElectronica"
     }
   ]
 }

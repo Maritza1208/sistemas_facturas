@@ -1,287 +1,264 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>📊 Resultados de Clasificación de Facturas</title>
-    <style>
+  <meta charset="UTF-8">
+  <title>📊 Resultados de Clasificación</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- jQuery y DataTables -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" />
+  <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+
+  <style>
     body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: #76889c;
-        padding: 40px 20px;
-        color: #444;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f8fb;
     }
-    .container {
-        max-width: 1100px;
-        margin: auto;
-        background: #ffffff;
-        padding: 35px 50px;
-        border-radius: 12px;
-        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100vh;
+      background: linear-gradient(180deg, #001429, #004085);
+      padding: 30px 20px;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+      color: #fff;
     }
+
+    .sidebar h5 {
+      font-size: 22px;
+      margin-bottom: 25px;
+      color: #fff;
+    }
+
+    .sidebar-btn {
+      display: block;
+      width: 100%;
+      background: rgba(209, 106, 106, 0.1);
+      color: #fff;
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-btn:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateX(5px);
+    }
+
+    .sidebar-btn i {
+      margin-right: 8px;
+    }
+
+    /* Empuja el contenido principal */
+    .content {
+      margin-left: 240px;
+      padding: 30px;
+    }
+
     h1 {
-        text-align: center;
-        color: #2c3e50;
-        font-weight: 700;
-        margin-bottom: 12px;
-        font-size: 2.6rem;
+      color: #004085;
+      margin-bottom: 30px;
     }
-    h3 {
-        margin-top: 40px;
-        margin-bottom: 15px;
-        font-weight: 600;
-        font-size: 1.5rem;
+
+    .card + .card {
+      margin-top: 30px;
     }
-    p {
-        text-align: center;
-        font-size: 1.2rem;
-        color: #555;
-        margin-bottom: 25px;
-    }
-    table {
-        width: 100%;
-        margin-top: 15px;
-        border-collapse: separate;
-        border-spacing: 0 8px;
-        font-size: 1rem;
-    }
-    th, td {
-        padding: 14px 18px;
-        text-align: left;
-    }
-    th {
-        background-color: #ecf0f1;
-        color: #34495e;
-        font-weight: 600;
-        border-top-left-radius: 6px;
-        border-top-right-radius: 6px;
-    }
-    tr {
-        background-color: #fafafa;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        border-radius: 6px;
-    }
-    tr:hover {
-        background-color: #d6eaf8;
-    }
-    td {
-        border-bottom: 1px solid #ddd;
-        color: #555;
-    }
-    .error {
-        color: #e74c3c;
-    }
-    .success {
-        color: #27ae60;
-    }
-    .warning {
-        color: #f39c12;
-    }
-    .info {
-        color: #2980b9;
-    }
-    .btn {
-        display: inline-block;
-        margin: 10px 8px;
-        padding: 12px 28px;
-        background: linear-gradient(45deg, #6c63ff, #4b47d1);
-        color: #fff;
-        font-weight: 600;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        text-decoration: none;
-        transition: background 0.3s ease;
-        box-shadow: 0 4px 12px rgba(108, 99, 255, 0.4);
-        user-select: none;
-    }
-    .btn:hover {
-        background: linear-gradient(45deg, #5749d8, #2a269c);
-        box-shadow: 0 6px 16px rgba(87, 73, 216, 0.6);
-    }
-    .back-link {
-        text-align: center;
-        margin-top: 38px;
-    }
-    .back-link a {
-        color: #6c63ff;
-        font-weight: 600;
-        text-decoration: none;
-        font-size: 1.1rem;
-        transition: color 0.3s ease;
-    }
-    .back-link a:hover {
-        color: #4b47d1;
-        text-decoration: underline;
-    }
+
     #progressBar {
-        width: 100%;
-        background-color: #dfe6ee;
-        margin-top: 30px;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: inset 0 1px 3px rgba(255,255,255,0.5);
-        height: 28px;
+      height: 25px;
     }
-    #progressBarFill {
-        width: 0%;
-        height: 100%;
-        background: linear-gradient(90deg, #6c63ff, #4b47d1);
-        text-align: center;
-        line-height: 28px;
-        color: #fff;
-        font-weight: 700;
-        transition: width 0.4s ease;
-        border-radius: 10px 0 0 10px;
-        user-select: none;
-    }
-    #alerta, #tablaCorregidas {
-        text-align: center;
-        margin-top: 25px;
-        font-size: 1.15rem;
-        color: #34495e;
-        font-weight: 600;
-    }
-    ul {
-        text-align: left;
-        padding-left: 20px;
-        margin-top: 12px;
-        color: #555;
-    }
-</style>
+  </style>
 </head>
 <body>
-<div class="container">
-    <h1>📊 Resultados de Clasificación de Facturas</h1>
-    <p><strong>Columna detectada:</strong> {{ columna_detectada }}</p>
 
+  <!-- 🚀 MENÚ LATERAL -->
+  <div class="sidebar">
+    <h5 class="text-center">Menú</h5>
+    <a href="{{ url_for('index') }}" class="sidebar-btn">
+  <i class="bi bi-house-fill"></i> Inicio
+    </a>
+    <a href="#" id="btnCorregir" class="sidebar-btn">
+      <i class="bi bi-gear-fill"></i> Corrección Automática
+    </a>
+    <a href="{{ url_for('vista_excel') }}" class="sidebar-btn">
+      <i class="bi bi-eye-fill"></i> Vista Previa Excel
+    </a>
+    <form action="{{ url_for('descargar_excel_actualizado') }}" method="POST" class="d-inline">
+      <button class="sidebar-btn" type="submit" style="border:none; background:none; padding:0; color:inherit;">
+        <i class="bi bi-download"></i> Descargar Excel
+      </button>
+    </form>
+    <a href="{{ url_for('ver_reportes') }}" class="sidebar-btn">
+      <i class="bi bi-folder-fill"></i> Ver Reportes
+    </a>
+
+    <a href="{{ url_for('ver_manual') }}" class="sidebar-btn">
+      <i class="bi bi-book-fill"></i> Manual de usuario
+    </a>
+    <!--<a href="{{ url_for('index') }}" class="sidebar-btn">
+      <i class="bi bi-arrow-left-circle"></i> Volver al inicio
+    </a>-->
+  </div>
+
+  <!-- 🚀 CONTENIDO PRINCIPAL -->
+  <div class="content">
+    <h1 class="text-center"><i class="bi bi-clipboard-data"></i> Resultados de Clasificación de Facturas</h1>
+
+    <!-- Facturas con Error XML -->
     {% if facturas_con_error %}
-        <h3 class="error">❌ Facturas con Error XML</h3>
-        <table>
+    <div class="card border-danger shadow-sm">
+      <div class="card-header bg-danger text-white">
+        <i class="bi bi-x-circle-fill"></i> Facturas con Error XML
+      </div>
+      <div class="card-body">
+        <table id="tablaErroresXml" class="table table-striped table-hover">
+          <thead class="table-light">
             <tr><th>Factura</th><th>Descripción</th><th>Observación</th></tr>
-            {% for f in facturas_con_error %}
+          </thead>
+          <tbody>
+          {% for f in facturas_con_error %}
             <tr><td>{{ f.factura }}</td><td>{{ f.descripcion }}</td><td>{{ f.observacion }}</td></tr>
-            {% endfor %}
+          {% endfor %}
+          </tbody>
         </table>
+      </div>
+    </div>
     {% endif %}
 
+    <!-- Facturas Corregidas -->
     {% if facturas_con_cuv_corregido %}
-        <h3 class="success">✅ Facturas con CUV válido (ya corregidas)</h3>
-        <table>
-            <thead>
-                <tr><th>Factura</th><th>Descripción</th><th>Observación</th></tr>
-            </thead>
-            <tbody id="tbodyCuv">
-                {% for f in facturas_con_cuv_corregido %}
-                <tr>
-                    <td>{{ f.factura }}</td>
-                    <td>{{ f.descripcion }}</td>
-                    <td>{{ f.observacion }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% endif %}
-
-    {% if facturas_con_otros_errores %}
-        <h3 class="warning">❗ Facturas con otros errores o sin archivos</h3>
-        <table>
+    <div class="card border-success shadow-sm">
+      <div class="card-header bg-success text-white">
+        <i class="bi bi-check-circle-fill"></i> Facturas Corregidas (CUV Válido)
+      </div>
+      <div class="card-body">
+        <table id="tablaCuv" class="table table-striped table-hover">
+          <thead class="table-light">
             <tr><th>Factura</th><th>Descripción</th><th>Observación</th></tr>
-            {% for f in facturas_con_otros_errores %}
+          </thead>
+          <tbody id="tbodyCuv">
+          {% for f in facturas_con_cuv_corregido %}
             <tr><td>{{ f.factura }}</td><td>{{ f.descripcion }}</td><td>{{ f.observacion }}</td></tr>
-            {% endfor %}
+          {% endfor %}
+          </tbody>
         </table>
+      </div>
+    </div>
     {% endif %}
 
-    <div style="text-align: center; margin-top: 30px;">
-        <button id="btnCorregir" class="btn">⚙️ Corrección Automática</button>
-        <a href="{{ url_for('vista_excel') }}" class="btn">👁️ Vista Previa Excel</a>
-        <form action="{{ url_for('descargar_excel_actualizado') }}" method="POST" style="display: inline;">
-            <button class="btn">📥 Descargar Excel</button>
-        </form>
-        <a href="{{ url_for('ver_reportes') }}" class="btn">📁 Ver Reportes</a>
+    <!-- Otros Errores -->
+    {% if facturas_con_otros_errores %}
+    <div class="card border-warning shadow-sm">
+      <div class="card-header bg-warning text-dark">
+        <i class="bi bi-exclamation-triangle-fill"></i> Otros Errores o Sin Archivos
+      </div>
+      <div class="card-body">
+        <table id="tablaOtrosErrores" class="table table-striped table-hover">
+          <thead class="table-light">
+            <tr><th>Factura</th><th>Descripción</th><th>Observación</th></tr>
+          </thead>
+          <tbody>
+          {% for f in facturas_con_otros_errores %}
+            <tr><td>{{ f.factura }}</td><td>{{ f.descripcion }}</td><td>{{ f.observacion }}</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
+    {% endif %}
 
-    <div id="progressBar"><div id="progressBarFill">0%</div></div>
-    <div id="alerta"></div>
-    <div id="tablaCorregidas"></div>
-
-    <div class="back-link">
-        <a href="{{ url_for('index') }}">⬅️ Volver a subir nuevo archivo</a>
+    <!-- Barra de progreso -->
+    <div class="progress my-4" id="progressBar">
+      <div class="progress-bar progress-bar-striped bg-primary" role="progressbar"
+           id="progressBarFill" style="width: 0%">0%</div>
     </div>
-</div>
+    <div id="alerta" class="text-center fw-bold"></div>
 
+  </div>
+
+  <!-- Bootstrap Bundle y DataTables -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-document.getElementById('btnCorregir').addEventListener('click', function(){
-    if (!confirm("¿Deseas aplicar la corrección automática a las facturas con error XML?")) return;
+  let tableErrors, tableCuv;
 
+  $(document).ready(function() {
+    const langEs = {
+      search: "🔍 Buscar:",
+      lengthMenu: "Mostrar _MENU_ registros",
+      zeroRecords: "No se encontraron registros",
+      info: "Página _PAGE_ de _PAGES_",
+      infoEmpty: "No hay registros",
+      infoFiltered: "(filtrado de _MAX_ registros)",
+      paginate: { next: "Siguiente", previous: "Anterior" }
+    };
+
+    // Inicializamos y guardamos instancias
+    tableErrors = $('#tablaErroresXml').DataTable({ pageLength: 10, language: langEs });
+    tableCuv    = $('#tablaCuv').DataTable    ({ pageLength: 10, language: langEs });
+    $('#tablaOtrosErrores').DataTable({ pageLength: 10, language: langEs });
+  });
+
+  document.getElementById('btnCorregir').addEventListener('click', function(){
+    if (!confirm("¿Deseas aplicar la corrección automática?")) return;
+    document.getElementById('progressBar').scrollIntoView({ behavior: 'smooth' });
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "{{ url_for('corregir_y_enviar') }}", true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
     xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                const response = JSON.parse(xhr.responseText);
+      if (xhr.readyState !== XMLHttpRequest.DONE) return;
+      const alerta = document.getElementById('alerta');
+      if (xhr.status === 200) {
+        const response = JSON.parse(xhr.responseText);
 
-                // — tu código de alerta y mini-tablaCorregidas —
+        response.corregidas.forEach(f => {
+          const fac = f.factura.toString();
 
-                // 1) Añadir filas a la tabla de CUV
-                const tbody = document.getElementById('tbodyCuv');
-                if (tbody && response.corregidas.length) {
-                    response.corregidas.forEach(f => {
-                        const tr = document.createElement('tr');
-                        tr.innerHTML = `
-                            <td>${f.factura}</td>
-                            <td>CUV generado correctamente</td>
-                            <td>${f.observacion}</td>
-                        `;
-                        tbody.appendChild(tr);
-                    });
-                }
+          // 1) Añadir fila a tabla CUV
+          tableCuv.row.add([
+            fac,
+            'CUV generado correctamente', 
+            'CUV validado'      
+          ]).draw(false);
 
-                // 2) Eliminar filas de la tabla de ERRORES
-                const errorTable = document.querySelector('h3.error + table');
-                if (errorTable) {
-                    // recorre desde la segunda fila (índice 1) porque la 0 es header
-                    Array.from(errorTable.rows).slice(1).forEach(row => {
-                        const facturaCelda = row.cells[0].textContent.trim();
-                        if (response.corregidas.some(f => f.factura === facturaCelda)) {
-                            row.remove();
-                        }
-                    });
-                }
+          // 2) Eliminar de tabla de errores
+          tableErrors.rows((idx, data, node) => {
+            return data[0].toString() === fac;
+          }).remove().draw(false);
+        });
 
-                //3 Mostrar totales justo debajo de la barra de progreso
-                //Mostrar mensaje de facturas validadas por el Ministerio
-                const numeros = response.corregidas.map(f => f.factura).join(', ');
-                document.getElementById('alerta').innerHTML = `
-                    Factura(s) ${numeros} validada(s) por el Ministerio
-                `;
-
-
-            } else {
-                document.getElementById('alerta').innerHTML =
-                  "<strong style='color: red;'>Error en la corrección automática.</strong>";
-            }
-        }
+        alerta.innerHTML = `✅ Factura(s) corregidas: ${response.corregidas.map(f=>f.factura).join(', ')}`;
+      } else {
+        alerta.innerHTML = "❌ Error en la corrección automática.";
+      }
     };
 
-    // Progress bar (opcional)
+    // (Opcional) animar barra de progreso
     let progress = 0;
-    const progressBarFill = document.getElementById('progressBarFill');
-    const interval = setInterval(() => {
-        if (progress < 100) {
-            progress += 5;
-            progressBarFill.style.width = progress + "%";
-            progressBarFill.textContent = progress + "%";
-        } else {
-            clearInterval(interval);
-        }
+    const bar = document.getElementById('progressBarFill');
+    const interval = setInterval(()=>{
+      if (progress < 100) {
+        progress += 5;
+        bar.style.width = progress + "%";
+        bar.textContent  = progress + "%";
+      } else clearInterval(interval);
     }, 250);
 
     xhr.send(null);
-});
+  });
 </script>
-
 </body>
 </html>

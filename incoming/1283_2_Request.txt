@@ -1,0 +1,237 @@
+<Factura>
+	<Cabecera Numero="SETT1283" FechaEmision="2025-05-21" Vencimiento="2025-06-20" HoraEmision="17:43:02" MonedaFactura="COP" Observaciones="NOTA: - - AUTORIZACION: 259009152256 PACIENTE: TI-1081060640-MARIA JOSE CHARFUELAN MONCAYO- INGRESO: 2 - ABONO PACIENTE: 53314.00 EN PESOS" TipoFactura="FACTURA-UBL" FormaDePago="2" LineasDeFactura="9" TipoOperacion="SS-CUFE" SubTipoOperacion="SS-CUFE" FormatoContingencia="" OrdenCompraVendedor ="" Ambiente="2">
+	</Cabecera>
+	<NumeracionDIAN NumeroResolucion="18760000001" FechaInicio="2019-01-19" FechaFin="2030-01-19" PrefijoNumeracion="SETT" ConsecutivoInicial="1" ConsecutivoFinal="5000000">
+	</NumeracionDIAN>
+	<PeriodoFacturado FechaInicio="2025-04-07" FechaFin="2025-05-21" HoraInicio="17:43:02" HoraFin="17:43:02">
+	</PeriodoFacturado>
+	<Notificacion Tipo="Mail" De="felectronicahila@gmail.com">
+		<Para>recepcionfecm@fe.epssanitas.com</Para>
+	</Notificacion>
+	<Emisor TipoPersona="1" TipoRegimen="49" TipoIdentificacion="31" NumeroIdentificacion="891200240" DV="2" RazonSocial="HOSPITAL INFANTIL LOS ANGELES" NumeroMatriculaMercantil="891200240" NombreComercial="HOSPITAL INFANTIL LOS ANGELES">
+		<CodigosCIIU>
+			<CIIU>7020</CIIU>
+			<CIIU>5140</CIIU>
+		</CodigosCIIU>
+		<Direccion CodigoMunicipio="52001" NombreCiudad="SAN JUAN DE PASTO" CodigoPostal="52001" NombreDepartamento="NARIÑO" CodigoDepartamento="52" CodigoDane="52001" Direccion="CR 37 11 34 LA CASTELLANA">
+		</Direccion>
+		<ObligacionesEmisor>
+			<CodigoObligacion>R-99-PN</CodigoObligacion>
+		</ObligacionesEmisor>
+		<DireccionFiscal CodigoMunicipio="52001" NombreCiudad="SAN JUAN DE PASTO" CodigoPostal="52001" NombreDepartamento="NARIÑO" CodigoDepartamento="52" CodigoDane="52001" Direccion="CR 37 11 34 LA CASTELLANA">
+		</DireccionFiscal>
+		<TributoEmisor CodigoTributo="" NombreTributo="NIT">
+		</TributoEmisor>
+		<Contacto Nombre="DORIS SARASTY RODRIGUEZ" Telefono="3185579501" Telfax="7311533" Email="felectronicahila@gmail.com" Notas="">
+		</Contacto>
+	</Emisor>
+	<Cliente TipoPersona="1" TipoRegimen="48" TipoIdentificacion="31" NumeroIdentificacion="800251440" DV="6" NombreComercial="ENTIDAD PROMOTORA DE SALUD SANITAS S.A." RazonSocial="ENTIDAD PROMOTORA DE SALUD SANITAS S.A." NumeroMatriculaMercantil="800251440">
+		<!--NO incluidos por la DIAN, Si por UBL-->
+		<Direccion CodigoMunicipio="11001" NombreCiudad="BOGOTA, DC" CodigoPostal="11001" NombreDepartamento="BOGOTA D.C." CodigoDepartamento="11" CodigoDane="11001" Direccion="CLL 100 11B-95" CodigoPais="CO" NombrePais="Colombia" IdiomaPais="es">
+		</Direccion>
+		<ObligacionesCliente>
+			<CodigoObligacion>O-13</CodigoObligacion>
+		</ObligacionesCliente>
+		<DireccionFiscal CodigoMunicipio="11001" NombreCiudad="BOGOTA, DC" CodigoPostal="11001" NombreDepartamento="BOGOTA D.C." CodigoDepartamento="11" Direccion="CLL 100 11B-95" CodigoPais="CO" NombrePais="Colombia" IdiomaPais="es">
+		</DireccionFiscal>
+		<Contacto Nombre="" Telefono="6466060" Telfax="" Email="recepcionfecm@fe.epssanitas.com" Notas="">
+		</Contacto>
+		<TributoCliente CodigoTributo="" NombreTributo="NIT">
+		</TributoCliente>
+	</Cliente>
+	<MediosDePago CodigoMedioPago="1" FormaDePago="2" Vencimiento="2025-06-20">
+	</MediosDePago>
+	<Anticipos>
+		<Anticipo IDPago="01" ConceptoPago="01" ValorPagoAnticipo="53314.00" MonedaAnticipo="COP" FechaRecepcion="2025-05-21" FechaPago="2025-05-21" HoraPago="17:43:02" InstruccionesAnticipos="VALOR PAGADO POR EL USUARIO">
+		</Anticipo>
+	</Anticipos>
+	<Impuestos>
+		<!--IMPUESTOS GENERALES DE LA FACTURA-->
+		<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+			<Subtotal ValorBase="463600.00" Valor="0.00" Porcentaje="0.00">
+			</Subtotal>
+		</Impuesto>
+	</Impuestos>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="78900.00" Descripcion="Interconsulta médica especializada ambulatoria o intrahospitalaria  en ortopedia y traumatologia" PrecioUnitario="78900.00" CodigoTipoPrecio="01" ValorTotalItem="78900.00" Ocultar="True" Agrupador="CONSULTAS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="78900.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="39140" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="361600.00" Descripcion="HABITACION DE CUATRO O MAS CAMAS" PrecioUnitario="361600.00" CodigoTipoPrecio="01" ValorTotalItem="361600.00" Ocultar="True" Agrupador="ESTANCIAS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="361600.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="38134" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="5.00" UnidadMedida="94" SubTotalLinea="7000.00" Descripcion="JERINGA DESECHABLE 3 CC 3 PARTES - CLASE IIA" PrecioUnitario="1400.00" CodigoTipoPrecio="01" ValorTotalItem="7000.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="7000.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001000053" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="2300.00" Descripcion="TRAMADOL 50 MG/1 ML SOLUCION INYECTABLE ¥" PrecioUnitario="2300.00" CodigoTipoPrecio="01" ValorTotalItem="2300.00" Ocultar="True" Agrupador="MEDICAMENTOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="2300.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19924285-30" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="2.00" UnidadMedida="94" SubTotalLinea="800.00" Descripcion="NAPROXENO 250 MG TABLETA/CAPSULA" PrecioUnitario="400.00" CodigoTipoPrecio="01" ValorTotalItem="800.00" Ocultar="True" Agrupador="MEDICAMENTOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="800.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="17145-01" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="6500.00" Descripcion="CLORURO DE SODIO 0.9% X 100 ML SOLUCION INYECTABLE §" PrecioUnitario="6500.00" CodigoTipoPrecio="01" ValorTotalItem="6500.00" Ocultar="True" Agrupador="MEDICAMENTOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="6500.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="19932754-04" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="3400.00" Descripcion="JERINGA PRELLENADA SOLUCION SALINA 0.9% X 5ML - CLASE IIA" PrecioUnitario="3400.00" CodigoTipoPrecio="01" ValorTotalItem="3400.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="3400.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001001984" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Linea>
+		<Detalle NumeroLinea="1" Nota="Nota sobre el item" Cantidad="1.00" UnidadMedida="94" SubTotalLinea="3100.00" Descripcion="TAPON COMBI - CLASE IIA" PrecioUnitario="3100.00" CodigoTipoPrecio="01" ValorTotalItem="3100.00" Ocultar="True" Agrupador="DISPOSITIVOS MEDICOS" IdentificadorUnico="">
+		</Detalle>
+		<Impuestos>
+			<!--IMPUESTOS DETALLE FACTURA-->
+			<Impuesto Valor="0.00" Tipo="01" Nombre="IVA">
+				<Subtotal ValorBase="3100.00" Valor="0.00" Porcentaje="0.00">
+				</Subtotal>
+			</Impuesto>
+		</Impuestos>
+		<CodificacionesEstandar>
+			<CodificacionEstandar CodigoArticulo="30001000630" CodigoEstandar="999">
+			</CodificacionEstandar>
+		</CodificacionesEstandar>
+	</Linea>
+	<Totales Bruto="463600.00" BaseImponible="463600.00" BrutoMasImpuestos="463600.00" Descuentos="0.00" Impuestos="0.00" General="410286.00" Anticipo="53314.00" TotalDescuentosLineas="0" TotalOtros1="0">
+	</Totales>
+	<Extensiones>
+		<DatosAdicionales>
+			<campoAdicional Nombre="OBSERVACION_CAMPO_ADICIONAL" Valor="NOTA: - - AUTORIZACION: 259009152256 PACIENTE: TI-1081060640-MARIA JOSE CHARFUELAN MONCAYO- INGRESO: 2 - ABONO PACIENTE: 53314.00 EN PESOS"/>
+			<CampoAdicional Nombre="VALORAPAGARASEGURADORA" Valor="410286.00"/>
+			<CampoAdicional Nombre="CODIGOIPS" Valor="520010028301"/>
+			<CampoAdicional Nombre="REGIMEN" Valor="aki va resolucion"/>
+			<CampoAdicional Nombre="CIUDAD" Valor="BOGOTA, DC"/>
+			<CampoAdicional Nombre="DEPARTAMENTO" Valor="BOGOTA D.C."/>
+			<CampoAdicional Nombre="TELEFONO" Valor="7336400"/>
+			<CampoAdicional Nombre="DIRECCION" Valor="CARRERA 32 N° 21A - 30"/>
+			<CampoAdicional Nombre="NOMBREPACIENTE" Valor="MARIA JOSE CHARFUELAN MONCAYO"/>
+			<CampoAdicional Nombre="TIPODOCPACIENTE" Valor="TI"/>
+			<CampoAdicional Nombre="IDPACIENTE" Valor="1081060640"/>
+			<CampoAdicional Nombre="Tipo de Usuario" Valor=""/>
+			<CampoAdicional Nombre="DIRECCIONPACIENTE" Valor="UNIODAD RESIDENCIAL MIJITAYO TORRE 2 APT1704"/>
+			<CampoAdicional Nombre="TELEFONOPACIENTE" Valor="3182239970"/>
+			<CampoAdicional Nombre="MUNICIPIOPACIENTE" Valor="SAN JUAN DE PASTO"/>
+			<CampoAdicional Nombre="CARNET" Valor=""/>
+			<CampoAdicional Nombre="EDAD" Valor="11"/>
+			<CampoAdicional Nombre="AMD" Valor="AÑOS"/>
+			<CampoAdicional Nombre="FECHADECORTE" Valor="08-04-2025"/>
+			<CampoAdicional Nombre="NUMHISTORIA" Valor="1081060640"/>
+			<CampoAdicional Nombre="P.P" Valor="136"/>
+			<CampoAdicional Nombre="P.S" Valor="53"/>
+			<CampoAdicional Nombre="SERVICIO" Valor="HOSPITALIZACION"/>
+			<CampoAdicional Nombre="DIASESTANCIA" Valor="1"/>
+			<CampoAdicional Nombre="CONTRATO" Valor="ICLOCU-0079 - EPS SANITAS SAS - EN INTERVENCION BAJO LA MEDIDA DE TOMA DE POSESION - REG CONTRIBUTIVO *C*"/>
+			<CampoAdicional Nombre="FACTURADOR" Valor="CRISTHIAN CAMILO MONTENEGRO"/>
+			<CampoAdicional Nombre="Fecha_Ingreso" Valor="07-04-2025"/>
+			<CampoAdicional Nombre="Fecha_Egreso" Valor="08-04-2025"/>
+			<CampoAdicional Nombre="FECHAINGRESO" Valor="07-04-2025"/>
+			<CampoAdicional Nombre="FECHEGRESO" Valor="08-04-2025"/>
+			<CampoAdicional Nombre="PLAZO" Valor="30 DIAS"/>
+			<CampoAdicional Nombre="SEDE" Valor="EMPRESA 1 SEDE 001 HOSPITAL INFANTIL LOS ANGELES"/>
+			<campoAdicional Nombre="DIRECCIONSEDE" Valor="CARRERA 32 No. 21A-30"/>
+			<CampoAdicional Nombre="COPAGO" Valor="53314.00" NombreEsquema="0" IDEsquema="0"/>
+			<campoAdicional Nombre="AUTORIZACION" Valor="259009152256"/>
+			<CampoAdicional Nombre="PLAZO" Valor="30 DIAS"/>
+			<CampoAdicional Nombre="VALORLETRASUSUARIO" Valor="CINCUENTA Y TRES MIL TRESCIENTOS CATORCE PESOS CON CERO CENTAVOS"/>
+			<CampoAdicional Nombre="SALDOPAGARUSUARIO" Valor="CERO PESOS CON CERO CENTAVOS"/>
+			<CampoAdicional Nombre="VALORAPAGARASEGURADORA_LETRAS" Valor="CUATROCIENTOS DIEZ MIL DOSCIENTOS OCHENTA Y SEIS PESOS CON CERO CENTAVOS"/>
+			<CampoAdicional Nombre="VALORSUSUARIO_NUMERO" Valor="53314.00"/>
+			<CampoAdicional Nombre="SALDOPAGARUSUARIO_NUMERO" Valor="0.00"/>
+			<CampoAdicional Nombre="SALDONOPAGADOXUSUARIO_NUMERO" Valor="0.00"/>
+			<CampoAdicional Nombre="RazonSocialRepGrafica" Valor="ENTIDAD PROMOTORA DE SALUD SANITAS S.A.S - EN INTERVENCION B"/>
+			<CampoAdicional Nombre="CUOTAMODERADORA" Valor="0"/>
+		</DatosAdicionales>
+		<!--datos Interoperabilidad-->
+		<Interoperabilidad URLAdjunto="">
+			<Grupo Nombre="Sector Salud">
+				<Categoria Nombre="MARIA JOSE CHARFUELAN MONCAYO">
+					<CampoAdicional Nombre="CODIGO_PRESTADOR" Valor="5200100283" NombreEsquema="" IDEsquema=""/>
+					<CampoAdicional Nombre="MODALIDAD_PAGO" Valor="Pago por evento" NombreEsquema="salud_modalidad_pago.gc" IDEsquema="04"/>
+					<CampoAdicional Nombre="COBERTURA_PLAN_BENEFICIOS" Valor="Plan de beneficios en salud financiado por UPC" NombreEsquema="salud_cobertura.gc" IDEsquema="01"/>
+					<CampoAdicional Nombre="NUMERO_CONTRATO" Valor="ICLOCU-0079" NombreEsquema="" IDEsquema=""/>
+					<CampoAdicional Nombre="NUMERO_POLIZA" Valor="0" NombreEsquema="0" IDEsquema="0"/>
+				</Categoria>
+			</Grupo>
+		</Interoperabilidad>
+	</Extensiones>
+</Factura>

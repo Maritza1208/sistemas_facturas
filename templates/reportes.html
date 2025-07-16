@@ -1,158 +1,225 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>📁 Reportes de Modificaciones</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #8e90cf;
-            padding: 40px;
-        }
+  <meta charset="UTF-8" />
+  <title>📁 Reportes de Modificaciones</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+  <!-- Bootstrap CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 30px;
-        }
+  <style>
+    body {
+      margin: 0;
+      background: #f8f6f7;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        .filter-bar {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+    /* ✅ MENÚ LATERAL */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100vh;
+      background: linear-gradient(180deg, #001429, #004085);
+      padding: 30px 20px;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+      color: #fff;
+      z-index: 1000;
+    }
 
-        .filter-bar input {
-            padding: 10px;
-            width: 60%;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
+    .sidebar h5 {
+      font-size: 22px;
+      margin-bottom: 25px;
+      color: #fff;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+    .sidebar-btn {
+      display: block;
+      width: 100%;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
 
-        th, td {
-            border: 1px solid #ccc;
-            padding: 12px 15px;
-            text-align: left;
-        }
+    .sidebar-btn:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateX(5px);
+    }
 
-        th {
-            background-color: #007bff;
-            color: white;
-        }
+    .sidebar-btn i {
+      margin-right: 8px;
+    }
 
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
+    /* ✅ CONTENEDOR desplazado */
+    .container {
+      max-width: 1000px;
+      margin: 40px auto 40px 260px; 
+      background: linear-gradient(135deg, #73a0ca, #f0e5ff);
+      border-radius: 15px;
+      padding: 40px 50px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
 
-        .btn {
-            padding: 8px 14px;
-            border: none;
-            border-radius: 4px;
-            color: white;
-            cursor: pointer;
-            text-decoration: none;
-        }
+    h1 {
+      color: #4a69bd;
+      font-weight: bold;
+    }
 
-        .btn-pdf { background-color: #dc3545; }
-        .btn-word { background-color: #17a2b8; }
-        .btn-back {
-            display: inline-block;
-            margin-top: 30px;
-            background-color: #6c757d;
-            padding: 10px 20px;
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-        }
+    .table thead {
+      background-color: #4a69bd;
+      color: #fff;
+    }
 
-        .btn-pdf:hover { background-color: #c82333; }
-        .btn-word:hover { background-color: #138496; }
-        .btn-back:hover { background-color: #5a6268; }
+    .table-striped>tbody>tr:nth-of-type(odd) {
+      background-color: #f0f7ff;
+    }
 
-    </style>
+    .btn-pdf {
+      background-color: #dc3545;
+      color: #fff;
+    }
+
+    .btn-word {
+      background-color: #0dcaf0;
+      color: #fff;
+    }
+
+    .btn-pdf:hover { background-color: #bb2d3b; }
+    .btn-word:hover { background-color: #0bbbe5; }
+
+    .btn-back {
+      margin-top: 30px;
+    }
+
+    select.form-select {
+      max-width: 300px;
+    }
+
+    .filter-label {
+      font-weight: 500;
+    }
+  </style>
 </head>
-<body>
-<div class="container">
-    <h1>📁 Reporte de Modificaciones del Proceso</h1>
 
-    <div class="filter-bar">
-        <input type="text" placeholder="🔍 Filtrar por factura..." onkeyup="filtrarTabla(this.value)">
+<body>
+
+  <!-- ✅ MENÚ LATERAL -->
+  <div class="sidebar">
+    <h5 class="text-center">Menú</h5>
+    <a href="{{ url_for('index') }}" class="sidebar-btn">
+  <i class="bi bi-house-fill"></i> Inicio
+    </a>
+        <a href="{{ url_for('resultados') }}" class="sidebar-btn">
+      <i class="bi bi-journal-text"></i> Resultados
+    </a>
+    <!--<a href="{{ url_for('corregir_y_enviar') }}" class="sidebar-btn">
+      <i class="bi bi-gear-fill"></i> Corrección Automática
+    </a>-->
+    <a href="{{ url_for('vista_excel') }}" class="sidebar-btn">
+      <i class="bi bi-eye-fill"></i> Vista Previa Excel
+    </a>
+    <form action="{{ url_for('descargar_excel_actualizado') }}" method="POST" class="d-inline">
+      <button class="sidebar-btn" type="submit" style="border:none; background:none; padding:0; color:inherit;">
+        <i class="bi bi-download"></i> Descargar Excel
+      </button>
+    </form>
+    <a href="{{ url_for('ver_reportes') }}" class="sidebar-btn">
+      <i class="bi bi-folder-fill"></i> Ver Reportes
+    </a>
+
+    <a href="{{ url_for('ver_manual') }}" class="sidebar-btn">
+      <i class="bi bi-book-fill"></i> Manual de usuario
+    </a>
+  </div>
+
+  <!-- ✅ CONTENIDO PRINCIPAL -->
+  <div class="container">
+    <h1 class="text-center mb-4">📁 Reporte de Modificaciones del Proceso</h1>
+
+    <!-- Filtros -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-5 mb-3">
+        <label for="filtroAno" class="form-label filter-label">Año:</label>
+        <select id="filtroAno" class="form-select">
+          <option value="">Todos</option>
+          {% for ano in anos %}
+            <option value="{{ ano }}">{{ ano }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-5 mb-3">
+        <label for="filtroMes" class="form-label filter-label">Mes:</label>
+        <select id="filtroMes" class="form-select">
+          <option value="">Todos</option>
+          {% for mes in meses %}
+            <option value="{{ mes }}">{{ mes }}</option>
+          {% endfor %}
+        </select>
+      </div>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>📅 Fecha y Hora</th>
-                <th>📌 Título del Reporte</th>
-                <th>🗂️ Formatos Disponibles</th>
-                <th>🔧 Acciones</th>
-            </tr>
+    <!-- Tabla Reportes -->
+    <div class="table-responsive">
+      <table id="tablaReportes" class="table table-striped table-hover align-middle rounded">
+        <thead class="rounded-top">
+          <tr>
+            <th>📅 Año y Mes</th>
+            <th>📌 Título del Reporte</th>
+            <th>🗂️ Formatos Disponibles</th>
+            <th>🔧 Acciones</th>
+          </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>{{ fecha }}</td>
-                <td>Reporte General de {{ total }} Facturas Corregidas</td>
-                <td>PDF, Word</td>
-                <td>
-                    <a href="{{ url_for('descargar_pdf') }}" class="btn btn-pdf">📄 PDF</a>
-                    <a href="{{ url_for('descargar_word') }}" class="btn btn-word">📝 Word</a>
-                </td>
+          {% for mes_clave, facturas in reportes_por_mes.items() %}
+            {% set ano = mes_clave[:4] %}
+            {% set mes = mes_clave[5:7] %}
+            <tr data-ano="{{ ano }}" data-mes="{{ mes }}">
+              <td>{{ mes_clave }}</td>
+              <td>Reporte de {{ facturas|length }} facturas corregidas</td>
+              <td>PDF, Word</td>
+              <td>
+                <a href="{{ url_for('descargar_pdf_mes', mes=mes_clave) }}" class="btn btn-sm btn-pdf">📄 PDF</a>
+                <a href="{{ url_for('descargar_word_mes', mes=mes_clave) }}" class="btn btn-sm btn-word">📝 Word</a>
+              </td>
             </tr>
+          {% endfor %}
         </tbody>
-    </table>
-
-    {% if facturas %}
-        <h3 style="margin-top: 40px;">✅ Detalle de Facturas Corregidas</h3>
-        <table id="tablaReportes">
-            <thead>
-                <tr>
-                    <th>Factura</th>
-                    <th>Estado</th>
-                    <th>Observación</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for f in facturas %}
-                <tr>
-                    <td>{{ f.factura }}</td>
-                    <td>Corregida</td>
-                    <td>Error XML corregido</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p style="text-align:center; margin-top: 20px;">❌ No se encontraron facturas corregidas automáticamente.</p>
-    {% endif %}
-
-    <div style="text-align: center;">
-        <a href="{{ url_for('resultados') }}" class="btn-back">⬅️ Volver a resultados</a>
+      </table>
     </div>
-</div>
 
-<script>
-function filtrarTabla(filtro) {
-    filtro = filtro.toLowerCase();
-    const filas = document.querySelectorAll("#tablaReportes tbody tr");
-    filas.forEach(fila => {
-        const texto = fila.innerText.toLowerCase();
-        fila.style.display = texto.includes(filtro) ? "" : "none";
-    });
-}
-</script>
+    <!--<div class="text-center">
+      <a href="{{ url_for('resultados') }}" class="btn btn-secondary btn-back">⬅️ Volver a resultados</a>
+    </div>
+  </div>-->
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function aplicarFiltros() {
+      const anoSel = document.getElementById('filtroAno').value;
+      const mesSel = document.getElementById('filtroMes').value;
+      document.querySelectorAll('#tablaReportes tbody tr')
+        .forEach(tr => {
+          const ano = tr.dataset.ano;
+          const mes = tr.dataset.mes;
+          const mostrar =
+            (!anoSel || ano === anoSel) &&
+            (!mesSel || mes === mesSel);
+          tr.style.display = mostrar ? '' : 'none';
+        });
+    }
+
+    document.getElementById('filtroAno').addEventListener('change', aplicarFiltros);
+    document.getElementById('filtroMes').addEventListener('change', aplicarFiltros);
+    window.addEventListener('DOMContentLoaded', aplicarFiltros);
+  </script>
 </body>
 </html>

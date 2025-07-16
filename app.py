@@ -2,24 +2,33 @@ from flask import Flask, request, render_template, redirect, url_for, session, j
 import os
 import json
 import pandas as pd
-import io
 import base64
 import xml.etree.ElementTree as ET
 import requests
+import io
+import zipfile
+import shutil
+from docx.shared import Inches, RGBColor, Pt
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.oxml import OxmlElement
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer, Image
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from collections import defaultdict
+from reportlab.lib.units import inch
+from reportlab.platypus import Table, TableStyle
+from docx.oxml.ns import qn
 from datetime import datetime
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 from lxml import etree
 from docx import Document
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet
 from docx.shared import Pt
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from flask_session import Session
 from docx.shared import Inches
-from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
-import requests
 import urllib3
 import re
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -29,10 +38,10 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 UPLOAD_FOLDER = "uploads"
 HISTORIAL_PATH = os.path.join(UPLOAD_FOLDER, "corregidas.json")
 
-INCOMING_FOLDER = "incoming"
+TEMP_UPLOADS_FOLDER = os.path.join(os.getcwd(), "temp_uploads")
+os.makedirs(TEMP_UPLOADS_FOLDER, exist_ok=True)
 
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-os.makedirs(INCOMING_FOLDER, exist_ok=True)
+INCOMING_FOLDER = TEMP_UPLOADS_FOLDER 
 
 if not os.path.exists(HISTORIAL_PATH):
     with open(HISTORIAL_PATH, 'w', encoding='utf-8') as f:
@@ -264,17 +273,24 @@ Session(app)
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        # Antes de cargar, limpia sólo lo obsoleto (mantiene JSON originales y corregidos)
         limpiar_archivos_sin_cuv(UPLOAD_FOLDER)
+
+        TEMP_UPLOADS_FOLDER = r"C:\Users\USUARIO HILA\Documents\sistema_facturas\temp_uploads"
+        os.makedirs(TEMP_UPLOADS_FOLDER, exist_ok=True)
+        for nombre in os.listdir(TEMP_UPLOADS_FOLDER):
+            path = os.path.join(TEMP_UPLOADS_FOLDER, nombre)
+            if os.path.isfile(path):
+                os.remove(path)
+            else:
+                shutil.rmtree(path)
 
         excel = request.files.get("excel")
         carpeta_archivos = request.files.getlist("carpeta")
         if not excel or not carpeta_archivos:
             return render_template("index.html",
-                                   mensaje="⚠️ Debes subir el archivo Excel y los archivos de la carpeta.")
+                                   mensaje="⚠️ Debes subir el archivo Excel y la carpeta de archivos.")
 
-        os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-        excel_path = os.path.join(INCOMING_FOLDER, excel.filename)
+        excel_path = os.path.join(TEMP_UPLOADS_FOLDER, excel.filename)
         excel.save(excel_path)
         session['excel_path'] = excel_path
         session.modified = True
@@ -282,48 +298,40 @@ def index():
         try:
             libro = pd.read_excel(excel_path, sheet_name=None)
             facturas_excel = []
-            for nombre_hoja, df_hoja in libro.items():
-                if df_hoja.shape[1] < 1:
+            for nombre_hoja, df in libro.items():
+                if df.shape[1] < 1:
                     continue
-                series = df_hoja.iloc[:, 0].dropna().astype(str).str.strip()
+                series = df.iloc[:, 0].dropna().astype(str).str.strip()
                 facturas_excel.extend(series.tolist())
             columna_detectada = ", ".join(libro.keys())
         except Exception as e:
             return render_template("index.html",
-                                   mensaje=f"Error al leer el excel: {e}")
+                                   mensaje=f"Error al leer el Excel: {e}")
 
-        # Guardamos los archivos subidos en un dict
         archivo_dict = {}
         for archivo in carpeta_archivos:
             nombre = os.path.basename(archivo.filename)
-            ruta = os.path.join(INCOMING_FOLDER, nombre)
+            ruta = os.path.join(TEMP_UPLOADS_FOLDER, nombre)
             archivo.save(ruta)
             archivo_dict[nombre] = ruta
 
-        # Cargamos historial de facturas ya corregidas
         try:
-            historial = cargar_historial()  # dict: factura → {fecha, observacion}
-        except Exception as e:
+            historial = cargar_historial()
+        except Exception:
             historial = {}
-            print(f"⚠️ Error cargando historial: {e}")
 
         facturas_con_error_xml = []
-        facturas_con_cuv_valido = []
+        facturas_con_cuv_valido   = []
         facturas_con_otros_errores = []
 
-        # ==== Aquí viene la parte modificada: inclusión de *_2_Error.json ====
         todas = set(facturas_excel)
         for nombre in archivo_dict:
-            # JSON original sin CUV
             if nombre.endswith("_2.json") and "CUV_CORREGIDO" not in nombre:
                 todas.add(nombre.split("_")[0])
-            # JSON de error XML
             if nombre.endswith("_2_Error.json"):
                 todas.add(nombre.split("_")[0])
-        # =====================================================================
 
         for num in todas:
-            # Si ya está en historial, lo marcamos como válido y saltamos
             if num in historial:
                 facturas_con_cuv_valido.append({
                     "factura":     num,
@@ -332,97 +340,96 @@ def index():
                 })
                 continue
 
-            # Procesamos posibles errores o validaciones
             ruta_error = archivo_dict.get(f"{num}_2_Error.json")
             if ruta_error and os.path.exists(ruta_error):
                 try:
                     with open(ruta_error, encoding="utf-8") as f:
                         data = json.load(f)
-                    rs = data.get("ResultState", False)
                     rv = data.get("ResultadosValidacion", [])
+
+                    if data.get("ResultState") is True:
+                        facturas_con_cuv_valido.append({
+                            "factura": num,
+                            "descripcion": "CUV validado",
+                            "observacion": "CUV validado"
+                        })
+                        continue  
+
                 except Exception as e:
                     facturas_con_otros_errores.append({
                         "factura": num,
-                        "descripcion": "Error leyendo archivo JSON",
+                        "descripcion": "Error leyendo JSON de error",
                         "observacion": str(e)
                     })
                     continue
 
-                    # 1) Detectar error CFR006
-                cfr = next((r for r in rv if r.get("Codigo") == "CFR006"), None)
-                if cfr:
-                    facturas_con_error_xml.append({
-                        "factura":     num,
-                        "descripcion": cfr.get("Descripcion", ""),
-                        "observacion": cfr.get("Observaciones", "")
-                    })
-                # 2) Detectar errores de XML con [AttachedDocument]
-                elif any(r.get("Clase") == "RECHAZADO" and "[AttachedDocument]" in r.get("Descripcion", "") for r in rv):
-                    detail = next(r for r in rv if "[AttachedDocument]" in r.get("Descripcion", ""))
-                    facturas_con_error_xml.append({
-                        "factura":     num,
-                        "descripcion": detail.get("Descripcion", ""),
-                        "observacion": detail.get("Observaciones", "")
-                    })
-                # 3) Otros rechazos
+                if rv:
+                    cfr = next((r for r in rv if r.get("Codigo")=="CFR006"), None)
+                    if cfr:
+                        facturas_con_error_xml.append({
+                            "factura":     num,
+                            "descripcion": cfr.get("Descripcion",""),
+                            "observacion": cfr.get("Observaciones","")
+                        })
+                    elif any(r.get("Clase")=="RECHAZADO" and "[AttachedDocument]" in r.get("Descripcion","") for r in rv):
+                        detail = next(r for r in rv if "[AttachedDocument]" in r.get("Descripcion",""))
+                        facturas_con_error_xml.append({
+                            "factura":     num,
+                            "descripcion": detail.get("Descripcion",""),
+                            "observacion": detail.get("Observaciones","")
+                        })
+                    else:
+                        first = rv[0]
+                        facturas_con_otros_errores.append({
+                            "factura":     num,
+                            "descripcion": first.get("Descripcion",""),
+                            "observacion": first.get("Observaciones","")
+                        })
                 else:
-                    first = rv[0]
                     facturas_con_otros_errores.append({
                         "factura":     num,
-                        "descripcion": first.get("Descripcion", ""),
-                        "observacion": first.get("Observaciones", "")
+                        "descripcion": "Sin validaciones",
+                        "observacion": "No hay ResultadosValidacion"
                     })
-
             else:
-                # Si no existe JSON de error, revisamos el JSON normal
-                ruta_normal = archivo_dict.get(f"{num}_2.json")
-                if ruta_normal and os.path.exists(ruta_normal):
-                    # Suponemos que está válido: lo marcamos como CUV válido pendiente de corrección automática
+                ruta_norm = archivo_dict.get(f"{num}_2.json")
+                if ruta_norm and os.path.exists(ruta_norm):
                     facturas_con_cuv_valido.append({
                         "factura":     num,
-                        "descripcion": "JSON válido (por corregir)",
-                        "observacion": "Pendiente de corrección"
+                        "descripcion": "JSON válido (pendiente de corrección)",
+                        "observacion": "Pendiente"
                     })
                 else:
                     facturas_con_otros_errores.append({
                         "factura":     num,
-                        "descripcion": "No se encontró archivo .json",
-                        "observacion": "No aplica"
+                        "descripcion": "Sin JSON",
+                        "observacion": "No se encontró archivo"
                     })
 
-        # Filtrar facturas con error XML que ya estén en el historial
         facturas_con_error_xml = [
-            f for f in facturas_con_error_xml
-            if f["factura"] not in historial
+            f for f in facturas_con_error_xml if f["factura"] not in historial
         ]
 
-        # Guardamos en sesión para mostrar en resultados
-        session["columna_detectada"]         = columna_detectada
-        session["facturas_con_error"]        = facturas_con_error_xml
-        session["facturas_con_cuv_corregido"]= facturas_con_cuv_valido
-        session["facturas_con_otros_errores"]= facturas_con_otros_errores
-        session["archivos_guardados"]        = archivo_dict
+        session["columna_detectada"]          = columna_detectada
+        session["facturas_con_error"]         = facturas_con_error_xml
+        session["facturas_con_cuv_corregido"] = facturas_con_cuv_valido
+        session["facturas_con_otros_errores"] = facturas_con_otros_errores
+        session["archivos_guardados"]         = archivo_dict
         session.modified = True
 
         return redirect(url_for("resultados"))
 
     return render_template("index.html")
 
-
 @app.route("/resultado")
 def resultados():
-    # 1) Leemos SIEMPRE el historial actualizado
-    historial = cargar_historial()  # dict: factura → {fecha, observacion}
-
-    # 2) Tomamos de sesión los tres grupos originales
+    historial = cargar_historial()
     errores = session.get("facturas_con_error", [])
     cuv_previos = session.get("facturas_con_cuv_corregido", [])
     otros = session.get("facturas_con_otros_errores", [])
 
-    # 3) Filtramos ERRORES para excluir cualquiera que esté en el historial
     facturas_con_error = [f for f in errores if f["factura"] not in historial]
 
-    # 4) AÑADIMOS a los CUVs previos todas las facturas del historial que aún no estén
     facturas_con_cuv_corregido = []
     ya_agregadas = set()
 
@@ -442,7 +449,6 @@ def resultados():
                 "observacion": "CUV validado"
             })
 
-    # 5) Renderizar plantilla HTML con los datos
     return render_template("resultados.html",
                            columna_detectada=session.get("columna_detectada", ""),
                            facturas_con_error=facturas_con_error,
@@ -466,7 +472,7 @@ def vista_excel():
         elif "xml" in desc:
             return "XML"
         else:
-            return desc  # Dejar la descripción original si no encaja
+            return desc  
 
     # Facturas con error
     for f in session.get("facturas_con_error", []):
@@ -597,77 +603,112 @@ def descargar_excel_actualizado():
         mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     )
 
+@app.route('/descargar_factura/<factura_id>')
+def descargar_factura(factura_id):
+    # 1) Listar todos los archivos que comienzan con factura_id_ en ambas carpetas
+    archivos = []
+    for folder in (INCOMING_FOLDER, UPLOAD_FOLDER):
+        if not os.path.isdir(folder):
+            continue
+        for f in os.listdir(folder):
+            if f.startswith(f"{factura_id}_"):
+                archivos.append((os.path.join(folder, f), f))
+
+    if not archivos:
+        return redirect(url_for('vista_excel', error_factura=factura_id))
+
+    # 2) Crear un ZIP en memoria
+    zip_buffer = io.BytesIO()
+    with zipfile.ZipFile(zip_buffer, 'w') as zf:
+        for ruta_completa, nombre in archivos:
+            zf.write(ruta_completa, arcname=nombre)
+    zip_buffer.seek(0)
+
+    # 3) Enviar el ZIP al cliente
+    return send_file(
+        zip_buffer,
+        as_attachment=True,
+        download_name=f'factura_{factura_id}_archivos.zip',
+        mimetype='application/zip'
+    )
+
+
+
 @app.route("/ver_reportes")
 def ver_reportes():
     from datetime import datetime
 
-    #ruta_archivo = "uploads/corregidas.json"
-
-    # 1. Cargar datos desde el archivo JSON
+    # 1) Carga el historial corregidas.json
     if os.path.exists(HISTORIAL_PATH):
         with open(HISTORIAL_PATH, "r", encoding="utf-8") as f:
             historial_corregidas = json.load(f)
     else:
         historial_corregidas = {}
 
-    #corregidas = []
-
-    # 2. Recorrer lo que está en el JSON
-    facturas = []
+    # 2) Agrupa las facturas por mes_clave = "YYYY-MM"
+    facturas_por_mes = defaultdict(list)
     for factura_id, info in historial_corregidas.items():
-        facturas.append({
+        fecha = info.get("fecha", "0000-00-00")
+        mes_clave = fecha[:7]  # ej: "2025-07"
+        facturas_por_mes[mes_clave].append({
             "factura": factura_id,
-            "descripcion": "Error XML corregido",
-            "observacion": info.get("observacion", "No aplica"),
-            "fecha": info.get("fecha", "Fecha no registrada")
+            "observacion": info.get("observacion", ""),
+            "fecha": fecha
         })
 
-    # 3. Enviar los datos al HTML
-    return render_template("reportes.html", 
-                           fecha=datetime.now().strftime("%Y-%m-%d %H:%M"),
-                           total=len(facturas),
-                           facturas=facturas
+    # 3) Extrae años y meses únicos para los filtros
+    anos = sorted({m[:4] for m in facturas_por_mes.keys()})
+    meses = sorted({m[5:7] for m in facturas_por_mes.keys()})
+
+    return render_template(
+        "reportes.html",
+        fecha_actual = datetime.now().strftime("%Y-%m-%d %H:%M"),
+        reportes_por_mes = facturas_por_mes,
+        anos = anos,
+        meses = meses
     )
 
-
-
-# ✅ REPORTE EN PDF
-from reportlab.platypus import Image
-
-@app.route("/descargar_pdf")
-def descargar_pdf():
+@app.route("/descargar_pdf/<mes>")
+def descargar_pdf_mes(mes):
     if os.path.exists(HISTORIAL_PATH):
         with open(HISTORIAL_PATH, "r", encoding="utf-8") as f:
             historial = json.load(f)
     else:
         historial = {}
 
+    facturas_mes = []
+    for num, info in historial.items():
+        fecha = info.get("fecha", "")
+        if fecha.startswith(mes):
+            facturas_mes.append((num, info))
+
     buffer = io.BytesIO()
-    doc = SimpleDocTemplate(buffer, pagesize=letter)
-    elements = []
+    doc = SimpleDocTemplate(buffer, pagesize=letter, leftMargin=40, rightMargin=40, topMargin=80, bottomMargin=40)
     styles = getSampleStyleSheet()
+    elements = []
 
-    # 🏥 Insertar logo del hospital
-    logo_path = os.path.join("static", "img", "logo.jpg")
-    if os.path.exists(logo_path):
-        logo = Image(logo_path, width=120, height=50)
-        logo.hAlign = 'CENTER'
-        elements.append(logo)
-        elements.append(Spacer(1, 10))
-
-    # Título
-    elements.append(Paragraph("📄 Reporte Histórico de Facturas Corregidas", styles['Title']))
+    # === DATOS EMPRESA ===
+    elements.append(Paragraph(
+        "<b>Hospital Infantil Los Ángeles</b><br/>"
+        "NIT: 891.200.240-2<br/>"
+        "Cra. 32, Pasto, Nariño<br/>"
+        "subgestioninformacion@hinfantil.org",
+        styles['Normal']
+    ))
+    elements.append(Spacer(1, 12))
+    elements.append(Paragraph(f"📄 <b>Reporte de Facturas Corregidas - {mes}</b>", styles['Title']))
+    elements.append(Spacer(1, 6))
+    elements.append(Paragraph(
+        f"<b>Fecha de generación:</b> {datetime.now().strftime('%Y-%m-%d %H:%M')}",
+        styles['Normal']
+    ))
     elements.append(Spacer(1, 12))
 
-    # Fecha
-    elements.append(Paragraph(f"<b>Fecha de generación:</b> {datetime.now().strftime('%Y-%m-%d %H:%M')}", styles['Normal']))
-    elements.append(Spacer(1, 12))
-
-    if not historial:
-        elements.append(Paragraph("❌ No hay facturas corregidas en el historial.", styles['Normal']))
+    if not facturas_mes:
+        elements.append(Paragraph("❌ No hay facturas corregidas para este mes.", styles['Normal']))
     else:
         data = [["Factura", "Fecha", "Observación"]]
-        for num, info in historial.items():
+        for num, info in facturas_mes:
             data.append([str(num), info.get("fecha", ""), "Error XML corregido"])
 
         table = Table(data, colWidths=[100, 150, 250])
@@ -675,48 +716,91 @@ def descargar_pdf():
             ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#007bff")),
             ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
             ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
-            ("ALIGN", (0, 0), (-1, -1), "LEFT"),
+            ("ALIGN", (0, 0), (-1, -1), "CENTER"),
             ("GRID", (0, 0), (-1, -1), 0.5, colors.grey),
-            ("BACKGROUND", (0, 1), (-1, -1), colors.whitesmoke),
             ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.whitesmoke, colors.lightgrey]),
         ]))
-
         elements.append(table)
 
-    doc.build(elements)
-    buffer.seek(0)
-    return send_file(buffer, download_name="reporte_historico_facturas_corregidas.pdf", as_attachment=True, mimetype="application/pdf")
+    logo_path = os.path.join("static", "img", "logo.jpg")
 
-# ✅ REPORTE EN WORD
-@app.route("/descargar_word")
-def descargar_word():
+    def draw_header(canvas_obj, doc_obj):
+        if os.path.exists(logo_path):
+            w = 1.5 * inch
+            h = (50 / 120) * w
+            x = doc_obj.pagesize[0] - doc_obj.rightMargin - w
+            y = doc_obj.pagesize[1] - h - 10
+            canvas_obj.drawImage(logo_path, x, y, width=w, height=h, preserveAspectRatio=True)
+        footer_text = "Sistema de Corrección de XML — Hospital Infantil Los Ángeles"
+        canvas_obj.setFont("Helvetica-Oblique", 9)
+        canvas_obj.drawCentredString(doc_obj.pagesize[0] / 2.0, 20, footer_text)
+
+    doc.build(elements, onFirstPage=draw_header, onLaterPages=draw_header)
+    buffer.seek(0)
+    return send_file(
+        buffer,
+        download_name=f"reporte_facturas_{mes}.pdf",
+        as_attachment=True,
+        mimetype="application/pdf"
+    )
+
+@app.route("/descargar_word/<mes>")
+def descargar_word_mes(mes):
     if os.path.exists(HISTORIAL_PATH):
         with open(HISTORIAL_PATH, "r", encoding="utf-8") as f:
             historial = json.load(f)
     else:
         historial = {}
 
-    doc = Document()
+    facturas_mes = []
+    for num, info in historial.items():
+        fecha = info.get("fecha", "")
+        if fecha.startswith(mes):
+            facturas_mes.append((num, info))
 
-    # 🏥 Insertar logo arriba del título
+    doc = Document()
+    section = doc.sections[0]
+
+    # === LOGO ===
+    header = section.header
     logo_path = os.path.join("static", "img", "logo.jpg")
     if os.path.exists(logo_path):
-        doc.add_picture(logo_path, width=Inches(2.5))  # Ajusta el tamaño
-        last_paragraph = doc.paragraphs[-1]
-        last_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+        p = header.paragraphs[0] if header.paragraphs else header.add_paragraph()
+        run = p.add_run()
+        run.add_picture(logo_path, width=Inches(1.0))
+        p.alignment = WD_ALIGN_PARAGRAPH.LEFT
 
-    # Título
-    titulo = doc.add_heading("📄 Reporte Histórico de Facturas Corregidas", level=1)
-    titulo.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+    # === DATOS EMPRESA ===
+    datos = doc.add_paragraph()
+    datos.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = datos.add_run(
+        "Hospital Infantil Los Ángeles\n"
+        "NIT: 891.200.240-2\n"
+        "Cra. 32, Pasto, Nariño\n"
+        "subgestioninformacion@hinfantil.org"
+    )
+    run.font.size = Pt(10)
+    run.font.italic = True
 
-    # Fecha
-    doc.add_paragraph(f"Fecha de generación: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    # === TÍTULO ===
+    titulo = doc.add_heading(f"📄 Reporte de Facturas Corregidas - {mes}", level=1)
+    titulo.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = titulo.runs[0]
+    run.font.color.rgb = RGBColor(0, 51, 102)
+    run.font.size = Pt(20)
 
-    if not historial:
-        doc.add_paragraph("❌ No hay facturas corregidas en el historial.")
+    # === FECHA ===
+    fecha_p = doc.add_paragraph(f"Fecha de generación: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    fecha_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+
+    doc.add_paragraph()
+
+    if not facturas_mes:
+        doc.add_paragraph("❌ No hay facturas corregidas para este mes.")
     else:
         table = doc.add_table(rows=1, cols=3)
-        table.style = 'Colorful List'  # Puedes probar otras
+        table.style = 'Table Grid'
+
         hdr_cells = table.rows[0].cells
         hdr_cells[0].text = "Factura"
         hdr_cells[1].text = "Fecha"
@@ -725,18 +809,59 @@ def descargar_word():
         for cell in hdr_cells:
             for p in cell.paragraphs:
                 p.runs[0].bold = True
+                p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
-        for num, info in historial.items():
+        for i, (num, info) in enumerate(facturas_mes):
             row_cells = table.add_row().cells
             row_cells[0].text = str(num)
             row_cells[1].text = info.get("fecha", "")
             row_cells[2].text = "Error XML corregido"
 
+            for cell in row_cells:
+                for p in cell.paragraphs:
+                    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+
+            if i % 2 == 0:
+                for cell in row_cells:
+                    shading_elm = OxmlElement('w:shd')
+                    shading_elm.set(qn('w:fill'), "D9E1F2")
+                    cell._tc.get_or_add_tcPr().append(shading_elm)
+
+    footer = section.footer
+    p_footer = footer.paragraphs[0] if footer.paragraphs else footer.add_paragraph()
+    p_footer.text = "Sistema de Corrección de XML — Hospital Infantil Los Ángeles"
+    p_footer.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_footer.runs[0].italic = True
+    p_footer.runs[0].font.size = Pt(9)
+
     output = io.BytesIO()
     doc.save(output)
     output.seek(0)
-    return send_file(output, download_name="reporte_historico_facturas_corregidas.docx", as_attachment=True, mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+    return send_file(
+        output,
+        download_name=f"reporte_facturas_{mes}.docx",
+        as_attachment=True,
+        mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    )
 
+@app.route('/manual')
+def ver_manual():
+    return render_template('manual.html')
+
+# 2) Ruta para descargar el PDF del manual
+@app.route("/descargar_manual")
+def descargar_manual():
+    # Construye la ruta al PDF en static/manual
+    manual_path = os.path.join(app.root_path, "static", "manual", "manual_usuario.pdf")
+    if not os.path.exists(manual_path):
+        return "❌ Manual no encontrado", 404
+
+    return send_file(
+        manual_path,
+        as_attachment=True,
+        download_name="manual_usuario.pdf",
+        mimetype="application/pdf"
+    )
 
 # Ruta para procesar las facturas con error en XML
 @app.route("/corregir", methods=["POST"])
@@ -745,23 +870,22 @@ def corregir_y_enviar():
     try:
         print("=== INICIO CORRECCIÓN AUTOMÁTICA ===")
 
-        # ── FILTRAR FACTURAS YA CORREGIDAS ───────────────────────────────
+        # 1) Filtrar sólo facturas aún no corregidas
         historial_corregidas = cargar_historial()  # dict: factura → {fecha, observacion}
         facturas_con_error = session.get("facturas_con_error", [])
         facturas_con_error = [
             f for f in facturas_con_error
             if f["factura"] not in historial_corregidas
         ]
-        # ── FIN FILTRADO ────────────────────────────────────────────────
-
-        archivo_dict = session.get("archivos_guardados", {})
-        facturas_cuv = session.get("facturas_con_cuv_corregido", [])
 
         if not facturas_con_error:
             print("⚠️ No hay facturas con error XML nuevas para corregir.")
             return jsonify({"mensaje": "No hay facturas con error XML."}), 400
 
-        # --- Autenticación en API ---
+        archivo_dict = session.get("archivos_guardados", {})
+        facturas_cuv = session.get("facturas_con_cuv_corregido", [])
+
+        # 2) Autenticación en API
         r_login = requests.post(API_LOGIN_URL, json=API_CREDENCIALES, verify=False)
         r_login.raise_for_status()
         token = r_login.json().get("token")
@@ -776,90 +900,76 @@ def corregir_y_enviar():
             num = f["factura"]
             print(f"\n--- Procesando factura {num} ---")
 
-            # 1) Preparar y corregir JSON
+            # 3) Ruta del JSON original
             path_json = archivo_dict.get(f"{num}_2.json")
-            ruta_salida = os.path.join(INCOMING_FOLDER, f"{num}_2_CORREGIDO.json")
             if not path_json or not os.path.exists(path_json):
                 errores.append(f"{num}: JSON original no encontrado.")
                 continue
+
+            # 4) Crear JSON corregido en temp (INCOMING_FOLDER)
+            salida = os.path.join(INCOMING_FOLDER, f"{num}_2_CORREGIDO.json")
             num_limpio = limpiar_num_factura(num)
-            if not corregir_json_valido(path_json, ruta_salida, INCOMING_FOLDER, num_limpio):
+            if not corregir_json_valido(path_json, salida, INCOMING_FOLDER, num_limpio):
                 errores.append(f"{num}: Error al corregir el JSON.")
                 continue
 
-            # 2) Copiar corregido a uploads
+            # 5) Copiar TODOS los archivos <num>_* de INCOMING_FOLDER → UPLOAD_FOLDER
             import shutil
             for nombre in os.listdir(INCOMING_FOLDER):
                 if nombre.startswith(f"{num}_"):
-                    shutil.copyfile(
-                        os.path.join(INCOMING_FOLDER, nombre),
-                        os.path.join(UPLOAD_FOLDER, nombre)
-                    )
+                    src = os.path.join(INCOMING_FOLDER, nombre)
+                    dst = os.path.join(UPLOAD_FOLDER, nombre)
+                    shutil.copy2(src, dst)
+                    print(f"📂 Copiado a uploads/: {nombre}")
 
-            # 3) Validar y enviar
-            with open(ruta_salida, "r", encoding="utf-8") as fcor:
+            # 6) Validar que el JSON corregido está listo
+            with open(salida, "r", encoding="utf-8") as fcor:
                 json_corregido = json.load(fcor)
             if not validar_json_para_envio(json_corregido, num):
                 errores.append(f"{num}: JSON inválido, no se envió.")
                 continue
 
-            print(f"📡 Enviando factura {num} corregida...")
+            # 7) Enviar al Ministerio
             r = requests.post(API_CARGA_JSON_URL, headers=headers,
                               json=json_corregido, verify=False)
             res = r.json()
 
-            # 4a) CUV existente (RVG02)
-            if (not res.get("ResultState") and
-                any(item.get("Codigo") == "RVG02" for item in res.get("ResultadosValidacion", []))):
-                texto = next(item["Observaciones"]
-                             for item in res["ResultadosValidacion"]
-                             if item.get("Codigo") == "RVG02")
+            # 8) Manejo de CUV existente (RVG02)
+            if (not res.get("ResultState")
+                and any(i.get("Codigo")=="RVG02" for i in res.get("ResultadosValidacion", []))):
+                texto = next(i["Observaciones"]
+                             for i in res["ResultadosValidacion"]
+                             if i.get("Codigo")=="RVG02")
                 m = re.search(r"CUV\s*([0-9a-f]+)", texto)
                 if m:
                     cuv = m.group(1)
+                    # Armamos un resultado válido
                     nuevo_res = {
-                        **{k: v for k, v in res.items() if k != "ResultadosValidacion"},
+                        **{k:v for k,v in res.items() if k!="ResultadosValidacion"},
                         "CodigoUnicoValidacion": cuv,
                         "ResultadosValidacion": [
                             i for i in res["ResultadosValidacion"]
-                            if i.get("Clase") == "NOTIFICACION"
-                        ]
+                            if i.get("Clase")=="NOTIFICACION"
+                        ],
+                        "ResultState": True
                     }
-                    #ResultState true
-                    nuevo_res["ResultState"] = True
-                    with open(os.path.join(UPLOAD_FOLDER, f"{num}_2_CUV_CORREGIDO.json"),
-                              "w", encoding="utf-8") as f_cuv:
-                        json.dump(nuevo_res, f_cuv, indent=2, ensure_ascii=False)
+                    res = nuevo_res
 
-                    historial_corregidas[num] = {
-                        "fecha": datetime.now().strftime("%Y-%m-%d %H:%M"),
-                        "observacion": cuv
-                    }
-                    corregidas.append({"factura": num, "observacion": cuv})
-                    facturas_cuv.append({
-                        "factura": num,
-                        "descripcion": "CUV generado correctamente",
-                        "observacion": cuv
-                    })
-                    print(f"🔄 {num}: CUV existente armado y guardado: {cuv}")
-                    continue
-
-            # 4b) CUV nuevo
-            if r.status_code == 200 and res.get("ResultState"):
-                cuv = res.get("CodigoUnicoValidacion", "CUV generado")
+            # 9) Si quedó validado (nuevo o existente)
+            if res.get("ResultState"):
+                # Guardar JSON final en uploads/
                 with open(os.path.join(UPLOAD_FOLDER, f"{num}_2_CUV_CORREGIDO.json"),
                           "w", encoding="utf-8") as f_cuv:
                     json.dump(res, f_cuv, indent=2, ensure_ascii=False)
-
                 historial_corregidas[num] = {
                     "fecha": datetime.now().strftime("%Y-%m-%d %H:%M"),
-                    "observacion": cuv
+                    "observacion": res.get("CodigoUnicoValidacion","")
                 }
-                corregidas.append({"factura": num, "observacion": cuv})
+                corregidas.append({"factura": num, "observacion": "CUV validado"})
                 facturas_cuv.append({
                     "factura": num,
                     "descripcion": "CUV generado correctamente",
-                    "observacion": cuv
+                    "observacion": "CUV validado"
                 })
                 print(f"✅ CUV generado y guardado para {num}")
             else:
@@ -867,7 +977,7 @@ def corregir_y_enviar():
                 errores.append(f"{num}: {obs}")
                 print(f"❌ Ministerio rechazó {num}: {obs}")
 
-        # 5) Filtrar errores y actualizar sesión
+        # 10) Actualizar sesión e historial, limpiar obsoletos
         facturas_con_error = [
             f for f in facturas_con_error
             if f["factura"] not in [c["factura"] for c in corregidas]
@@ -876,15 +986,13 @@ def corregir_y_enviar():
         session["facturas_con_cuv_corregido"] = facturas_cuv
         session.modified = True
 
-        # 6) Guardar historial y limpieza de archivos
         guardar_historial(historial_corregidas)
-        historial_corregidas = cargar_historial()
         limpiar_archivos_sin_cuv(UPLOAD_FOLDER)
 
         return jsonify({
-            "mensaje":   "Corrección finalizada",
+            "mensaje": "Corrección finalizada",
             "corregidas": corregidas,
-            "errores":   errores,
+            "errores": errores,
             "total_corregidas": len(corregidas),
             "total_no_corregidas": len(errores)
         }), 200

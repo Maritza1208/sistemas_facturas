@@ -579,19 +579,15 @@ def descargar_excel_actualizado():
                     "Descripción": descripcion
                 })
 
-            # Crear DataFrame para esta hoja
             df_resultado = pd.DataFrame(filas)
             df_resultado.to_excel(writer, sheet_name=hoja, index=False)
 
-            # Obtener acceso al worksheet para aplicar formato
             workbook  = writer.book
             worksheet = writer.sheets[hoja]
 
-            # Formato verde claro para filas válidas
             formato_verde = workbook.add_format({'bg_color': "#30D651"})
 
-            # Aplicar formato condicional fila por fila si estado == "Válida"
-            for fila_idx, estado in enumerate(df_resultado["Estado"], start=1):  # +1 por el header
+            for fila_idx, estado in enumerate(df_resultado["Estado"], start=1):  
                 if estado == "Válida":
                     worksheet.set_row(fila_idx, None, formato_verde)
 
@@ -605,7 +601,6 @@ def descargar_excel_actualizado():
 
 @app.route('/descargar_factura/<factura_id>')
 def descargar_factura(factura_id):
-    # 1) Listar todos los archivos que comienzan con factura_id_ en ambas carpetas
     archivos = []
     for folder in (INCOMING_FOLDER, UPLOAD_FOLDER):
         if not os.path.isdir(folder):
@@ -617,14 +612,13 @@ def descargar_factura(factura_id):
     if not archivos:
         return redirect(url_for('vista_excel', error_factura=factura_id))
 
-    # 2) Crear un ZIP en memoria
     zip_buffer = io.BytesIO()
     with zipfile.ZipFile(zip_buffer, 'w') as zf:
         for ruta_completa, nombre in archivos:
             zf.write(ruta_completa, arcname=nombre)
     zip_buffer.seek(0)
 
-    # 3) Enviar el ZIP al cliente
+    # 3) Enviar el ZIP 
     return send_file(
         zip_buffer,
         as_attachment=True,
@@ -632,7 +626,35 @@ def descargar_factura(factura_id):
         mimetype='application/zip'
     )
 
+@app.route('/descargar_todas_facturas', methods=['POST'])
+def descargar_todas_facturas():
+    facturas = request.form.getlist('facturas[]')  
+    archivos = []
 
+    for factura_id in facturas:
+        for folder in (INCOMING_FOLDER, UPLOAD_FOLDER):
+            if not os.path.isdir(folder):
+                continue
+            for f in os.listdir(folder):
+                if f.startswith(f"{factura_id}_"):
+                    archivos.append((os.path.join(folder, f), f))
+
+    if not archivos:
+        return "No se encontraron archivos para las facturas seleccionadas", 404
+
+    # Crear el ZIP en memoria
+    zip_buffer = io.BytesIO()
+    with zipfile.ZipFile(zip_buffer, 'w') as zf:
+        for ruta_completa, nombre in archivos:
+            zf.write(ruta_completa, arcname=nombre)
+    zip_buffer.seek(0)
+
+    return send_file(
+        zip_buffer,
+        as_attachment=True,
+        download_name='facturas_seleccionadas.zip',
+        mimetype='application/zip'
+    )
 
 @app.route("/ver_reportes")
 def ver_reportes():
@@ -649,7 +671,7 @@ def ver_reportes():
     facturas_por_mes = defaultdict(list)
     for factura_id, info in historial_corregidas.items():
         fecha = info.get("fecha", "0000-00-00")
-        mes_clave = fecha[:7]  # ej: "2025-07"
+        mes_clave = fecha[:7]  
         facturas_por_mes[mes_clave].append({
             "factura": factura_id,
             "observacion": info.get("observacion", ""),

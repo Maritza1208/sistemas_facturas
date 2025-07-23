@@ -11,88 +11,188 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      background: #e4e6e9;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+<style>
+  body {
+    margin: 0;
+    background: #e4e6e9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
 
-    /* === MENÚ LATERAL === */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 220px;
-      height: 100vh;
-      background: linear-gradient(180deg, #001429, #004085);
-      padding: 30px 20px;
-      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-      color: #fff;
-      z-index: 1000;
-    }
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100vh;
+    background: linear-gradient(180deg, #0d1b2a, #1b263b);
+    padding: 30px 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    color: #fff;
+    z-index: 1000;
+  }
 
-    .sidebar h5 {
-      font-size: 22px;
-      margin-bottom: 25px;
-      color: #fff;
-    }
+  .sidebar h5 {
+    font-size: 22px;
+    margin-bottom: 25px;
+    color: #fff;
+  }
 
-    .sidebar-btn {
-      display: block;
-      width: 100%;
-      background: rgba(255,255,255,0.1);
-      color: #fff;
-      padding: 12px 15px;
-      margin-bottom: 15px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 16px;
-      transition: all 0.3s ease;
-    }
+  .sidebar-btn {
+    display: block;
+    width: 100%;
+    background: transparent;
+    color: #fff;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
 
-    .sidebar-btn:hover {
-      background: rgba(255,255,255,0.3);
-      transform: translateX(5px);
-    }
+  .sidebar-btn:hover {
+    background-color: rgba(255,255,255,0.1);
+    transform: translateX(5px);
+  }
 
-    .sidebar-btn i {
-      margin-right: 8px;
-    }
+  .sidebar-btn i {
+    margin-right: 8px;
+    vertical-align: middle;
+    font-size: 1rem;
+     margin-top: 10px;
+     display: inline-block;
+  }
 
-    .container {
-      width: calc(100% - 260px);
-      margin: 40px 0 40px 260px;
-      background: linear-gradient(135deg, #6FB1FC, #cdd4da);
-      padding: 40px 50px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    }
+  .custom-container {
+    margin-left: 260px;
+    margin-right: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background: linear-gradient(135deg, #c9cdd1, #bcc4cc);
+    padding: 40px 60px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+  }
 
-    /* Filas válidas en verde */
-    #tabla-general tbody tr.estado-valida {
-      background-color: #4aaf62 !important;
-    }
-    #tabla-general tbody tr.estado-valida td {
-      background-color: #489e5c !important;
-      color: #fff !important;
-      font-weight: bold;
-    }
-    #tabla-general tbody tr.estado-valida:hover td {
-      background-color: #48c764 !important;
-    }
-  </style>
+  #tabla-general {
+    width: 100%;
+    border-collapse: collapse;
+    background: #2c3e50;
+    color: #ecf0f1;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  #tabla-general thead th {
+    background-color: #34495e;
+    padding: 14px 20px;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 2px solid #2c3e50;
+  }
+
+  #tabla-general td {
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  #tabla-general tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+
+  #tabla-general tbody tr:hover {
+    background-color: #3c6382;
+  }
+
+  #tabla-general tbody tr.estado-valida {
+    background-color: #4CAF50 !important;
+  }
+
+  #tabla-general tbody tr.estado-valida td {
+    background-color: #45a049 !important;
+    color: #fff !important;
+    font-weight: bold;
+  }
+
+  #tabla-general tbody tr.estado-valida:hover td {
+    background-color: #56c271 !important;
+  }
+
+  .sidebar.collapsed {
+    width: 70px;
+    padding: 30px 10px;
+    overflow: hidden;
+    transition: width 0.3s ease;
+  }
+
+  .sidebar.collapsed .sidebar-btn {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .sidebar.collapsed .sidebar-btn i {
+    margin-right: 0;
+    margin-top: 18px;
+  }
+
+  .sidebar.collapsed .btn-text,
+  .sidebar.collapsed h5 {
+    display: none !important;
+  }
+
+  .content {
+    transition: margin-left 0.3s ease;
+  }
+
+  .sidebar.collapsed ~ .content {
+    margin-left: 90px !important;
+    width: calc(100% - 100px) !important;
+  }
+
+  #toggleSidebar {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 1100;
+    background-color: #1b263b;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+  }
+
+  .sidebar.collapsed ~ .custom-container {
+    margin-left: 90px !important;
+    margin-right: 20px;
+    width: auto !important;
+  }
+
+  .text-primary {
+    color: #1b263b !important; 
+  }
+</style>
 </head>
 
 <body>
-    <div class="sidebar">
-      <h5 class="text-center"> Menú</h5>
+      <button id="toggleSidebar" class="btn border m-3" style="position: fixed; z-index: 1001; top: 1px; left: 1px; background-color: white; color: black;">
+        <i class="bi bi-list"></i>
+      </button>
+
+      <div class="sidebar">
+        <h5 class="section-title d-flex justify-content-center align-items-center gap-2">
+          MENU
+      </h5>
+
       <a href="{{ url_for('index') }}" class="sidebar-btn">
-        <i class="bi bi-house-fill"></i> Inicio
+        <i class="bi bi-house-fill"></i> <span class="btn-text">Inicio</span>
       </a>
+
             <a href="{{ url_for('resultados') }}" class="sidebar-btn">
-        <i class="bi bi-journal-text"></i> Resultados
+        <i class="bi bi-journal-text"></i> <span class="btn-text">Resultados</span>
       </a>
 
       <!--<a href="{{ url_for('corregir_y_enviar') }}" class="sidebar-btn">
@@ -100,26 +200,26 @@
       </a>-->
 
       <a href="{{ url_for('vista_excel') }}" class="sidebar-btn">
-        <i class="bi bi-eye-fill"></i> Vista Previa Excel
+        <i class="bi bi-eye-fill"></i> <span class="btn-text">Vista Excel</span>
       </a>
 
       <form action="{{ url_for('descargar_excel_actualizado') }}" method="POST" class="d-inline">
         <button class="sidebar-btn" type="submit" style="border:none; background:none; padding:0; color:inherit;">
-          <i class="bi bi-download"></i> Descargar Excel
+          <i class="bi bi-download"></i> <span class="btn-text">  Descargar Excel</span>
         </button>
       </form>
 
       <a href="{{ url_for('ver_reportes') }}" class="sidebar-btn">
-        <i class="bi bi-folder-fill"></i> Ver Reportes
+        <i class="bi bi-folder-fill"></i> <span class="btn-text">Ver Reportes</span>
       </a>
 
       <a href="{{ url_for('ver_manual') }}" class="sidebar-btn">
-      <i class="bi bi-book-fill"></i> Manual de usuario
+      <i class="bi bi-book-fill"></i> <span class="btn-text">Manual de Usuario</span>
       </a>
 
     </div>
 
-  <div class="container">
+  <div class="content custom-container">
     <h1 class="text-center text-primary mb-4">📋 Vista Previa del Excel Actualizado</h1>
 
     {% if facturas %}
@@ -183,7 +283,16 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-        function filtrarTabla() {
+      const toggleBtn = document.getElementById('toggleSidebar');
+      const sidebar = document.querySelector('.sidebar');
+      const content = document.querySelector('.content');
+
+      toggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+        content.classList.toggle('collapsed');
+      });
+
+      function filtrarTabla() {
       const raw = document.getElementById("buscador").value.trim().toLowerCase();
       const terms = raw.split(",").map(t => t.trim()).filter(Boolean);
 
@@ -232,27 +341,43 @@
         cont.innerHTML = '';
         return;
       }
-      cont.innerHTML = `
+
+      // Generar tabla con botones individuales
+      let tablaHTML = `
         <h2>📦 Descargas individuales</h2>
         <table class="table">
           <thead>
             <tr><th>Factura</th><th>Acción</th></tr>
           </thead>
-          <tbody id="body-resultados"></tbody>
-        </table>`;
-      const body = document.getElementById('body-resultados');
+          <tbody>`;
+
       ids.forEach(id => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${id}</td>
-          <td>
-            <form method="GET" action="/descargar_factura/${id}">
-              <button type="submit" class="btn btn-success btn-sm">📥 Descargar archivos</button>
-            </form>
-          </td>`;
-        body.appendChild(tr);
+        tablaHTML += `
+          <tr>
+            <td>${id}</td>
+            <td>
+              <form method="GET" action="/descargar_factura/${id}">
+                <button type="submit" class="btn btn-success btn-sm">📥 Descargar archivos</button>
+              </form>
+            </td>
+          </tr>`;
       });
+
+      tablaHTML += `
+          </tbody>
+        </table>`;
+
+      // ✅ Botón de descarga masiva
+      tablaHTML += `
+        <form method="POST" action="/descargar_todas_facturas" class="mt-3">
+          ${ids.map(id => `<input type="hidden" name="facturas[]" value="${id}">`).join("")}
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-box-arrow-down"></i> Descargar todas las facturas
+          </button>
+        </form>`;
+
+      cont.innerHTML = tablaHTML;
     }
-  </script>
+</script>
 </body>
 </html>

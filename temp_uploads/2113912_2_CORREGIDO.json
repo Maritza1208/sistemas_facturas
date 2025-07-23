@@ -1,0 +1,51 @@
+{
+  "rips": {
+    "numDocumentoIdObligado": "891200240",
+    "numFactura": "2113912",
+    "tipoNota": null,
+    "numNota": null,
+    "usuarios": [
+      {
+        "tipoDocumentoIdentificacion": "RC",
+        "numDocumentoIdentificacion": "1232826264",
+        "tipoUsuario": "05",
+        "fechaNacimiento": "2023-07-11",
+        "codSexo": "M",
+        "codPaisResidencia": "170",
+        "codMunicipioResidencia": "52001",
+        "codZonaTerritorialResidencia": "01",
+        "incapacidad": "NO",
+        "consecutivo": 1,
+        "codPaisOrigen": "170",
+        "servicios": {
+          "consultas": [
+            {
+              "codPrestador": "520010028301",
+              "fechaInicioAtencion": "2025-03-14 14:15",
+              "numAutorizacion": "21985500",
+              "codConsulta": "890283",
+              "modalidadGrupoServicioTecSal": "01",
+              "grupoServicios": "01",
+              "codServicio": 328,
+              "finalidadTecnologiaSalud": "44",
+              "causaMotivoAtencion": "38",
+              "codDiagnosticoPrincipal": "R620",
+              "codDiagnosticoRelacionado1": null,
+              "codDiagnosticoRelacionado2": null,
+              "codDiagnosticoRelacionado3": null,
+              "tipoDiagnosticoPrincipal": "02",
+              "tipoDocumentoIdentificacion": "CC",
+              "numDocumentoIdentificacion": "59312490",
+              "vrServicio": 75700,
+              "conceptoRecaudo": "05",
+              "valorPagoModerador": 0,
+              "numFEVPagoModerador": "2113911",
+              "consecutivo": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "xmlFevFile": "eyJtYXhpbXVtU2V2ZXJpdHlDb2RlIjoiRXJyb3IiLCJldmVudEl0ZW1zIjpbeyJlcnJvckNvZGUiOjIwMDAsInNldmVyaXR5Q29kZSI6IkVycm9yIiwic2hvcnREZXNjcmlwdGlvbiI6IkRvY3VtZW50ICdGQUNUVVJBLVVCTCg4OTEyMDAyNDA7MjExMzkxMjsyMDI1LTAzLTE0O1BSSU5DSVBBTDtQUklOQ0lQQUwpJyBkb2VzIG5vdCBleGlzdCBvbiB0ZW5hbnQgJzg5MTIwMDI0MCcuIn1dfXsibWF4aW11bVNldmVyaXR5Q29kZSI6IkVycm9yIiwiZXZlbnRJdGVtcyI6W3siZXJyb3JDb2RlIjoyMDAwLCJzZXZlcml0eUNvZGUiOiJFcnJvciIsInNob3J0RGVzY3JpcHRpb24iOiJEb2N1bWVudCAnRkFDVFVSQS1VQkwoODkxMjAwMjQwOzIxMTM5MTI7MjAyNS0wMy0xNDtQUklOQ0lQQUw7UFJJTkNJUEFMKScgZG9lcyBub3QgZXhpc3Qgb24gdGVuYW50ICc4OTEyMDAyNDAnLiJ9XX0="
+}

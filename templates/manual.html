@@ -5,14 +5,15 @@
   <title>📘 Manual de Uso del Sistema</title>
 
   <!-- Tipografía e iconos -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
   <style>
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Cormorant Garamond', serif;
       background-color: #f8f9fa;
+      font-size: 18px;
     }
 
     header {
@@ -24,8 +25,11 @@
     }
 
     header h1 {
-      font-size: 2.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
       font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
 
     header p {
@@ -106,7 +110,7 @@
 
     <section>
       <h2 class="section-title"><i class="bi bi-upload"></i> Subir Archivos</h2>
-      <p>En la página principal, haz clic en “Seleccionar archivo” para cargar tu Excel con números de factura y en “Seleccionar carpeta” para los JSON, CUV y AttDoc.</p>
+      <p>En la página principal, haz clic en “Seleccionar archivo” para cargar tu Excel con números de factura y en “Elegir archivos” para los JSON, CUV y AttDoc.</p>
       <img src="{{ url_for('static', filename='img/principal.png') }}" alt="Subir archivo">
     </section>
 
@@ -119,10 +123,18 @@
     </section>
 
     <section>
+      <h2 class="section-title"> <i class="bi bi-house"></i> Menu</h2>
+      <p> El programa cuenta con un menu desplegable, ubicado al costado izquierdo de la interfaz. Este menu tiene como objetivo facilitar la navegacion rapida, 
+        entre las principales funciones del sistema, como son la correccion automaica, vista previa del excel,descarga del excel y ver reportes, las cuales se explicaran a continuacion.</p>
+      <img src="{{ url_for('static', filename='img/menu.png') }}" alt="Corrección">
+    </section>
+
+    <section>
       <h2 class="section-title"> <i class="bi bi-tools"></i> Corrección Automática</h2>
-      <p>Solo las facturas con errores XML serán corregidas. Al iniciar la corrección, aparecerá una alerta para confirmar. Al aceptar, se muestra la barra de progreso con el resultado.</p>
+      <p>Solo las facturas con errores XML serán corregidas. Al iniciar la corrección, aparecerá una alerta para confirmar esta accion. </p>
       <img src="{{ url_for('static', filename='img/alert.png') }}" alt="Corrección">
-      <img src="{{ url_for('static', filename='img/alert.png') }}" alt="Corrección">
+      <p>Al aceptar se muestra la barra de progreso con el resultado de las facturas que fueron corregidas.</p>
+      <img src="{{ url_for('static', filename='img/alert_1.png') }}" alt="Corrección">
     </section>
 
     <section>
@@ -133,7 +145,7 @@
 
     <section>
       <h2 class="section-title"><i class="bi bi-file-earmark-spreadsheet"></i> Vista Previa del Excel</h2>
-      <p>Antes de descargar, visualiza cómo quedará el Excel actualizado. Puedes buscar varias facturas y descargar archivos individuales validados por el ministerio.</p>
+      <p>Antes de descargar, visualiza cómo quedará el Excel actualizado. Puedes filtrar varias facturas y descargar archivos individuales o hacer una descarga masiva para todas las facturas filtradas.</p>
       <img src="{{ url_for('static', filename='img/vista_excel.png') }}" alt="Vista Previa Excel">
       <img src="{{ url_for('static', filename='img/descargas.png') }}" alt="Descargas individuales">
     </section>
@@ -156,7 +168,7 @@
       </a>
     </div>
   </div>
-
+  
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

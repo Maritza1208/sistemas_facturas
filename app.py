@@ -885,6 +885,10 @@ def descargar_manual():
         mimetype="application/pdf"
     )
 
+@app.route("/soporte")
+def soporte():
+    return render_template("soporte.html")
+
 # Ruta para procesar las facturas con error en XML
 @app.route("/corregir", methods=["POST"])
 def corregir_y_enviar():
